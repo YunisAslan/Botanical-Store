@@ -3,16 +3,21 @@ import { VariantProps, cva } from "class-variance-authority";
 import { ComponentPropsWithRef, forwardRef } from "react";
 
 const buttonVariants = cva(
-  "text-white bg-red-600 hover:scale-95 items-center flex",
+  "flex items-center justify-center rounded active:scale-95 font-medium transition-colors duration-500",
   {
     variants: {
       variant: {
-        default: "bg-slate-900",
-        outline: "border border-blue-600 bg-transparent",
+        default: "",
+        primary: "bg-primary2 text-white hover:brightness-110",
+        outline: "border hover:bg-inputBg border-input bg-transparent",
+        ghost: "bg-transparent",
+        link: "",
       },
       size: {
         default: "h-10 py-2 px-4",
-        sm: "h-9 px-2 rounded-md",
+        sm: "h-9 px-3 text-sm",
+        mm: "px-2 py-1",
+        icon: "h-9 w-9",
       },
     },
 
