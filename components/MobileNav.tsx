@@ -33,11 +33,20 @@ function MobileNav() {
     };
   }, []);
 
+  useEffect(() => {
+    // change scroll behavior of the body when the menu is open or closed
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
   return (
     <>
       <Button
         ref={btnRef}
-        className="inline-flex lg:hidden"
+        className="lg:hidden"
         variant="ghost"
         size="mm"
         onClick={() => setIsOpen(!isOpen)}
@@ -53,7 +62,7 @@ function MobileNav() {
       >
         <div
           ref={menuRef}
-          className="w-3/4 bg-white relative border-r border-input"
+          className="w-3/4 bg-white relative border-r border-input overflow-auto"
         >
           <div className="pt-5 px-8">
             <Button
@@ -95,6 +104,7 @@ function MobileNav() {
                   )}
                   key={index}
                   href={item.disabled ? "#" : item.href}
+                  onClick={() => setIsOpen(!isOpen)}
                 >
                   {item.title}
                 </Link>
