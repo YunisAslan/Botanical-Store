@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icons } from "./Icons";
 import { Button } from "./ui/Button";
 import Logo from "@/public/assets/images/logo.png";
@@ -10,10 +10,33 @@ import { cn } from "@/lib/utils";
 import { docsConfig } from "@/config/docs";
 
 function MobileNav() {
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        btnRef.current &&
+        !btnRef.current.contains(e.target as Node) &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <Button
+        ref={btnRef}
         className="inline-flex lg:hidden"
         variant="ghost"
         size="mm"
@@ -28,8 +51,11 @@ function MobileNav() {
           isOpen && "w-full"
         )}
       >
-        <div className="w-3/4 bg-white relative border-r border-input">
-          <div className="pt-3 px-8">
+        <div
+          ref={menuRef}
+          className="w-3/4 bg-white relative border-r border-input"
+        >
+          <div className="pt-5 px-8">
             <Button
               className="absolute right-3"
               variant="ghost"

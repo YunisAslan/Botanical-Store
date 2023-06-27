@@ -9,7 +9,7 @@ import MobileNav from "./MobileNav";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10">
+    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input">
       <MobileNav />
 
       <Link href="/">

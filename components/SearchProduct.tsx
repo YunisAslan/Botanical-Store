@@ -27,7 +27,7 @@ function SearchProduct() {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [btnRef]);
+  }, []);
 
   return (
     <>
