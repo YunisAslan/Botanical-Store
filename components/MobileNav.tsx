@@ -115,7 +115,7 @@ function MobileNav() {
 
         <div
           className={cn(
-            "opacity-0 backdrop-blur-sm w-1/4 duration-700 transition-all ease-out",
+            "opacity-0 backdrop-blur-sm w-1/4 duration-700 transition-all ease-out bg-white/40",
             isOpen && "opacity-100"
           )}
         ></div>

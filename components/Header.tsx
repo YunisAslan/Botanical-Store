@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/public/assets/images/logo.png";
 import SearchProduct from "./SearchProduct";
-import { Button, buttonVariants } from "./ui/Button";
-import { Icons } from "./Icons";
+import { buttonVariants } from "./ui/Button";
 import Navbar from "./MainNav";
 import MobileNav from "./MobileNav";
+import CartBar from "./CartBar";
 
 function Header() {
   return (
@@ -28,9 +28,7 @@ function Header() {
       <div className="flex items-center gap-2">
         <SearchProduct />
 
-        <Button variant="outline" size="icon">
-          <Icons.cart className="w-5 h-5" />
-        </Button>
+        <CartBar />
 
         <Link
           href="/signin"
