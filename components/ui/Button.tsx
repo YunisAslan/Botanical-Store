@@ -9,7 +9,8 @@ const buttonVariants = cva(
       variant: {
         default: "",
         primary: "bg-primary2 text-white hover:brightness-110",
-        outline: "border hover:bg-inputBg border-input bg-transparent",
+        outline:
+          "border hover:bg-inputBg border-input bg-transparent shadow-sm",
         ghost: "bg-transparent",
         link: "",
       },

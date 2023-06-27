@@ -56,8 +56,8 @@ function MobileNav() {
 
       <div
         className={cn(
-          "off-canvas fixed inset-0 w-0 h-full flex lg:hidden duration-300 transition-all ease-out overflow-x-hidden",
-          isOpen && "w-full"
+          "off-canvas fixed top-0 bottom-0 left-0 w-full h-full flex lg:hidden duration-300 transition-all ease-out overflow-x-hidden -translate-x-full invisible",
+          isOpen && "-translate-x-0 visible"
         )}
       >
         <div
