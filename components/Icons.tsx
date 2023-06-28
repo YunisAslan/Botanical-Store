@@ -1,4 +1,12 @@
-import { Carrot, Heart, MenuIcon, Search, ShoppingCart, X } from "lucide-react";
+import {
+  ArrowRight,
+  Carrot,
+  Heart,
+  MenuIcon,
+  Search,
+  ShoppingCart,
+  X,
+} from "lucide-react";
 
 export const Icons = {
   logo: Carrot,
@@ -7,4 +15,5 @@ export const Icons = {
   cart: ShoppingCart,
   menu: MenuIcon,
   heart: Heart,
+  arrowRight: ArrowRight,
 };

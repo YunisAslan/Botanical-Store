@@ -1,9 +1,9 @@
-"use client";
-
-import { useRef } from "react";
+import Hero from "@/components/Hero";
 
 export default function Home() {
-  const btnRef = useRef(null);
-
-  return <section className="h-screen flex">Hi</section>;
+  return (
+    <section className="home">
+      <Hero />
+    </section>
+  );
 }

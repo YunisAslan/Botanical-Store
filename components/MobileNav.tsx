@@ -56,7 +56,7 @@ function MobileNav() {
 
       <div
         className={cn(
-          "off-canvas fixed top-0 bottom-0 left-0 w-full h-full flex lg:hidden duration-300 transition-all ease-out overflow-x-hidden -translate-x-full invisible",
+          "off-canvas fixed top-0 bottom-0 left-0 w-full h-full flex lg:hidden duration-300 transition-all ease-out overflow-x-hidden -translate-x-full invisible z-10",
           isOpen && "-translate-x-0 visible"
         )}
       >
@@ -75,7 +75,11 @@ function MobileNav() {
             </Button>
 
             <div className="flex">
-              <Link href="/" className="flex-shrink-0">
+              <Link
+                href="/"
+                className="flex-shrink-0"
+                onClick={() => setIsOpen(!isOpen)}
+              >
                 <Image
                   className={cn(
                     "opacity-0 duration-500 transition-all ease-in-out",

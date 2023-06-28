@@ -51,7 +51,7 @@ function CartBar() {
       {/* this time i use translate instead w-0/full */}
       <div
         className={cn(
-          "w-full fixed flex right-0 h-full top-0 bottom-0 duration-300 transition-all ease-out translate-x-full invisible",
+          "w-full fixed flex right-0 h-full top-0 bottom-0 duration-300 transition-all ease-out translate-x-full invisible z-10",
           isOpen && "-translate-x-0 visible"
         )}
       >
@@ -88,7 +88,8 @@ function CartBar() {
             <div className="border-b border-input absolute left-7 right-0" />
           </div>
 
-          <div className="product-container flex items-center justify-center flex-col">
+          <div className="product-container flex items-center justify-center flex-col h-3/4">
+            {/* some styles temporary */}
             <Icons.cart className="w-14 h-14 text-gray-500" />
             <span className="text-gray-500 pt-2 font-semibold text-lg whitespace-nowrap">
               Your cart is empty

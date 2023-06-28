@@ -52,7 +52,7 @@ function SearchProduct() {
 
       <div
         className={cn(
-          "fixed inset-0 bg-white/40 flex justify-center w-full backdrop-blur-sm invisible",
+          "fixed inset-0 bg-white/40 flex justify-center w-full backdrop-blur-sm invisible z-10",
           isOpen && "visible"
         )}
       >
