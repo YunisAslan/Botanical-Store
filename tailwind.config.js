@@ -9,12 +9,16 @@ module.exports = {
     extend: {
       screens: {
         mm: "350px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
       },
       colors: {
         font: "#09090B",
         inputBg: "#F4F4F5",
+        primary: "#406E3F",
         primary1: "#265530",
-        primary2: "#406E3F",
         primary3: "#263E2A",
       },
       borderColor: {

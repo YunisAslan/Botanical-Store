@@ -8,7 +8,7 @@ function Navbar() {
       {docsConfig.mainNav.map((item, index) => (
         <Link
           className={cn(
-            "font-semibold text-base text-font hover:text-primary2 duration-500 transition-colors",
+            "font-semibold text-base text-font hover:text-primary duration-500 transition-colors",
             item.disabled && "cursor-not-allowed opacity-80"
           )}
           key={index}

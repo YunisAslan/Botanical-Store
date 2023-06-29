@@ -72,7 +72,7 @@ function SearchProduct() {
             />
 
             <Button
-              className="absolute right-0"
+              className="absolute right-4"
               variant="ghost"
               size="mm"
               onClick={() => setIsOpen(!isOpen)}

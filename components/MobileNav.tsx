@@ -103,7 +103,7 @@ function MobileNav() {
               {docsConfig.mainNav.map((item, index) => (
                 <Link
                   className={cn(
-                    "font-semibold text-base text-font hover:text-primary2 duration-500 transition-colors pb-4 border-b whitespace-nowrap",
+                    "font-semibold text-base text-font hover:text-primary duration-500 transition-colors pb-4 border-b whitespace-nowrap",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                   key={index}
