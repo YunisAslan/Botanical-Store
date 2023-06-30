@@ -4,8 +4,8 @@ import { Icons } from "./Icons";
 
 function ChooseUs() {
   return (
-    <section className="pt-28 grid grid-cols-12">
-      <div className="col-span-12 lg:col-span-6">
+    <section className="py-28 grid grid-cols-12">
+      <div className="col-span-12 lg:col-span-6 flex justify-center lg:justify-start">
         <Image
           src={ChooseUsImg}
           alt="Why Choose Botanical Plant Store"
