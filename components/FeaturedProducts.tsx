@@ -1,11 +1,10 @@
 import Image from "next/image";
 import SeperatorImg from "@/public/assets/images/seperator-img.png";
 import ProductCard from "./ProductCard";
-import { Product } from "@/types";
-import { getProducts } from "@/lib/products";
+import { getProducts, getProduct } from "@/lib/products";
 
 async function FeaturedProducts() {
-  const productData: Product[] = await getProducts();
+  const productData = await getProducts();
   console.log(productData);
 
   return (
@@ -31,7 +30,7 @@ async function FeaturedProducts() {
       </div>
 
       <div>
-        {productData.map((product) => (
+        {productData?.map((product) => (
           <div className="text-4xl text-red-600">{product.plant_category}</div>
         ))}
       </div>

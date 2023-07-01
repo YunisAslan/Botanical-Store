@@ -2,7 +2,7 @@ import { db } from "@/firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET() {
   const plantCollectionRef = collection(db, "products");
 
   try {
