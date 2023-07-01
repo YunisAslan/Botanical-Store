@@ -7,3 +7,10 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+
+.power-btn {
+  background-color: red;
+  border: 4px;
+  padding: 10px;
+  font-size: 40px;
+}

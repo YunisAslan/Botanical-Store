@@ -1,34 +1,12 @@
-"use client";
-
 import Image from "next/image";
 import SeperatorImg from "@/public/assets/images/seperator-img.png";
 import ProductCard from "./ProductCard";
-import { db } from "@/firebase/config";
-import { collection, getDocs } from "firebase/firestore";
 import { Product } from "@/types";
-import { useEffect, useState } from "react";
+import { getProducts } from "@/lib/products";
 
-function FeaturedProducts() {
-  const plantCollectionRef = collection(db, "products");
-  const [productList, setProductList] = useState<Product[]>([]);
-
-  const getProducts = async () => {
-    try {
-      const data = await getDocs(plantCollectionRef);
-      const filteredData = data.docs.map((doc) => ({
-        ...(doc.data() as Product),
-        id: doc.id,
-      }));
-
-      setProductList(filteredData);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
+async function FeaturedProducts() {
+  const productData: Product[] = await getProducts();
+  console.log(productData);
 
   return (
     <section className="pb-10">
@@ -53,10 +31,8 @@ function FeaturedProducts() {
       </div>
 
       <div>
-        {productList.map((product) => (
-          <div className="text-5xl" key={product.id}>
-            {product.plant_name}
-          </div>
+        {productData.map((product) => (
+          <div className="text-4xl text-red-600">{product.plant_category}</div>
         ))}
       </div>
     </section>

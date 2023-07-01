@@ -11,7 +11,7 @@ const buttonVariants = cva(
         primary: "bg-primary text-white hover:brightness-110",
         outline: "border hover:bg-inputBg border-input bg-transparent",
         ghost: "bg-transparent",
-        link: "",
+        link: "power-btn",
       },
       size: {
         default: "h-10 w-28 py-2 px-4 text-lg",
