@@ -2,10 +2,26 @@ import Image from "next/image";
 import SeperatorImg from "@/public/assets/images/seperator-img.png";
 import ProductCard from "./ProductCard";
 import { getProducts, getProduct } from "@/lib/products";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "@/firebase/config";
 
 async function FeaturedProducts() {
   const productData = await getProducts();
-  console.log(productData);
+
+  async function getDocumentById(id: string) {
+    const docRef = doc(db, "products", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+  }
+
+  // Örnek çağrı
+  const documentId = "UHxbcgvUk3OlE6WE6kw7";
+  getDocumentById(documentId);
 
   return (
     <section className="pb-10">

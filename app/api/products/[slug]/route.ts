@@ -1,0 +1,27 @@
+// import { db } from "@/firebase/config";
+// import { doc, getDoc } from "firebase/firestore";
+// import { NextResponse } from "next/server";
+
+import { db } from "@/firebase/config";
+import { doc, getDoc } from "firebase/firestore";
+import { NextResponse } from "next/server";
+
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function GET(request: Request, { params }: Props) {
+  const id = params.slug;
+
+  try {
+    const docRef = doc(db, "products", id);
+    const docSnap = await getDoc(docRef);
+
+    return NextResponse.json(docSnap.data());
+  } catch (err) {
+    console.error(err);
+    return new NextResponse(null, { status: 500 });
+  }
+}

@@ -6,12 +6,14 @@ type Props = {
   };
 };
 
-function ProductDetail({ params: { id } }: Props) {
-  const oneData = getProduct(id);
+async function ProductDetail({ params: { id } }: Props) {
+  const product = await getProduct(id);
 
-  console.log(oneData);
-
-  return <div>ProductDetail</div>;
+  return (
+    <div>
+      <h2>{product?.plant_name}</h2>
+    </div>
+  );
 }
 
 export default ProductDetail;
