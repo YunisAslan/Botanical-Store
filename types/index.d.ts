@@ -15,7 +15,7 @@ export type SiteConfig = {
 
 // --------------------------------------------------
 
-export interface Product {
+type Product = {
   id: string;
   plant_category: string;
   plant_name: string;
@@ -23,4 +23,4 @@ export interface Product {
   plant_size: string;
   plant_price: number;
   stock_quantity: number;
-}
+};

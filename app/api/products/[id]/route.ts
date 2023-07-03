@@ -1,19 +1,15 @@
-// import { db } from "@/firebase/config";
-// import { doc, getDoc } from "firebase/firestore";
-// import { NextResponse } from "next/server";
-
 import { db } from "@/firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
 type Props = {
   params: {
-    slug: string;
+    id: string;
   };
 };
 
 export async function GET(request: Request, { params }: Props) {
-  const id = params.slug;
+  const id = params.id;
 
   try {
     const docRef = doc(db, "products", id);

@@ -2,7 +2,9 @@ import { Product } from "@/types";
 
 export async function getProducts() {
   try {
-    const res = await fetch("http://localhost:3000/api/products");
+    const res = await fetch(`${process.env.API_URL_PRODUCTS}`, {
+      cache: "no-store",
+    });
     const products: Product[] = await res.json();
 
     return products;
@@ -13,7 +15,7 @@ export async function getProducts() {
 
 export async function getProduct(id: string) {
   try {
-    const res = await fetch(`http://localhost:3000/api/products/${id}`);
+    const res = await fetch(`${process.env.API_URL_PRODUCTS}/${id}`);
     const product: Product = await res.json();
 
     return product;
