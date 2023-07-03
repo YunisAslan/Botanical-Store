@@ -1,49 +1,61 @@
-// "use client";
+"use client";
 
-// import Image from "next/image";
-// import SeperatorImg from "@/public/assets/images/seperator-img.png";
-// import ProductCard from "./ProductCard";
-// import { getProducts } from "@/lib/products";
-// import { useEffect, useState } from "react";
-// import { Product } from "@/types";
+import Image from "next/image";
+import SeperatorImg from "@/public/assets/images/seperator-img.png";
+import ProductCard from "./ProductCard";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase/config";
+import { Product } from "@/types";
 
-// function FeaturedProducts() {
-//   const [featuredProducts, setFeaturedProducts] = useState<
-//     Product[] | undefined
-//   >([]);
+function FeaturedProducts() {
+  const [featuredProducts, setFeaturedProducts] = useState<
+    Product[] | undefined
+  >([]);
 
-//   const getProductData = async () => {
-//     const productData = await getProducts();
+  const getProductData = async () => {
+    const plantCollectionRef = collection(db, "products");
 
-//     setFeaturedProducts(productData);
-//   };
+    try {
+      const data = getDocs(plantCollectionRef);
 
-//   useEffect(() => {
-//     getProductData();
-//   }, []);
+      const filteredData = (await data).docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
 
-//   return (
-//     <section className="pb-10">
-//       <h2 className="capitalize text-primary text-3xl font-semibold text-center pb-4">
-//         Featured products
-//       </h2>
+      setFeaturedProducts(featuredProducts);
+    } catch (err) {
+      return new Response(null, { status: 500 });
+    }
+  };
 
-//       <div className="flex justify-center">
-//         <Image
-//           src={SeperatorImg}
-//           alt="Botanical Store Seperator"
-//           width={370}
-//           height={30}
-//         />
-//       </div>
+  useEffect(() => {
+    getProductData();
+  }, []);
 
-//       <div className="grid grid-cols-4 gap-6 pt-10">
-//         {featuredProducts?.map((item) => {
-//           return <ProductCard key={item.id} {...item} />;
-//         })}
-//       </div>
-//     </section>
-//   );
-// }
+  return (
+    <section className="pb-10">
+      <h2 className="capitalize text-primary text-3xl font-semibold text-center pb-4">
+        Featured products
+      </h2>
 
-// export default FeaturedProducts;
+      <div className="flex justify-center">
+        <Image
+          src={SeperatorImg}
+          alt="Botanical Store Seperator"
+          width={370}
+          height={30}
+        />
+      </div>
+
+      <div className="grid grid-cols-4 gap-6 pt-10">
+        {featuredProducts?.map((item) => {
+          return <ProductCard key={item.id} item={item} />;
+        })}
+      </div>
+    </section>
+  );
+}
+
+export default FeaturedProducts;
