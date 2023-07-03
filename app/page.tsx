@@ -4,6 +4,7 @@ import Image from "next/image";
 import SeperatorImg from "@/public/assets/images/seperator-img.png";
 import { getProducts } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
+import FeaturedProducts from "@/components/FeaturedProducts";
 
 export default async function Home() {
   const productData = await getProducts();
@@ -35,6 +36,8 @@ export default async function Home() {
           })}
         </div>
       </section>
+
+      <FeaturedProducts />
     </div>
   );
 }

@@ -20,11 +20,11 @@ function FeaturedProducts() {
       const data = getDocs(plantCollectionRef);
 
       const filteredData = (await data).docs.map((doc) => ({
-        ...doc.data(),
+        ...(doc.data() as Product),
         id: doc.id,
       }));
 
-      setFeaturedProducts(featuredProducts);
+      setFeaturedProducts(filteredData);
     } catch (err) {
       return new Response(null, { status: 500 });
     }
