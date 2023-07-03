@@ -2,9 +2,7 @@ import { Product } from "@/types";
 
 export async function getProducts() {
   try {
-    const res = await fetch(`${process.env.API_URL_PRODUCTS}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(`${process.env.API_URL_PRODUCTS}`);
     const products: Product[] = await res.json();
 
     return products;
