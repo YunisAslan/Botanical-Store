@@ -8,7 +8,7 @@ import FeaturedProducts from "@/components/FeaturedProducts";
 
 export default async function Home() {
   const productData = await getProducts();
-  const slicedProducts = productData?.slice(0, 1);
+  const slicedProducts = productData?.slice(0, 10);
 
   return (
     <div>
@@ -37,7 +37,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
     </div>
   );
 }
