@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 
 function Footer() {
   return (
-    <footer className="flex justify-between items-center pb-6">
+    <footer className="flex flex-col justify-between items-center pb-4 sm:flex-row">
       <p className="flex gap-2">
         <Icons.fingerPrint />
         Built by
@@ -18,7 +18,7 @@ function Footer() {
         </a>
       </p>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 pt-3 sm:pt-0">
         <Link
           href={siteConfig.github}
           target="_blank"

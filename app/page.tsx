@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 export default async function Home() {
   const productData = await getProducts();
-  const slicedProducts = productData?.slice(0, 10);
+  const slicedProducts = productData?.slice(0, 8);
 
   return (
     <div>
@@ -31,7 +31,7 @@ export default async function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-4 gap-6 pt-10">
+        <div className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9 pt-10">
           {productData?.map((item: Product) => {
             return <ProductCard key={item.id} item={item} />;
           })}

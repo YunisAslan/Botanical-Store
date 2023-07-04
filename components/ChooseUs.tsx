@@ -15,7 +15,9 @@ function ChooseUs() {
       </div>
 
       <div className="col-span-12 lg:col-span-6">
-        <h2 className="text-primary text-4xl font-bold">Why choose us ?</h2>
+        <h2 className="text-primary text-3xl font-bold sm:text-4xl">
+          Why choose us ?
+        </h2>
         <p className="text-base text-gray-600 pt-2 pb-16 lg:text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
           iusto veniam explicabo perspiciatis sint voluptatem nam amet minima

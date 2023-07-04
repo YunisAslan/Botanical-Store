@@ -24,4 +24,5 @@ type Product = {
   plant_size: string;
   plant_price: number;
   stock_quantity: number;
+  img_url: string;
 };

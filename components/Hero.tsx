@@ -31,7 +31,7 @@ function Hero() {
         </Link>
       </div>
 
-      <div className="hero-right-side col-span-12 flex justify-center xl:col-span-7 xl:inline-block pl-0 xl:pl-10">
+      <div className="hero-right-side hidden sm:flex  col-span-12 justify-center xl:col-span-7 xl:inline-block pl-0 xl:pl-10">
         <Image
           className="object-contain"
           src={HeroImg}

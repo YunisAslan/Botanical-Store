@@ -1,5 +1,4 @@
 import Image from "next/image";
-import product01 from "@/public/assets/images/products/product-01.jpg";
 import { Button, buttonVariants } from "./ui/Button";
 import { Product } from "@/types";
 import { cn } from "@/lib/utils";
@@ -7,14 +6,14 @@ import Link from "next/link";
 
 function ProductCard({ item }: { item: Product }) {
   return (
-    <div className="border border-input rounded cursor-pointer group shadow-sm">
-      <div className="relative border-b border-input overflow-hidden rounded">
+    <div className="border border-input rounded cursor-pointer group shadow-sm w-72">
+      <div className="border-b border-input overflow-hidden rounded">
         <Image
-          src={product01}
-          alt=""
+          src={item.img_url}
+          alt={item.plant_name}
           width={300}
           height={225}
-          className="object-cover rounded-t group-hover:scale-110 transition-transform duration-200 ease-in"
+          className=" rounded-t group-hover:scale-105 transition-transform duration-200 ease-in"
         />
       </div>
 
@@ -26,12 +25,14 @@ function ProductCard({ item }: { item: Product }) {
       <div className="p-4 flex justify-center gap-4">
         <Link
           href={`products/${item.id}`}
-          className={cn(buttonVariants({ variant: "outline", size: "mm" }))}
+          className={cn(
+            buttonVariants({ variant: "outline" }) + "px-5 h-8 py-0 text-sm"
+          )}
         >
           Preview
         </Link>
 
-        <Button variant="primary" size="mm" className="px-5">
+        <Button variant="primary" className={cn("px-5 h-8 py-0 text-sm")}>
           Add to cart
         </Button>
       </div>
