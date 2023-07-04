@@ -6,14 +6,14 @@ import Link from "next/link";
 
 function ProductCard({ item }: { item: Product }) {
   return (
-    <div className="border border-input rounded cursor-pointer group shadow-sm w-72">
-      <div className="border-b border-input overflow-hidden rounded">
+    <div className="border border-input rounded cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 ease-in">
+      <div className="border-b border-input overflow-hidden rounded h-64 relative">
         <Image
           src={item.img_url}
           alt={item.plant_name}
-          width={300}
-          height={225}
-          className=" rounded-t group-hover:scale-105 transition-transform duration-200 ease-in"
+          fill
+          quality={100}
+          className="object-cover rounded-t"
         />
       </div>
 

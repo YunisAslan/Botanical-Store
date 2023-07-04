@@ -15,7 +15,12 @@ export async function getProducts() {
 
 export async function getProduct(id: string) {
   try {
-    const res = await fetch(`${process.env.API_URL_PRODUCTS}/${id}`);
+    const res = await fetch(`${process.env.API_URL_PRODUCTS}/${id}`, {
+      next: { revalidate: 0 },
+    });
+
+    if (!res.ok) return undefined;
+
     const product: Product = await res.json();
 
     return product;

@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 
 function Footer() {
   return (
-    <footer className="flex flex-col justify-between items-center pb-4 sm:flex-row">
+    <footer className="flex flex-col justify-between items-center pb-4 sm:flex-row px-4 sm:px-8 lg:px-20">
       <p className="flex gap-2">
         <Icons.fingerPrint />
         Built by

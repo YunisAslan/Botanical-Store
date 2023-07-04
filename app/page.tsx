@@ -24,6 +24,7 @@ export default async function Home() {
 
         <div className="flex justify-center">
           <Image
+            className="w-3/4 sm:w-auto"
             src={SeperatorImg}
             alt="Botanical Store Seperator"
             width={370}
@@ -31,7 +32,7 @@ export default async function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9 pt-10">
+        <div className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-10">
           {productData?.map((item: Product) => {
             return <ProductCard key={item.id} item={item} />;
           })}
@@ -40,8 +41,6 @@ export default async function Home() {
       {/* Featured Products */}
       {/* Subscribe Our Nesletter */}
       <Subscribe />
-
-      <Footer />
     </div>
   );
 }
