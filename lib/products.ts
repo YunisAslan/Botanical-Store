@@ -2,7 +2,9 @@ import { Product } from "@/types";
 
 export async function getProducts() {
   try {
-    const res = await fetch(`${process.env.API_URL_PRODUCTS}`);
+    const res = await fetch(`${process.env.API_URL_PRODUCTS}`, {
+      next: { revalidate: 0 },
+    });
     const products: Product[] = await res.json();
 
     return products;

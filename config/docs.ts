@@ -7,8 +7,8 @@ export const docsConfig: DocsConfig = {
       href: "/",
     },
     {
-      title: "Shop",
-      href: "/shop",
+      title: "Products",
+      href: "/products",
     },
     {
       title: "Dashboard",

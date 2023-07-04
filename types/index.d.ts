@@ -11,6 +11,7 @@ export type DocsConfig = {
 export type SiteConfig = {
   url: string;
   github: string;
+  linkedin: string;
 };
 
 // --------------------------------------------------

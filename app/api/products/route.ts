@@ -1,10 +1,10 @@
 import { db } from "@/firebase/config";
 import { collection, getDocs } from "firebase/firestore";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const plantCollectionRef = collection(db, "products");
 
   try {

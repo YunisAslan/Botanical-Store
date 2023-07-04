@@ -23,7 +23,7 @@ function Hero() {
           className={buttonVariants({
             variant: "primary",
             size: "default",
-            className: "group mx-auto xl:mx-0",
+            className: "group mx-auto xl:mx-0 w-28",
           })}
         >
           Shop

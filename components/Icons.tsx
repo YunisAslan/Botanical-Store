@@ -1,12 +1,16 @@
 import {
   ArrowRight,
   Carrot,
+  Fingerprint,
+  Github,
   Heart,
   LeafIcon,
   MenuIcon,
   Search,
+  Send,
   ShoppingCart,
   SproutIcon,
+  Sun,
   TreePineIcon,
   X,
 } from "lucide-react";
@@ -22,4 +26,8 @@ export const Icons = {
   leaf: LeafIcon,
   sprout: SproutIcon,
   tree: TreePineIcon,
+  github: Github,
+  fingerPrint: Fingerprint,
+  send: Send,
+  sun: Sun,
 };
