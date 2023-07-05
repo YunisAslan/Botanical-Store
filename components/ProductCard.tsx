@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 function ProductCard({ item }: { item: Product }) {
+  const fixedPrice = item.plant_price.toFixed(2);
   return (
     <div className="border border-input rounded cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 ease-in">
       <div className="border-b border-input overflow-hidden rounded h-64 relative">
@@ -19,7 +20,7 @@ function ProductCard({ item }: { item: Product }) {
 
       <div className="p-4">
         <h2 className="font-semibold text-lg pb-1">{item.plant_name}</h2>
-        <span className="text-gray-600">&#36;{item.plant_price}</span>
+        <span className="text-gray-600">&#36;{fixedPrice}</span>
       </div>
 
       <div className="p-4 flex justify-center gap-4">

@@ -4,9 +4,7 @@ import Image from "next/image";
 import SeperatorImg from "@/public/assets/images/seperator-img.png";
 import { getProducts } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
-import { Product } from "@/types";
 import Subscribe from "@/components/Subscribe";
-import Footer from "@/components/Footer";
 
 export default async function Home() {
   const productData = await getProducts();
@@ -33,7 +31,7 @@ export default async function Home() {
         </div>
 
         <div className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-10">
-          {productData?.map((item: Product) => {
+          {productData?.map((item) => {
             return <ProductCard key={item.id} item={item} />;
           })}
         </div>

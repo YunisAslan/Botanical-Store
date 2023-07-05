@@ -38,3 +38,39 @@
   background: #04aa6d;
   cursor: pointer;
 }
+
+/* color pick */
+
+/* .pick-color .button span {
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  background: #eeeeee;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: ease 0.3s;
+}
+
+.pick-color span:hover {
+  padding: 10px;
+}
+
+.lime .button span {
+  background: #8bc34a;
+}
+
+.blue .button span {
+  background: #2196f3;
+}
+
+.indigo .button span {
+  background: #3f51b5;
+} */
