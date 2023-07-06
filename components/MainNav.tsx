@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";

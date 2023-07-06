@@ -2,6 +2,7 @@ import {
   ArrowRight,
   Carrot,
   ChevronRight,
+  Disc,
   Fingerprint,
   Github,
   Heart,
@@ -32,4 +33,5 @@ export const Icons = {
   send: Send,
   sun: Sun,
   chevronRight: ChevronRight,
+  spinner: Disc,
 };

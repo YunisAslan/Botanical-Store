@@ -26,3 +26,6 @@ type Product = {
   stock_quantity: number;
   img_url: string;
 };
+
+// Search Params  ----
+// type SearchParams = {};

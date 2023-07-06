@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/public/assets/images/logo.png";
-import SearchProduct from "./SearchProduct";
+import SearchProducts from "./SearchProducts";
 import { buttonVariants } from "./ui/Button";
 import Navbar from "./MainNav";
 import MobileNav from "./MobileNav";
@@ -26,7 +26,7 @@ function Header() {
       <Navbar />
 
       <div className="flex items-center gap-2">
-        <SearchProduct />
+        <SearchProducts />
 
         <CartBar />
 
