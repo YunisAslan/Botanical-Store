@@ -1,12 +1,22 @@
 import { Icons } from "@/components/Icons";
-import ProductCard from "@/components/ProductCard";
+import ProductTable from "@/components/ProductTable";
 import SearchBar from "@/components/SearchBar";
 import SelectFilters from "@/components/SelectFilters";
-import { Button } from "@/components/ui/Button";
 import { getProducts } from "@/lib/products";
+import { Suspense } from "react";
 
-async function Products() {
+type PageProps = {
+  searchParams: {
+    q: string;
+  };
+};
+
+async function Products({ searchParams: { q } }: PageProps) {
   const products = await getProducts();
+
+  // for search filtered data
+  const res = await fetch(`http://localhost:3000/api/products/search?q=${q}`);
+  const filteredData = await res.json();
 
   return (
     <>
@@ -48,16 +58,20 @@ async function Products() {
         <div className="right-side col-span-12 order-1 xl:col-span-9 xl:order-2">
           <div className="flex justify-between items-center py-1">
             <h2>
-              Showing {products?.length} of {products?.length} results
+              Showing {q ? filteredData.length : products?.length} of{" "}
+              {q ? filteredData.length : products?.length} results
             </h2>
 
             <SelectFilters />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-7 place-items-center xl:place-items-start gap-5 xl:gap-x-0 xl:gap-y-4">
-            {products?.map((item) => {
-              return <ProductCard key={item.id} item={item} />;
-            })}
+            {/* SUSPEEEENSE USE USE SUPENSE MY BRO */}
+            {q ? (
+              <ProductTable data={filteredData} />
+            ) : (
+              <ProductTable data={products} />
+            )}
           </div>
         </div>
       </div>

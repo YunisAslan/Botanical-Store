@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+// import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { Icons } from "../Icons";
 
 const buttonVariants = cva(
@@ -40,7 +40,7 @@ type ButtonProps = ComponentPropsWithRef<"button"> &
 
 const LoadingButton = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, className, size, variant, ...props }, ref) => {
-    const { pending } = useFormStatus();
+    // const { pending } = useFormStatus();
 
     return (
       <button
@@ -48,9 +48,7 @@ const LoadingButton = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(buttonVariants({ className, variant, size }))}
         {...props}
       >
-        {pending && <Icons.spinner className="w-5 h-5 animate-ping" />}
-
-        {!pending && children}
+        {children}
       </button>
     );
   }

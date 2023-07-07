@@ -25,10 +25,8 @@ function SearchBar() {
 
           if (searchValue) params.set("q", searchValue.toString());
 
-          /// /search/?boom=yunis
-          router.push(`/search/${searchTerm}?${params.toString()}`);
-
-          //   search/yunis?boom=yunis
+          /// products?q=test
+          router.push(`/products?${params.toString().toLowerCase()}`);
         }}
         className="flex items-center relative"
       >
