@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Icons } from "./Icons";
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/Button";
-import { cn } from "@/lib/utils";
 import { LoadingButton } from "./ui/LoadingButton";
 
 function SearchBar() {
