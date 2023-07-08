@@ -1,8 +1,9 @@
 import { Product } from "@/types";
+import { getFetchUrl } from "./get-fetch-url";
 
 export async function getProducts() {
   try {
-    const res = await fetch(`${process.env.API_URL_PRODUCTS}`, {
+    const res = await fetch(getFetchUrl("api/products"), {
       next: { revalidate: 0 },
     });
     const products: Product[] = await res.json();
@@ -15,7 +16,7 @@ export async function getProducts() {
 
 export async function getProduct(id: string) {
   try {
-    const res = await fetch(`${process.env.API_URL_PRODUCTS}/${id}`, {
+    const res = await fetch(getFetchUrl(`api/products/${id}`), {
       next: { revalidate: 0 },
     });
 
@@ -31,7 +32,7 @@ export async function getProduct(id: string) {
 
 export async function getSearchProducts(query: string) {
   const searchResponse = await fetch(
-    `http://localhost:3000/api/products/search?q=${query}`
+    getFetchUrl(`api/products/search?q=${query}`)
   );
 
   if (!searchResponse.ok) return undefined;
@@ -43,7 +44,7 @@ export async function getSearchProducts(query: string) {
 
 export async function getFilteredProducts(query: string) {
   const filterResponse = await fetch(
-    `http://localhost:3000/api/products/search?sort_by=${query}`
+    getFetchUrl(`api/products/search?sort_by=${query}`)
   );
 
   if (!filterResponse.ok) return undefined;
@@ -55,7 +56,7 @@ export async function getFilteredProducts(query: string) {
 
 export async function getCategoryProducts(query: string) {
   const categoryResponse = await fetch(
-    `http://localhost:3000/api/products/filter?category=${query}`
+    getFetchUrl(`api/products/filter?category=${query}`)
   );
 
   if (!categoryResponse.ok) return undefined;

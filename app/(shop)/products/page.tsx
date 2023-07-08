@@ -34,14 +34,14 @@ async function Products({
   }
 
   const productIsNotFound =
-    allProducts?.length === 0 || (q && searchResults?.length === 0);
+    allProducts?.length === 0 || (q && filteredResults?.length === 0);
 
   return (
     <Suspense>
       <div className="right-side col-span-12 order-1 xl:col-span-9 xl:order-2">
         <div className="flex justify-between items-center py-1">
           <h2>
-            Showing {q ? searchResults?.length : filteredResults?.length} of{" "}
+            Showing {q ? searchResults?.length : filteredResults?.length} of
             {q ? searchResults?.length : filteredResults?.length} results
           </h2>
 
