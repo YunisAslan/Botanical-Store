@@ -2,15 +2,15 @@ import {
   ArrowRight,
   Carrot,
   ChevronRight,
-  Disc,
   Fingerprint,
+  Flower,
   Github,
-  Heart,
   LeafIcon,
   MenuIcon,
   Search,
   Send,
   ShoppingCart,
+  ShovelIcon,
   SproutIcon,
   Sun,
   TreePineIcon,
@@ -18,12 +18,11 @@ import {
 } from "lucide-react";
 
 export const Icons = {
-  logo: Carrot,
+  logo: Carrot, //temporary
   search: Search,
   X: X,
   cart: ShoppingCart,
   menu: MenuIcon,
-  heart: Heart,
   arrowRight: ArrowRight,
   leaf: LeafIcon,
   sprout: SproutIcon,
@@ -33,5 +32,6 @@ export const Icons = {
   send: Send,
   sun: Sun,
   chevronRight: ChevronRight,
-  spinner: Disc,
+  shovel: ShovelIcon,
+  flower: Flower,
 };

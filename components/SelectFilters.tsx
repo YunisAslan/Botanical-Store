@@ -1,7 +1,9 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { LoadingButton } from "./ui/LoadingButton";
+import { Icons } from "./Icons";
 
 const SORT_BY = {
   // query params
@@ -17,23 +19,29 @@ function SelectFilters() {
   const [selectedValue, setSelectedValue] = useState("");
   const router = useRouter();
 
-  // console.log("Selected Value", selectedValue);
-
-  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValue(e.target.value);
-  };
-
   return (
     <form
-      action={(FormData) => {
-        const searchTerm = FormData.get("searchTerm");
+      className=" flex gap-2 items-center"
+      action={(formData) => {
+        // we can get formData
+
+        const params = new URLSearchParams();
+        params.set("sort_by", selectedValue);
+        const queryString = params.toString();
+
+        if (queryString.includes(selectedValue)) {
+          return router.push(`/products?${queryString}`);
+        }
       }}
     >
+      <LoadingButton type="submit" size="mm" variant="primary">
+        <Icons.flower />
+      </LoadingButton>
       <select
-        className="bg-gray-50 border border-input text-font text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5"
+        className="bg-gray-50 border border-input text-font rounded-lg focus:border-green-500 block p-2.5 outline-none text-base font-medium"
         placeholder="value"
         value={selectedValue}
-        onChange={handleSelectChange}
+        onChange={(e) => setSelectedValue(e.target.value)}
       >
         <option value="DEFAULT">Sort by</option>
         {Object.entries(SORT_BY).map(([key, value]) => (

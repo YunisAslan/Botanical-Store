@@ -27,7 +27,8 @@ function ProductCard({ item }: { item: Product }) {
 
       <div className="p-4 flex justify-center gap-4">
         <Link
-          href={`products/${item.id}`}
+          prefetch={false}
+          href={`product/${item.id}`}
           className={cn(
             buttonVariants({ variant: "outline" }) + "px-5 h-8 py-0 text-sm"
           )}

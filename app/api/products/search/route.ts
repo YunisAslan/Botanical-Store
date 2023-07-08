@@ -3,65 +3,67 @@ import { Product } from "@/types";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
-export const revalidate = 0;
+enum SortingCondition {
+  Ascending = "az",
+  Descending = "za",
+  Oldest = "on",
+  Newest = "no",
+  LowestPrice = "lh",
+  HighestPrice = "hl",
+}
 
 export async function GET(request: Request) {
   const plantCollectionRef = collection(db, "products");
-
   const { searchParams } = new URL(request.url);
 
-  const searchTerm = searchParams.get("q") || "";
+  const searchTerm = searchParams.get("q");
+  const sortBy = searchParams.get("sort_by");
+  //  /products?sort_by=
 
   if (!searchTerm) {
-    return NextResponse.next(
-      new Response("Missing search Term", { status: 400 })
-    );
+    new Response("Missing search Term", { status: 400 });
   }
 
-  const lowerCaseSearchTerm = searchTerm.toLowerCase();
+  const lowerCaseSearchTerm = searchTerm?.toLowerCase();
+
+  // Queries
+
+  let sortQuery;
+  switch (sortBy) {
+    case SortingCondition.Ascending:
+      sortQuery = query(plantCollectionRef, orderBy("plant_name", "asc"));
+      break;
+    case SortingCondition.Descending:
+      sortQuery = query(plantCollectionRef, orderBy("plant_name", "desc"));
+      break;
+    default:
+      sortQuery = query(plantCollectionRef); // Default query
+      break;
+  }
 
   try {
-    const maQuery = query(
-      plantCollectionRef,
-      where("plant_name", ">=", lowerCaseSearchTerm),
-      where("plant_name", "<=", lowerCaseSearchTerm + "\uf8ff")
-    );
-    const data = await getDocs(maQuery);
-
-    const filteredData = data.docs.map((doc) => ({
+    const defaultData = (await getDocs(sortQuery)).docs.map((doc) => ({
       ...(doc.data() as Product),
       id: doc.id,
     }));
 
-    return NextResponse.json(filteredData);
+    let searchDatas = defaultData;
+
+    if (searchTerm) {
+      const searchQuery = query(
+        plantCollectionRef,
+        where("plant_name", ">=", lowerCaseSearchTerm),
+        where("plant_name", "<=", lowerCaseSearchTerm + "\uf8ff")
+      );
+
+      searchDatas = (await getDocs(searchQuery)).docs.map((doc) => ({
+        ...(doc.data() as Product),
+        id: doc.id,
+      }));
+    }
+
+    return NextResponse.json(searchDatas);
   } catch (err) {
     return new Response(null, { status: 500 });
   }
 }
-
-// import { NextRequest, NextResponse } from "next/server";
-
-// export async function GET(request: NextRequest) {
-//   // const { searchTerm, ...params } = await request.json();
-
-//   // const searchParams: string = params;
-
-//   // if (!searchTerm) {
-//   //   return NextResponse.next(
-//   //     new Response("Missing search Term", { status: 400 })
-//   //   );
-//   // }
-
-//   // const filters: any = [];
-
-//   // Object.entries(searchParams).forEach(([key, value]) => {
-//   //   if (value) {
-//   //     filters.push({
-//   //       key,
-//   //       value,
-//   //     });
-//   //   }
-//   // });
-
-//   return NextResponse.json("Usrrr");
-// }
