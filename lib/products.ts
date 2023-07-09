@@ -1,9 +1,8 @@
 import { Product } from "@/types";
-import { getFetchUrl } from "./get-fetch-url";
 
 export async function getProducts() {
   try {
-    const res = await fetch(`${process.env.VERCEL_URL}/api/products`, {
+    const res = await fetch(`${process.env.LOCAL_URL}/api/products`, {
       next: { revalidate: 0 },
     });
 
@@ -17,7 +16,7 @@ export async function getProducts() {
 
 export async function getProduct(id: string) {
   try {
-    const res = await fetch(`${process.env.VERCEL_URL}/api/product/${id}`, {
+    const res = await fetch(`${process.env.LOCAL_URL}/api/products/${id}`, {
       next: { revalidate: 0 },
     });
 
@@ -33,7 +32,7 @@ export async function getProduct(id: string) {
 
 export async function getSearchProducts(query: string) {
   const searchResponse = await fetch(
-    `${process.env.VERCEL_URL}/api/products/search?q=${query}`
+    `${process.env.LOCAL_URL}/api/products/search?q=${query}`
   );
 
   if (!searchResponse.ok) return undefined;
@@ -45,7 +44,7 @@ export async function getSearchProducts(query: string) {
 
 export async function getFilteredProducts(query: string) {
   const filterResponse = await fetch(
-    `${process.env.VERCEL_URL}/api/products/search?sort_by=${query}`
+    `${process.env.LOCAL_URL}/api/products/search?sort_by=${query}`
   );
 
   if (!filterResponse.ok) return undefined;
@@ -57,7 +56,7 @@ export async function getFilteredProducts(query: string) {
 
 export async function getCategoryProducts(query: string) {
   const categoryResponse = await fetch(
-    `${process.env.VERCEL_URL}/api/products/filter?category=${query}`
+    `${process.env.LOCAL_URL}/api/products/filter?category=${query}`
   );
 
   if (!categoryResponse.ok) return undefined;
