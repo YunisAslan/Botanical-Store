@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { Product } from "@/types";
 
 type Props = {
   params: {
@@ -17,7 +18,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
 
   if (!product) notFound();
 
-  // const fixedPrice = product.plant_price.toFixed(2);
+  const fixedPrice = product.plant_price.toFixed(2);
 
   return (
     <>
@@ -43,9 +44,9 @@ export default async function ProductDetail({ params: { id } }: Props) {
 
         <div className="col-span-4 lg:col-span-2 pt-2">
           <h2 className="text-2xl font-bold">{product.plant_name}</h2>
-          <p className="text-gray-600 py-2">&#36;{product.plant_price}</p>
+          <p className="text-gray-600 py-2">&#36;{fixedPrice}</p>
           <Link
-            href="/"
+            href={`/products?categories=${product.plant_category}`}
             className="text-gray-600 hover:underline hover:underline-offset-2 capitalize text-lg"
           >
             {product.plant_category}

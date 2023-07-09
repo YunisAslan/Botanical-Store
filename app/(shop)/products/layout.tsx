@@ -1,6 +1,7 @@
 import Categories from "@/components/Categories";
 import { Icons } from "@/components/Icons";
 import SearchBar from "@/components/SearchBar";
+import TopRate from "@/components/TopRate";
 import { ReactNode } from "react";
 
 interface ShopLayoutProps {
@@ -25,23 +26,7 @@ export default async function ShopLayout({ children }: ShopLayoutProps) {
 
           <Categories />
 
-          <div className="pt-6">
-            <h6 className="text-xl font-semibold pb-3">Filter by price</h6>
-
-            <form action="">
-              <input
-                id="default-range"
-                type="range"
-                // value="50"
-                min={0}
-                max={1000}
-                step={100}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer text-primary"
-              />
-            </form>
-
-            <p className="text-gray-600 pt-2">Price: &#36;50 - &#36;70</p>
-          </div>
+          <TopRate />
         </div>
 
         {children}

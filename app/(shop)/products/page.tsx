@@ -42,6 +42,7 @@ async function Products({
         <div className="flex justify-between items-center py-1">
           <h2>
             Showing {q ? searchResults?.length : filteredResults?.length} of
+            &nbsp;
             {q ? searchResults?.length : filteredResults?.length} results
           </h2>
 
