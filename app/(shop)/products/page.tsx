@@ -17,33 +17,31 @@ type PageProps = {
   };
 };
 
-async function Products({
-  searchParams: { q, sort_by, categories },
-}: PageProps) {
+async function Products({ searchParams }: PageProps) {
+  // destructuring
+  const { q, sort_by, categories } = searchParams;
   // all result
-  const allProducts = await getProducts();
-  // search result
-  const searchResults = await getSearchProducts(q);
-  // filter result
-  // const filteredResults = await getFilteredProducts(sort_by);
-  let filteredResults: Product[] | undefined = allProducts;
+  const allProducts: Product[] | undefined = await getProducts();
+  let filteredResults = allProducts;
+
   if (sort_by) {
     filteredResults = await getFilteredProducts(sort_by);
   } else if (categories) {
     filteredResults = await getCategoryProducts(categories);
+  } else if (q) {
+    filteredResults = await getSearchProducts(q);
   }
 
   const productIsNotFound =
-    allProducts?.length === 0 || (q && filteredResults?.length === 0);
+    allProducts?.length === 0 || filteredResults?.length === 0;
 
   return (
     <Suspense>
-      <div className="right-side col-span-12 order-1 xl:col-span-9 xl:order-2">
+      <div className="col-span-12 order-1 xl:col-span-9 xl:order-2">
         <div className="flex justify-between items-center py-1">
           <h2>
-            Showing {q ? searchResults?.length : filteredResults?.length} of
-            &nbsp;
-            {q ? searchResults?.length : filteredResults?.length} results
+            Showing {filteredResults?.length} of &nbsp;
+            {filteredResults?.length} results
           </h2>
 
           <SelectFilters />
@@ -58,7 +56,7 @@ async function Products({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-7 place-items-center xl:place-items-start gap-5 xl:gap-x-0 xl:gap-y-4">
-            <ProductTable data={q ? searchResults : filteredResults} />
+            <ProductTable data={filteredResults} />
           </div>
         )}
       </div>

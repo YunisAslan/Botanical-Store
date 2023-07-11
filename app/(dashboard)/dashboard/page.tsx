@@ -1,0 +1,122 @@
+import { db } from "@/firebase/config";
+import { Product } from "@/types";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { revalidateTag } from "next/cache";
+
+async function Dashboard() {
+  const res = await fetch("http://localhost:3000/api/products", {
+    cache: "no-store",
+    next: {
+      tags: ["products"],
+    },
+  });
+
+  const products: Product[] = await res.json();
+
+  const addProduct = async (e: FormData) => {
+    "use server";
+    const plant_name = e.get("plant_name")?.toString();
+    const plant_price = e.get("plant_price")?.toString();
+
+    if (!plant_name || !plant_price) return;
+
+    const newProduct: Product = {
+      plant_name,
+      plant_price,
+    };
+
+    await addDoc(collection(db, "products"), newProduct);
+
+    revalidateTag("products");
+  };
+
+  return (
+    <>
+      <form action={addProduct}>
+        <input
+          type="text"
+          name="plant_name"
+          placeholder="Plant name"
+          className="border border-gray-400 p-2 rounded-md"
+        />
+        <input
+          type="text"
+          name="plant_price"
+          placeholder="Plant price"
+          className="border border-gray-400 p-2 rounded-md"
+        />
+
+        <button className="bg-green-600 px-2 py-1 text-white">
+          Add product
+        </button>
+      </form>
+
+      <div>
+        {products.map((item) => (
+          <div>
+            <h2>{item.plant_name}</h2>
+            <p>{item.plant_price}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+export default Dashboard;
+
+// "use client";
+
+// /////////// TEMPORARY ////////////
+
+// import { ChangeEvent, useState, useEffect } from "react";
+// import { storage } from "@/firebase/config";
+// import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+
+// function Dashboard() {
+//   const [imageUpload, setImageUpload] = useState<File | null>(null);
+//   const [imageList, setImageList] = useState<string[]>([]);
+
+//   const uploadImage = () => {
+//     if (imageUpload === null) return;
+
+//     const imageRef = ref(storage, `products/${imageUpload.name}`);
+
+//     uploadBytes(imageRef, imageUpload).then((res) => {
+//       alert("Image uploaded");
+//     });
+//   };
+
+//   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+//     const files = e.target.files;
+//     if (files && files.length > 0) {
+//       setImageUpload(files[0]);
+//     }
+//   };
+
+//   useEffect(() => {
+//     listAll(ref(storage, "products")).then((res) => {
+//       res.items.forEach((item) => {
+//         getDownloadURL(item).then((url) => {
+//           console.log("URL", url);
+
+//           setImageList((prev) => [...prev, url]);
+//         });
+//       });
+//     });
+//   }, []);
+
+//   return (
+//     <div>
+//       <input type="file" onChange={handleFileChange} />
+
+//       <button onClick={uploadImage}>upload image</button>
+
+//       {imageList.map((url) => {
+//         return <img src={url} alt="" key={url} />;
+//       })}
+//     </div>
+//   );
+// }
+
+// export default Dashboard;

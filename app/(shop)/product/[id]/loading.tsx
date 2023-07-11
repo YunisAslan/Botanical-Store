@@ -22,41 +22,6 @@ function ProductLoading() {
 
           <div className="pick-color pb-4">
             <p className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
-            {/* <label className="lime">
-              <input
-                type="radio"
-                name="color"
-                value="lime"
-                className="hidden" // HIDDEN
-              />
-              <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
-                <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-green-500 "></span>
-              </div>
-            </label>
-
-            <label className="indigo">
-              <input
-                type="radio"
-                name="color"
-                value="indigo"
-                className="hidden" // HIDDEN
-              />
-              <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
-                <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-[#3f51b5] "></span>
-              </div>
-            </label>
-
-            <label className="blue">
-              <input
-                type="radio"
-                name="color"
-                value="blue"
-                className="hidden" // HIDDEN
-              />
-              <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
-                <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-[#2196f3] "></span>
-              </div>
-            </label> */}
           </div>
 
           <div className="flex flex-col gap-3">

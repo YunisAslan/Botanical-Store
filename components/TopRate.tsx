@@ -4,13 +4,14 @@ import Link from "next/link";
 
 async function TopRate() {
   const products = await getProducts();
+  const filteredProducts = products?.slice(0, 4);
 
   return (
     <div className="pt-6">
       <h6 className="text-xl font-semibold pb-5">Top rate</h6>
 
       <div className="flex flex-col gap-y-5">
-        {products?.map((item) => (
+        {filteredProducts?.map((item) => (
           <div className="flex">
             <div>
               <Image src={item.img_url} alt="" width={80} height={80} />

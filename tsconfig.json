@@ -29,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "lib/products.ts"
+    "lib/products.ts",
+    "app/api/products/all/route.js"
   ],
   "exclude": ["node_modules"]
 }

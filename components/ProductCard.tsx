@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 function ProductCard({ item }: { item: Product }) {
-  const fixedPrice = item.plant_price?.toFixed(2);
+  const fixedPrice = Number(item.plant_price).toFixed(2);
   return (
     <div className="border border-input rounded cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 ease-in">
       <div className="border-b border-input overflow-hidden rounded h-64 relative">
         <Image
-          src={item.img_url}
+          src={item.img_url as string}
           alt={item.plant_name}
           fill
           quality={100}

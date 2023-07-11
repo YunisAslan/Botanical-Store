@@ -36,6 +36,18 @@ export async function GET(request: Request) {
     case SortingCondition.Descending:
       sortQuery = query(plantCollectionRef, orderBy("plant_name", "desc"));
       break;
+    case SortingCondition.Oldest:
+      sortQuery = query(plantCollectionRef, orderBy("created_at", "asc"));
+      break;
+    case SortingCondition.Newest:
+      sortQuery = query(plantCollectionRef, orderBy("created_at", "desc"));
+      break;
+    case SortingCondition.LowestPrice:
+      sortQuery = query(plantCollectionRef, orderBy("plant_price", "asc"));
+      break;
+    case SortingCondition.HighestPrice:
+      sortQuery = query(plantCollectionRef, orderBy("plant_price", "desc"));
+      break;
     default:
       sortQuery = query(plantCollectionRef); // Default query
       break;

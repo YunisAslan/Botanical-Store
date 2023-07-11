@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { Product } from "@/types";
 
 type Props = {
   params: {
@@ -18,7 +17,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
 
   if (!product) notFound();
 
-  const fixedPrice = product.plant_price.toFixed(2);
+  const fixedPrice = Number(product.plant_price).toFixed(2);
 
   return (
     <>
@@ -34,7 +33,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
       <div className="pt-10 pb-20 grid grid-cols-4 gap-5">
         <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start">
           <Image
-            src={product.img_url}
+            src={product.img_url as string}
             alt={product.plant_name}
             width={570}
             height={400}

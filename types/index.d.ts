@@ -17,14 +17,14 @@ export type SiteConfig = {
 // --------------------------------------------------
 
 type Product = {
-  id: string;
-  plant_category: string;
+  id?: string;
+  plant_category?: string;
   plant_name: string;
-  plant_pot_color: string;
-  plant_size: string;
-  plant_price: number;
-  stock_quantity: number;
-  img_url: string;
+  plant_pot_color?: string;
+  plant_size?: string;
+  plant_price: string;
+  stock_quantity?: number;
+  img_url?: string;
 };
 
 // Search Params  ----
