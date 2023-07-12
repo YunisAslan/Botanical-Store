@@ -2,22 +2,27 @@ import {
   ArrowRight,
   Carrot,
   ChevronRight,
+  CreditCard,
+  DollarSign,
   Fingerprint,
   Flower,
   Github,
   LeafIcon,
+  LucideIcon,
   MenuIcon,
   Search,
   Send,
+  ShoppingBag,
   ShoppingCart,
   ShovelIcon,
   SproutIcon,
   Sun,
   TreePineIcon,
+  User,
   X,
 } from "lucide-react";
 
-export const Icons = {
+export const Icons: { [key: string]: LucideIcon } = {
   logo: Carrot, //temporary
   search: Search,
   X: X,
@@ -34,4 +39,8 @@ export const Icons = {
   chevronRight: ChevronRight,
   shovel: ShovelIcon,
   flower: Flower,
+  person: User,
+  card: CreditCard,
+  bag: ShoppingBag,
+  dollar: DollarSign,
 };

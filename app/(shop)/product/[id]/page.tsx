@@ -22,7 +22,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
   return (
     <>
       {/* Location PATH */}
-      <p className="flex items-center gap-1 pt-6">
+      <p className="flex items-center gap-1 pt-6 px-4 sm:px-8 lg:px-20">
         <span className="text-gray-500">Home</span>
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
         <span className="text-gray-500">Products</span>
@@ -30,7 +30,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
         <span className="text-font">{product.plant_name}</span>
       </p>
 
-      <div className="pt-10 pb-20 grid grid-cols-4 gap-5">
+      <div className="pt-10 pb-20 grid grid-cols-4 gap-5 px-4 sm:px-8 lg:px-20">
         <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start">
           <Image
             src={product.img_url as string}
@@ -122,13 +122,6 @@ export default async function ProductDetail({ params: { id } }: Props) {
             <p>{product.img_url}</p>
           </div>
         </div>
-      </div>
-
-      <div className="py-20">
-        <h2 className="text-2xl font-bold">
-          More Products from <span className="">{product.plant_category}</span>
-          {/* RELATED PRODUCT CARDS  */}
-        </h2>
       </div>
     </>
   );

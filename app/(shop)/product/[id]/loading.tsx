@@ -2,13 +2,13 @@ function ProductLoading() {
   return (
     <>
       {/* Location PATH LOADING */}
-      <p className="flex items-center gap-4 pt-6">
+      <p className="flex items-center gap-4 pt-6 px-4 sm:px-8 lg:px-20">
         <span className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
         <span className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
         <span className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
       </p>
 
-      <div className="pt-10 pb-20 grid grid-cols-4 gap-5">
+      <div className="pt-10 pb-20 grid grid-cols-4 gap-5 px-4 sm:px-8 lg:px-20">
         <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start">
           <div className="w-[570px] h-[630px] bg-gray-300 animate-pulse rounded" />
         </div>

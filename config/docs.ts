@@ -12,7 +12,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Dashboard",
-      href: "/dashboard",
+      href: "/dashboard/store",
     },
     {
       title: "Tech Stack",
@@ -21,6 +21,30 @@ export const docsConfig: DocsConfig = {
     {
       title: "Contact",
       href: "/contact",
+      disabled: true,
+    },
+  ],
+  dashboardNav: [
+    {
+      title: "Account",
+      href: "/dashboard/account",
+      icon: "person",
+    },
+    {
+      title: "Products",
+      href: "/dashboard/store",
+      icon: "bag",
+    },
+    {
+      title: "Billing",
+      href: "/dashboard/billing",
+      icon: "card",
+      disabled: true,
+    },
+    {
+      title: "Purchases",
+      href: "/dashboard/purchases",
+      icon: "dollar",
       disabled: true,
     },
   ],

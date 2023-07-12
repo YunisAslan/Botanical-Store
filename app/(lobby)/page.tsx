@@ -15,7 +15,7 @@ export default async function Home() {
       <Hero />
       <ChooseUs />
       {/* Featured Products */}
-      <section className="pb-28">
+      <section className="pb-28 px-4 sm:px-8 lg:px-20">
         <h2 className="capitalize text-primary text-3xl font-semibold text-center pb-4">
           Featured products
         </h2>

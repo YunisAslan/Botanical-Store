@@ -2,11 +2,15 @@ export type NavItem = {
   title: string;
   href: string;
   disabled?: boolean;
+  icon?: string;
 };
 
 export type DocsConfig = {
   mainNav: NavItem[];
+  dashboardNav: NavItem[];
 };
+
+// ------------------------------
 
 export type SiteConfig = {
   url: string;

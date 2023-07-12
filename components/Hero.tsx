@@ -9,7 +9,7 @@ import HeroImg from "@/public/assets/images/hero-img2.png";
 
 function Hero() {
   return (
-    <section className="grid grid-cols-12 pt-20 items-center lg:pt-6">
+    <section className="grid grid-cols-12 pt-20 items-center lg:pt-6 px-4 sm:px-8 lg:px-20">
       <div className="hero-left-side col-span-12 xl:col-span-5 text-center pb-14 xl:text-left lg:pb-0">
         <h2 className="text-4xl font-bold py-2 text-primary capitalize lg:text-6xl">
           Plants make people happy.
@@ -19,7 +19,7 @@ function Hero() {
           tempora.
         </p>
         <Link
-          href="/shop"
+          href="/products"
           className={buttonVariants({
             variant: "primary",
             size: "default",

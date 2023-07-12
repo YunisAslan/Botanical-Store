@@ -4,7 +4,7 @@ import { Icons } from "./Icons";
 
 function ChooseUs() {
   return (
-    <section className="py-28 grid grid-cols-12">
+    <section className="py-28 grid grid-cols-12 px-4 sm:px-8 lg:px-20">
       <div className="col-span-12 lg:col-span-6 flex justify-center lg:justify-start">
         <Image
           src={ChooseUsImg}
