@@ -48,14 +48,16 @@ async function Products({ searchParams }: PageProps) {
         </div>
 
         {productIsNotFound ? (
-          <div className="flex flex-col items-center justify-center gap-2 h-3/4">
-            <h6 className="text-2xl font-semibold">No products found</h6>
-            <p className="text-gray-600">
+          <div className="flex flex-col items-center text-center justify-center gap-2 h-1/2 py-10">
+            <h6 className="text-xl md:text-2xl font-semibold">
+              No products found
+            </h6>
+            <p className="text-gray-600 text-sm md:text-base">
               Try changing your filters, or check back later for new products
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-7 place-items-center xl:place-items-start gap-5 xl:gap-x-0 xl:gap-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-7 place-items-center xl:place-items-start gap-5 xl:gap-x-0 xl:gap-y-6">
             <ProductTable data={filteredResults} />
           </div>
         )}

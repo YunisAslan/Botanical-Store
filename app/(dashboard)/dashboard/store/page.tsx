@@ -1,70 +1,32 @@
+import { Icons } from "@/components/Icons";
+import Table from "@/components/Table";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+
 async function DashboardStore() {
   return (
     <>
-      <div className="py-6 px-10 w-full">
-        <div>
-          <h1 className="text-primary text-3xl font-bold pb-1">Products</h1>
-          <p className="text-base text-gray-600">Manage your products</p>
-        </div>
+      <div className="pb-2">
+        <h1 className="text-primary text-3xl font-bold pb-1">Products</h1>
+        <p className="text-base text-gray-600">Manage your products</p>
       </div>
+
+      <div className="w-full flex justify-end pb-4">
+        <Link
+          href="/dashboard/store/new"
+          className={cn(
+            "text-sm flex items-center justify-end gap-2 px-3 border border-input rounded py-1 hover:bg-inputBg transition-colors duration-300"
+          )}
+        >
+          <Icons.new className="w-4" />
+          <span>New</span>
+        </Link>
+      </div>
+
+      {/* Table */}
+      <Table />
     </>
   );
 }
 
 export default DashboardStore;
-
-// "use client";
-
-// /////////// TEMPORARY ////////////
-
-// import { ChangeEvent, useState, useEffect } from "react";
-// import { storage } from "@/firebase/config";
-// import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
-
-// function Dashboard() {
-//   const [imageUpload, setImageUpload] = useState<File | null>(null);
-//   const [imageList, setImageList] = useState<string[]>([]);
-
-//   const uploadImage = () => {
-//     if (imageUpload === null) return;
-
-//     const imageRef = ref(storage, `products/${imageUpload.name}`);
-
-//     uploadBytes(imageRef, imageUpload).then((res) => {
-//       alert("Image uploaded");
-//     });
-//   };
-
-//   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-//     const files = e.target.files;
-//     if (files && files.length > 0) {
-//       setImageUpload(files[0]);
-//     }
-//   };
-
-//   useEffect(() => {
-//     listAll(ref(storage, "products")).then((res) => {
-//       res.items.forEach((item) => {
-//         getDownloadURL(item).then((url) => {
-//           console.log("URL", url);
-
-//           setImageList((prev) => [...prev, url]);
-//         });
-//       });
-//     });
-//   }, []);
-
-//   return (
-//     <div>
-//       <input type="file" onChange={handleFileChange} />
-
-//       <button onClick={uploadImage}>upload image</button>
-
-//       {imageList.map((url) => {
-//         return <img src={url} alt="" key={url} />;
-//       })}
-//     </div>
-//   );
-// }
-
-// export default Dashboard;

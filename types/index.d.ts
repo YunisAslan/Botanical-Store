@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export type NavItem = {
   title: string;
   href: string;
@@ -28,7 +30,10 @@ type Product = {
   plant_size?: string;
   plant_price: string;
   stock_quantity?: number;
-  img_url?: string;
+  description: string;
+  fileUpload?: string;
+  img_url: string;
+  created_at: any;
 };
 
 // Search Params  ----

@@ -31,15 +31,23 @@ export default async function ProductDetail({ params: { id } }: Props) {
       </p>
 
       <div className="pt-10 pb-20 grid grid-cols-4 gap-5 px-4 sm:px-8 lg:px-20">
-        <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start">
-          <Image
-            src={product.img_url as string}
-            alt={product.plant_name}
-            width={570}
-            height={400}
-            quality={100}
-          />
-        </div>
+        {product.img_url ? (
+          <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start">
+            <Image
+              src={product.img_url}
+              alt={product.plant_name}
+              width={570}
+              height={400}
+              quality={100}
+            />
+          </div>
+        ) : (
+          <div className="border-b border-input overflow-hidden rounded w-[570px] h-[635px] bg-gray-100 flex justify-center items-center col-span-4 lg:col-span-2 lg:justify-start">
+            <div className="flex justify-center items-center w-full">
+              <Icons.image width={40} height={40} className="text-gray-500" />
+            </div>
+          </div>
+        )}
 
         <div className="col-span-4 lg:col-span-2 pt-2">
           <h2 className="text-2xl font-bold">{product.plant_name}</h2>
@@ -62,7 +70,6 @@ export default async function ProductDetail({ params: { id } }: Props) {
               <input
                 type="radio"
                 name="color"
-                value="lime"
                 className="hidden" // HIDDEN
               />
               <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
@@ -74,7 +81,6 @@ export default async function ProductDetail({ params: { id } }: Props) {
               <input
                 type="radio"
                 name="color"
-                value="indigo"
                 className="hidden" // HIDDEN
               />
               <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
@@ -86,7 +92,6 @@ export default async function ProductDetail({ params: { id } }: Props) {
               <input
                 type="radio"
                 name="color"
-                value="blue"
                 className="hidden" // HIDDEN
               />
               <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">

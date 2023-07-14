@@ -15,7 +15,7 @@ function SideNav() {
         const Icon = Icons[item.icon ?? "X"];
 
         return (
-          <div className="flex flex-col space-y-8">
+          <div key={index} className="flex flex-col space-y-8">
             <Link
               key={index}
               aria-disabled={item.disabled}

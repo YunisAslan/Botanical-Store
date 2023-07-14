@@ -3,6 +3,8 @@ import { Product } from "@/types";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
+export const revalidate = 0;
+
 enum SortingCondition {
   Ascending = "az",
   Descending = "za",
