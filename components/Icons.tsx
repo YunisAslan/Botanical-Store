@@ -1,6 +1,8 @@
 import {
+  ArrowDown,
   ArrowRight,
   Carrot,
+  ChevronDown,
   ChevronRight,
   CreditCard,
   DollarSign,
@@ -44,6 +46,7 @@ export const Icons: { [key: string]: LucideIcon } = {
   send: Send,
   sun: Sun,
   chevronRight: ChevronRight,
+  chevronDown: ChevronDown,
   shovel: ShovelIcon,
   flower: Flower,
   person: User,

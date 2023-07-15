@@ -26,12 +26,9 @@ type Product = {
   id?: string;
   plant_category?: string;
   plant_name: string;
-  plant_pot_color?: string;
-  plant_size?: string;
   plant_price: string;
   stock_quantity?: number;
   description: string;
-  fileUpload?: string;
   img_url: string;
   created_at: any;
 };

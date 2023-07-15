@@ -1,30 +1,37 @@
 "use client";
 
-import toast from "react-hot-toast";
-import { Icons } from "@/components/Icons";
-import { Button } from "@/components/ui/Button";
-import { db, storage } from "@/firebase/config";
-import { getCurrentDateTime } from "@/lib/utils";
-import { addDoc, collection } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useDropzone } from "react-dropzone";
+import { Product } from "@/types";
+import { Button } from "./ui/Button";
+import { Icons } from "./Icons";
 import Image from "next/image";
+import { useDropzone } from "react-dropzone";
+import { useState } from "react";
+import { db, storage } from "@/firebase/config";
+import { doc, updateDoc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getCurrentDateTime } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
-function NewProduct() {
+function EditProductForm({ item, id }: { item: Product; id: string }) {
+  if (!id || !item) {
+    return null; // or show a loading spinner or handle the case when item is null
+  }
+
   const categories = ["cactus", "aloe", "rose", "orchids", "xerophytes"];
 
   const initData = {
-    plant_name: "",
-    description: "",
-    plant_category: categories[0],
-    plant_price: 0,
-    img_url: "",
+    plant_name: item.plant_name,
+    description: item.description,
+    plant_price: item.plant_price || 0,
+    plant_category: item.plant_category,
+    img_url: item.img_url,
   };
 
   const router = useRouter();
   const [imageUpload, setImageUpload] = useState<File | null>(null);
+  console.log(imageUpload);
+
   const [productData, setProductData] = useState(initData);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -34,6 +41,7 @@ function NewProduct() {
     }
   };
 
+  // dropzone
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({
       onDrop: handleFileChange,
@@ -53,24 +61,12 @@ function NewProduct() {
     return imgUrl;
   };
 
-  const handleChangeInputs = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-
-    const parsedValue = name === "plant_price" ? parseFloat(value) : value;
-    setProductData((prevData) => ({
-      ...prevData,
-      [name]: parsedValue,
-    }));
-  };
-
-  const addProduct = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the form from refreshing the page
 
     const imgUrl = await uploadImage();
 
-    if (!imgUrl) return alert("SHEKILE EHTIYACIN VAR DOSi");
+    if (!imgUrl) return alert("You need update image or select same image");
 
     setIsSaving(true); // Disable the button
 
@@ -80,42 +76,27 @@ function NewProduct() {
       created_at: getCurrentDateTime(),
     };
 
+    const productRef = doc(db, "products", id);
     try {
-      await toast.promise(
-        addDoc(collection(db, "products"), productWithImage),
-        {
-          loading: "Added...",
-          success: <b>Product added!</b>,
-          error: <b>Could not be added.</b>,
-        }
-      );
+      await toast.promise(updateDoc(productRef, productWithImage), {
+        loading: "Updated...",
+        success: <b>Product updated!</b>,
+        error: <b>Could not be updated.</b>,
+      });
     } catch (error) {
-      toast.error("Could not be added.");
+      toast.error("Could not be updated.");
     } finally {
       setIsSaving(false); // Re-enable the button
     }
 
-    // Resets
-    setProductData(initData);
-    acceptedFiles.length = 0;
-    setImageUpload(null);
-
-    // we need fresh data :D
     router.refresh();
   };
 
-  console.log(productData);
-
   return (
     <>
-      <div className="pb-2">
-        <h1 className="text-primary text-3xl font-bold pb-1">Add product</h1>
-        <p className="text-base text-gray-600">Add a new product to store</p>
-      </div>
-
       <form
         className="pt-10 flex flex-col w-full max-w-2xl gap-5"
-        onSubmit={addProduct}
+        onSubmit={handleSubmit}
       >
         <div className="flex flex-col">
           <label htmlFor="name" className="pb-2 font-semibold">
@@ -127,8 +108,13 @@ function NewProduct() {
             id="name"
             name="plant_name"
             placeholder="Type product name here."
-            value={productData.plant_name.toLowerCase()}
-            onChange={handleChangeInputs}
+            value={productData.plant_name}
+            onChange={(e) =>
+              setProductData({
+                ...productData,
+                plant_name: e.target.value.toLowerCase(),
+              })
+            }
           />
         </div>
 
@@ -144,7 +130,9 @@ function NewProduct() {
             cols={30}
             rows={4}
             value={productData.description}
-            onChange={handleChangeInputs}
+            onChange={(e) =>
+              setProductData({ ...productData, description: e.target.value })
+            }
           ></textarea>
         </div>
 
@@ -160,7 +148,12 @@ function NewProduct() {
               name="plant_price"
               placeholder="Type product price here."
               value={productData.plant_price}
-              onChange={handleChangeInputs}
+              onChange={(e) =>
+                setProductData({
+                  ...productData,
+                  plant_price: Number(e.target.value),
+                })
+              }
             />
           </div>
 
@@ -173,7 +166,12 @@ function NewProduct() {
               id="category"
               name="plant_category"
               value={productData.plant_category}
-              onChange={handleChangeInputs}
+              onChange={(e) =>
+                setProductData({
+                  ...productData,
+                  plant_category: e.target.value,
+                })
+              }
             >
               {categories.map((category) => (
                 <option key={category} value={category}>
@@ -209,12 +207,26 @@ function NewProduct() {
                   </>
                 ) : (
                   <>
-                    <Icons.image className="text-gray-400 w-8 h-8" />
-                    <p className="text-center text-gray-500 pt-2">
-                      Drag 'n' drop an image here{" "}
-                      <span className="text-center text-gray-800">or</span>{" "}
-                      click in this area
-                    </p>
+                    {item.img_url ? (
+                      <>
+                        <Image
+                          src={item.img_url}
+                          alt="Preview"
+                          className="mb-2 rounded-md"
+                          width={200}
+                          height={200}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <Icons.image className="text-gray-400 w-8 h-8" />
+                        <p className="text-center text-gray-500 pt-2">
+                          Drag 'n' drop an image here{" "}
+                          <span className="text-center text-gray-800">or</span>{" "}
+                          click in this area
+                        </p>
+                      </>
+                    )}
                   </>
                 )}
               </div>
@@ -230,7 +242,7 @@ function NewProduct() {
             size="sm"
             disabled={isSaving}
           >
-            Add Product
+            Update Product
           </Button>
         </div>
       </form>
@@ -238,4 +250,4 @@ function NewProduct() {
   );
 }
 
-export default NewProduct;
+export default EditProductForm;

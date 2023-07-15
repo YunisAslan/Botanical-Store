@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import ProductDescription from "@/components/ProductDescription";
 
 type Props = {
   params: {
@@ -27,13 +28,14 @@ export default async function ProductDetail({ params: { id } }: Props) {
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
         <span className="text-gray-500">Products</span>
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
-        <span className="text-font">{product.plant_name}</span>
+        <span className="text-font capitalize">{product.plant_name}</span>
       </p>
 
       <div className="pt-10 pb-20 grid grid-cols-4 gap-5 px-4 sm:px-8 lg:px-20">
         {product.img_url ? (
-          <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start">
+          <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start max-h-[500px]">
             <Image
+              className="object-cover aspect-square"
               src={product.img_url}
               alt={product.plant_name}
               width={570}
@@ -50,7 +52,9 @@ export default async function ProductDetail({ params: { id } }: Props) {
         )}
 
         <div className="col-span-4 lg:col-span-2 pt-2">
-          <h2 className="text-2xl font-bold">{product.plant_name}</h2>
+          <h2 className="text-2xl font-bold capitalize">
+            {product.plant_name}
+          </h2>
           <p className="text-gray-600 py-2">&#36;{fixedPrice}</p>
           <Link
             href={`/products?categories=${product.plant_category}`}
@@ -71,6 +75,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
                 type="radio"
                 name="color"
                 className="hidden" // HIDDEN
+                readOnly
               />
               <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
                 <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-green-500 "></span>
@@ -82,6 +87,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
                 type="radio"
                 name="color"
                 className="hidden" // HIDDEN
+                readOnly
               />
               <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
                 <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-[#3f51b5] "></span>
@@ -93,6 +99,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
                 type="radio"
                 name="color"
                 className="hidden" // HIDDEN
+                readOnly
               />
               <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
                 <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-[#2196f3] "></span>
@@ -106,6 +113,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
               type="number"
               className="border border-input rounded w-32 outline-none px-2 py-1"
               value={13}
+              readOnly
             />
 
             <Button
@@ -119,12 +127,9 @@ export default async function ProductDetail({ params: { id } }: Props) {
 
           <div className="border-b border-input my-6" />
 
+          {/* Description */}
           <div>
-            <h2 className="text-font font-semibold text-lg pb-2">
-              Description
-            </h2>
-
-            <p>{product.img_url}</p>
+            <ProductDescription {...product} />
           </div>
         </div>
       </div>

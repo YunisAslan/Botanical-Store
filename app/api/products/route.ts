@@ -1,5 +1,6 @@
 import { db } from "@/firebase/config";
 import { collection, getDocs } from "firebase/firestore";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export const revalidate = 0;
@@ -14,6 +15,10 @@ export async function GET(request: NextRequest) {
       ...doc.data(),
       id: doc.id,
     }));
+
+    const path = request.nextUrl.searchParams.get("path") || "/";
+
+    revalidatePath(path);
 
     return NextResponse.json(filteredData);
   } catch (err) {

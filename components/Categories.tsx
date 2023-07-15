@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/Button";
 
-const categories = ["Cactus", "Aloe", "Rose", "Orchids"];
+const categories = ["Cactus", "Aloe", "Rose", "Orchids", "Xerophytes"];
 
 function Categories() {
   const [categoryValue, setCategoryValue] = useState("");

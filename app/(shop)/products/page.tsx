@@ -40,8 +40,8 @@ async function Products({ searchParams }: PageProps) {
       <div className="col-span-12 order-1 xl:col-span-9 xl:order-2">
         <div className="flex justify-between items-center py-1">
           <h2>
-            Showing {filteredResults?.length} of &nbsp;
-            {filteredResults?.length} results
+            Showing {filteredResults?.length} of {filteredResults?.length}{" "}
+            results
           </h2>
 
           <SelectFilters />

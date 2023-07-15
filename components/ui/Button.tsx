@@ -3,7 +3,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import { ComponentPropsWithRef, forwardRef } from "react";
 
 const buttonVariants = cva(
-  "flex items-center justify-center rounded active:scale-95 font-medium transition-colors duration-500",
+  "flex items-center justify-center rounded active:scale-95 font-medium transition-colors duration-500 disabled:opacity/50",
   {
     variants: {
       variant: {

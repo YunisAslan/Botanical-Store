@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Open_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </main>
+        <Toaster />
       </body>
     </html>
   );

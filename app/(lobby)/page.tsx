@@ -5,6 +5,8 @@ import SeperatorImg from "@/public/assets/images/seperator-img.png";
 import { getProducts } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import Subscribe from "@/components/Subscribe";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/Button";
 
 export default async function Home() {
   const productData = await getProducts();
@@ -30,7 +32,19 @@ export default async function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-10">
+        <div className="flex justify-end pt-2 pr-3">
+          <Link
+            href="/products"
+            className={buttonVariants({
+              variant: "primary",
+              size: "sm",
+            })}
+          >
+            View all
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-7">
           {slicedProducts?.map((item) => {
             return <ProductCard key={item.id} item={item} />;
           })}

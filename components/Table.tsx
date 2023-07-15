@@ -36,7 +36,7 @@ async function Table() {
                   </span>
                 </td>
                 <td className="p-3 text-sm group-hover:bg-inputBg/50 border-b">
-                  {`&#36` + Number(item.plant_price).toFixed(2)}
+                  &#36;{Number(item.plant_price).toFixed(2)}
                 </td>
                 <td className="p-3 text-sm group-hover:bg-inputBg/50 border-b">
                   {moment(item.created_at).format(

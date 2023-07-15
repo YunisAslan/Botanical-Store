@@ -9,6 +9,7 @@ import Link from "next/link";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { useRouter } from "next/navigation";
+import { Toaster, toast } from "react-hot-toast";
 
 function MoreMenu({ item }: { item: Product }) {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,11 @@ function MoreMenu({ item }: { item: Product }) {
   }, [isOpen]);
 
   const deleteProduct = async (id: string) => {
-    await deleteDoc(doc(db, "products", id));
+    await toast.promise(deleteDoc(doc(db, "products", id)), {
+      loading: "Deleted...",
+      success: <b>Successfully deleted!</b>,
+      error: <b>Could not save.</b>,
+    });
 
     router.refresh();
   };
@@ -67,18 +72,22 @@ function MoreMenu({ item }: { item: Product }) {
           isOpen && "flex"
         )}
       >
-        <div className="flex items-center gap-2 hover:bg-inputBg px-2 rounded py-1 cursor-default">
+        <Link
+          className="flex items-center gap-2 hover:bg-inputBg px-2 rounded py-1 cursor-default"
+          href={`/dashboard/store/product/${item.id}`}
+          onClick={() => setIsOpen(false)}
+        >
           <Icons.edit className="w-4 text-gray-500" />
           <span>Edit</span>
-        </div>
+        </Link>
         {/*  */}
         <Link
           className="flex items-center gap-2 hover:bg-inputBg px-2 rounded py-1 cursor-default"
-          onClick={() => setIsOpen(false)}
           href={`/product/${item.id}`}
+          onClick={() => setIsOpen(false)}
         >
           <Icons.view className="w-4 text-gray-500" />
-          <span> View</span>
+          <span>View</span>
         </Link>
 
         {/*  */}
@@ -92,6 +101,8 @@ function MoreMenu({ item }: { item: Product }) {
           <span>Delete</span>
         </button>
       </div>
+
+      <Toaster />
     </>
   );
 }
