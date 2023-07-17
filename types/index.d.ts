@@ -1,5 +1,3 @@
-import { Timestamp } from "firebase/firestore";
-
 export type NavItem = {
   title: string;
   href: string;
@@ -24,14 +22,15 @@ export type SiteConfig = {
 
 type Product = {
   id?: string;
-  plant_category?: string;
+  plant_category: "cactus" | "aloe" | "rose" | "orchids" | "xerophytes";
   plant_name: string;
-  plant_price: string;
+  plant_price: number;
   stock_quantity?: number;
   description: string;
   img_url: string;
   created_at: any;
 };
 
-// Search Params  ----
+// Validations ----
+
 // type SearchParams = {};

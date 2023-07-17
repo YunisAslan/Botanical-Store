@@ -4,40 +4,59 @@ import { Product } from "@/types";
 import { Button } from "./ui/Button";
 import { Icons } from "./Icons";
 import Image from "next/image";
-import { useDropzone } from "react-dropzone";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db, storage } from "@/firebase/config";
 import { doc, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { getCurrentDateTime } from "@/lib/utils";
+import { useDropzone } from "react-dropzone";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import { productSchema } from "@/lib/validations/product";
+import { z } from "zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+type FormData = z.infer<typeof productSchema>;
 
 function EditProductForm({ item, id }: { item: Product; id: string }) {
-  if (!id || !item) {
-    return null; // or show a loading spinner or handle the case when item is null
-  }
-
   const categories = ["cactus", "aloe", "rose", "orchids", "xerophytes"];
 
-  const initData = {
-    plant_name: item.plant_name,
-    description: item.description,
-    plant_price: item.plant_price || 0,
-    plant_category: item.plant_category,
-    img_url: item.img_url,
-  };
-
-  const router = useRouter();
   const [imageUpload, setImageUpload] = useState<File | null>(null);
-  console.log(imageUpload);
-
-  const [productData, setProductData] = useState(initData);
   const [isSaving, setIsSaving] = useState(false);
+  const router = useRouter();
 
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(productSchema),
+  });
+
+  useEffect(() => {
+    setValue("plant_name", item.plant_name);
+    setValue("description", item.description);
+    setValue("plant_price", item.plant_price);
+    setValue("plant_category", item.plant_category);
+  }, [item, setValue]);
+
+  // const handleFileChange = (acceptedFiles: File[]) => {
+  //   if (acceptedFiles && acceptedFiles.length > 0) {
+  //     setImageUpload(acceptedFiles[0]);
+  //   }
+  // };
   const handleFileChange = (acceptedFiles: File[]) => {
     if (acceptedFiles && acceptedFiles.length > 0) {
-      setImageUpload(acceptedFiles[0]);
+      const file = acceptedFiles[0];
+      if (file.type && file.type.startsWith("image/")) {
+        // If it's an image file, proceed with further processing
+        setImageUpload(file);
+      } else {
+        // If it's not an image file, show an error or handle accordingly
+        console.error("Invalid file type. Please select an image.");
+      }
     }
   };
 
@@ -61,17 +80,16 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
     return imgUrl;
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent the form from refreshing the page
-
+  const updateProductData: SubmitHandler<FormData> = async (data, e) => {
+    e?.preventDefault();
     const imgUrl = await uploadImage();
 
-    if (!imgUrl) return alert("You need update image or select same image");
+    if (!imgUrl) return toast.error("Update image or select same image");
 
     setIsSaving(true); // Disable the button
 
     const productWithImage = {
-      ...productData,
+      ...data,
       img_url: imgUrl,
       created_at: getCurrentDateTime(),
     };
@@ -96,26 +114,25 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
     <>
       <form
         className="pt-10 flex flex-col w-full max-w-2xl gap-5"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(updateProductData)}
       >
         <div className="flex flex-col">
           <label htmlFor="name" className="pb-2 font-semibold">
             Name
           </label>
           <input
+            {...register("plant_name")}
             className="border p-2 rounded-md outline-none border-input"
             type="text"
             id="name"
             name="plant_name"
             placeholder="Type product name here."
-            value={productData.plant_name}
-            onChange={(e) =>
-              setProductData({
-                ...productData,
-                plant_name: e.target.value.toLowerCase(),
-              })
-            }
           />
+          {errors.plant_name && (
+            <span className="text-sm font-medium text-red-600 mt-1">
+              {errors.plant_name.message}
+            </span>
+          )}
         </div>
 
         <div className="flex flex-col">
@@ -123,17 +140,19 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
             Description
           </label>
           <textarea
+            {...register("description")}
             className="border p-2 rounded-md outline-none border-input resize-none"
             name="description"
             id="description"
             placeholder="Type product description here."
             cols={30}
             rows={4}
-            value={productData.description}
-            onChange={(e) =>
-              setProductData({ ...productData, description: e.target.value })
-            }
           ></textarea>
+          {errors.description && (
+            <span className="text-sm font-medium text-red-600 mt-1">
+              {errors.description.message}
+            </span>
+          )}
         </div>
 
         <div className="flex w-full gap-5">
@@ -142,19 +161,18 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
               Price
             </label>
             <input
+              {...register("plant_price", { valueAsNumber: true })}
               className="border p-2 rounded-md outline-none border-input"
               type="number"
               id="price"
               name="plant_price"
               placeholder="Type product price here."
-              value={productData.plant_price}
-              onChange={(e) =>
-                setProductData({
-                  ...productData,
-                  plant_price: Number(e.target.value),
-                })
-              }
             />
+            {errors.plant_price && (
+              <span className="text-sm font-medium text-red-600 mt-1">
+                Must be a valid price
+              </span>
+            )}
           </div>
 
           <div className="flex flex-col w-1/2">
@@ -162,16 +180,10 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
               Category
             </label>
             <select
+              {...register("plant_category")}
               className="border p-2 rounded-md outline-none border-input capitalize"
               id="category"
               name="plant_category"
-              value={productData.plant_category}
-              onChange={(e) =>
-                setProductData({
-                  ...productData,
-                  plant_category: e.target.value,
-                })
-              }
             >
               {categories.map((category) => (
                 <option key={category} value={category}>

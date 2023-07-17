@@ -1,5 +1,8 @@
 "use client";
 
+import { z } from "zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import { Icons } from "@/components/Icons";
 import { Button } from "@/components/ui/Button";
@@ -7,33 +10,47 @@ import { db, storage } from "@/firebase/config";
 import { getCurrentDateTime } from "@/lib/utils";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { productSchema } from "@/lib/validations/product";
+
+type FormData = z.infer<typeof productSchema>;
 
 function NewProduct() {
   const categories = ["cactus", "aloe", "rose", "orchids", "xerophytes"];
 
-  const initData = {
-    plant_name: "",
-    description: "",
-    plant_category: categories[0],
-    plant_price: 0,
-    img_url: "",
-  };
-
-  const router = useRouter();
   const [imageUpload, setImageUpload] = useState<File | null>(null);
-  const [productData, setProductData] = useState(initData);
+  const [imageError, setImageError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const router = useRouter();
+
+  const {
+    reset,
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(productSchema),
+  });
 
   const handleFileChange = (acceptedFiles: File[]) => {
     if (acceptedFiles && acceptedFiles.length > 0) {
-      setImageUpload(acceptedFiles[0]);
+      const file = acceptedFiles[0];
+      if (file.type && file.type.startsWith("image/")) {
+        // If it's an image file, proceed with further processing
+        setImageUpload(file);
+        setImageError(null);
+      } else {
+        // If it's not an image file, show an error or handle accordingly
+        console.error("Invalid file type. Please select an image.");
+      }
     }
   };
 
+  // for image
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({
       onDrop: handleFileChange,
@@ -52,30 +69,21 @@ function NewProduct() {
 
     return imgUrl;
   };
+  // for image
 
-  const handleChangeInputs = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
+  const addProductData: SubmitHandler<FormData> = async (data, e) => {
+    e?.preventDefault();
 
-    const parsedValue = name === "plant_price" ? parseFloat(value) : value;
-    setProductData((prevData) => ({
-      ...prevData,
-      [name]: parsedValue,
-    }));
-  };
-
-  const addProduct = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    setValue("plant_name", data.plant_name.toLowerCase());
 
     const imgUrl = await uploadImage();
 
-    if (!imgUrl) return alert("SHEKILE EHTIYACIN VAR DOSi");
+    if (!imgUrl) return setImageError("Please select an image");
 
     setIsSaving(true); // Disable the button
 
     const productWithImage = {
-      ...productData,
+      ...data,
       img_url: imgUrl,
       created_at: getCurrentDateTime(),
     };
@@ -96,15 +104,14 @@ function NewProduct() {
     }
 
     // Resets
-    setProductData(initData);
     acceptedFiles.length = 0;
     setImageUpload(null);
 
     // we need fresh data :D
     router.refresh();
+    // come from react-hook-form
+    reset();
   };
-
-  console.log(productData);
 
   return (
     <>
@@ -115,21 +122,25 @@ function NewProduct() {
 
       <form
         className="pt-10 flex flex-col w-full max-w-2xl gap-5"
-        onSubmit={addProduct}
+        onSubmit={handleSubmit(addProductData)}
       >
         <div className="flex flex-col">
           <label htmlFor="name" className="pb-2 font-semibold">
             Name
           </label>
           <input
+            {...register("plant_name")}
             className="border p-2 rounded-md outline-none border-input"
             type="text"
             id="name"
             name="plant_name"
             placeholder="Type product name here."
-            value={productData.plant_name.toLowerCase()}
-            onChange={handleChangeInputs}
           />
+          {errors.plant_name && (
+            <span className="text-sm font-medium text-red-600 mt-1">
+              {errors.plant_name.message}
+            </span>
+          )}
         </div>
 
         <div className="flex flex-col">
@@ -137,15 +148,19 @@ function NewProduct() {
             Description
           </label>
           <textarea
+            {...register("description")}
             className="border p-2 rounded-md outline-none border-input resize-none"
             name="description"
             id="description"
             placeholder="Type product description here."
             cols={30}
             rows={4}
-            value={productData.description}
-            onChange={handleChangeInputs}
           ></textarea>
+          {errors.description && (
+            <span className="text-sm font-medium text-red-600 mt-1">
+              {errors.description.message}
+            </span>
+          )}
         </div>
 
         <div className="flex w-full gap-5">
@@ -154,14 +169,18 @@ function NewProduct() {
               Price
             </label>
             <input
+              {...register("plant_price", { valueAsNumber: true })}
               className="border p-2 rounded-md outline-none border-input"
               type="number"
               id="price"
               name="plant_price"
               placeholder="Type product price here."
-              value={productData.plant_price}
-              onChange={handleChangeInputs}
             />
+            {errors.plant_price && (
+              <span className="text-sm font-medium text-red-600 mt-1">
+                Must be a valid price
+              </span>
+            )}
           </div>
 
           <div className="flex flex-col w-1/2">
@@ -169,11 +188,10 @@ function NewProduct() {
               Category
             </label>
             <select
+              {...register("plant_category")}
               className="border p-2 rounded-md outline-none border-input capitalize"
               id="category"
               name="plant_category"
-              value={productData.plant_category}
-              onChange={handleChangeInputs}
             >
               {categories.map((category) => (
                 <option key={category} value={category}>
@@ -216,6 +234,12 @@ function NewProduct() {
                       click in this area
                     </p>
                   </>
+                )}
+                {/* Display the image error message */}
+                {imageError && (
+                  <p className="text-lg font-medium text-red-600 mt-1">
+                    {imageError}
+                  </p>
                 )}
               </div>
             </>
