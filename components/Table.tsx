@@ -10,12 +10,12 @@ async function Table() {
   return (
     <>
       <div className="w-full border rounded">
-        <table className="w-full">
+        <table className="w-full block max-w-fit overflow-x-auto table-fixed whitespace-nowrap">
           <thead>
             <tr>
               {head.map((h, key) => (
                 <th
-                  className="text-left text-sm font-semibold p-2 bg-inputBg  border-b"
+                  className="text-left text-sm font-semibold p-2 bg-inputBg border-b min-w-[200px]"
                   key={key}
                 >
                   {h}
@@ -26,7 +26,7 @@ async function Table() {
 
           <tbody>
             {products?.map((item) => (
-              <tr key={item.id} className="group relative">
+              <tr key={item.id} className="group">
                 <td className="p-3 text-sm group-hover:bg-inputBg/50 border-b capitalize">
                   {item.plant_name}
                 </td>

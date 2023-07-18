@@ -51,20 +51,20 @@ function CartBar() {
       {/* this time i use translate instead w-0/full */}
       <div
         className={cn(
-          "w-full fixed flex right-0 h-full top-0 bottom-0 duration-300 transition-all ease-out translate-x-full invisible z-10",
-          isOpen && "-translate-x-0 visible"
+          "w-full fixed flex right-0 h-full top-0 bottom-0 duration-300 transition-all ease-out translate-x-full invisible z-10 opacity-0",
+          isOpen && "-translate-x-0 visible opacity-100"
         )}
       >
         <div
           className={cn(
-            "w-0 backdrop-blur-sm md:w-1/4 opacity-0 duration-700 transition-all ease-out bg-white/40",
+            "w-0 backdrop-blur-sm md:w-2/3 opacity-0 duration-700 transition-all ease-out bg-white/40 dark:bg-secondary/10",
             isOpen && "opacity-100"
           )}
         />
 
         <div
           ref={cartBar}
-          className="bg-white relative w-full border-l border-input md:w-3/4 overflow-auto"
+          className="bg-white dark:bg-secondary relative w-full border-l border-input dark:border-secondary/0 overflow-auto md:dark:border-secondary"
         >
           <div
             className={cn(
@@ -78,14 +78,14 @@ function CartBar() {
               size="mm"
               onClick={() => setIsOpen(!open)}
             >
-              <Icons.X className="w-5 h-5 text-gray-600" />
+              <Icons.X className="w-5 h-5 text-gray-600 dark:text-white" />
             </Button>
 
-            <h6 className="text-xl text-center font-semibold text-font pt-5 pb-4 md:text-left">
+            <h6 className="text-xl text-center font-semibold text-font dark:text-white pt-5 pb-4 md:text-left">
               Cart
             </h6>
 
-            <div className="border-b border-input absolute left-7 right-0" />
+            <div className="border-b border-input dark:border-secondary absolute left-7 right-0" />
           </div>
 
           <div className="product-container flex items-center justify-center flex-col h-3/4">

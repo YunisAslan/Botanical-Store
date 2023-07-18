@@ -41,18 +41,18 @@ function SearchProduct() {
     <>
       <button
         ref={btnRef}
-        className="border transition-colors duration-500 shadow-sm hover:bg-inputBg border-input flex justify-center items-center active:scale-95 rounded h-9 w-9 xl:w-60 xl:px-3 xl:py-2 xl:justify-start"
+        className="border transition-colors duration-500 shadow-sm hover:bg-inputBg dark:hover:bg-slight/70 border-input dark:border-secondary flex justify-center items-center active:scale-95 rounded h-9 w-9 xl:w-60 xl:px-3 xl:py-2 xl:justify-start"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Icons.search className="w-5 h-5 xl:mr-3" />
-        <span className="hidden xl:flex font-semibold text-sm text-font">
+        <Icons.search className="w-5 h-5 xl:mr-3 dark:text-white" />
+        <span className="hidden xl:flex font-semibold text-sm text-font dark:text-white">
           Search products..
         </span>
       </button>
 
       <div
         className={cn(
-          "fixed inset-0 bg-white/40 flex justify-center w-full backdrop-blur-sm invisible z-10",
+          "fixed inset-0 bg-white/40 dark:bg-secondary/10 flex justify-center w-full backdrop-blur-sm invisible z-10",
           isOpen && "visible"
         )}
       >
@@ -67,7 +67,7 @@ function SearchProduct() {
             <Icons.search className="w-5 h-5 absolute left-3 text-gray-600" />
             <input
               type="text"
-              className="border border-input outline-none px-10 py-3 rounded bg-white w-96 md:w-[32rem]"
+              className="border border-input dark:border-secondary outline-none px-10 py-3 rounded bg-white dark:bg-secondary w-96 md:w-[32rem] dark:text-white"
               placeholder="Search products.."
             />
 

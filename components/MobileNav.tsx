@@ -13,6 +13,7 @@ function MobileNav() {
   const btnRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [sideBar, setSideBar] = useState<boolean>(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -56,13 +57,13 @@ function MobileNav() {
 
       <div
         className={cn(
-          "off-canvas fixed top-0 bottom-0 left-0 w-full h-full flex lg:hidden duration-300 transition-all ease-out overflow-x-hidden -translate-x-full invisible z-10",
-          isOpen && "-translate-x-0 visible"
+          "fixed top-0 bottom-0 left-0 w-full h-full flex lg:hidden duration-300 transition-all ease-out overflow-x-hidden -translate-x-full invisible z-10 opacity-0",
+          isOpen && "-translate-x-0 visible opacity-100"
         )}
       >
         <div
           ref={menuRef}
-          className="w-3/4 bg-white relative border-r border-input overflow-auto"
+          className="w-3/4 bg-white dark:bg-secondary relative border-r border-input dark:border-secondary overflow-auto"
         >
           <div className="pt-5 px-8">
             <Button
@@ -71,7 +72,7 @@ function MobileNav() {
               size="mm"
               onClick={() => setIsOpen(!isOpen)}
             >
-              <Icons.X className="w-5 h-5 text-gray-600" />
+              <Icons.X className="w-5 h-5 text-gray-600 dark:text-white" />
             </Button>
 
             <div className="flex">
@@ -103,26 +104,59 @@ function MobileNav() {
               {docsConfig.mainNav.map((item, index) => (
                 <Link
                   className={cn(
-                    "font-semibold text-base text-font hover:text-primary duration-500 transition-colors pb-4 border-b whitespace-nowrap",
+                    "font-semibold text-base text-font dark:text-white hover:text-primary duration-500 transition-colors pb-4 border-b border-input dark:border-secondary hover:dark:border-input",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                   key={index}
                   href={item.disabled ? "#" : item.href}
                   onClick={() => setIsOpen(!isOpen)}
+                  prefetch={false}
                 >
                   {item.title}
                 </Link>
               ))}
+
+              {/* Sidebar menu */}
+              <div className="w-full border-b border-input dark:border-secondary hover:dark:border-input">
+                <button
+                  className="flex justify-between items-center font-semibold text-base text-font dark:text-white hover:text-primary duration-500 transition-colors pb-4 hover:dark:border-input w-full"
+                  onClick={() => setSideBar(!sideBar)}
+                >
+                  <span>Sidebar Menu</span>
+                  <Icons.chevronDown
+                    className={cn(
+                      "w-4 duration-500 transition-transform",
+                      sideBar && "-rotate-180"
+                    )}
+                  />
+                </button>
+                <div className="flex flex-col items-start w-full cursor-auto">
+                  {sideBar &&
+                    docsConfig.dashboardNav.map((item, index) => (
+                      <Link
+                        className={cn(
+                          "font-semibold text-sm text-gray-500 dark:text-white hover:text-primary duration-500 transition-colors py-2 dark:border-secondary hover:dark:border-input w-full items-start",
+                          item.disabled && "cursor-not-allowed opacity-80"
+                        )}
+                        key={index}
+                        href={item.disabled ? "#" : item.href}
+                        onClick={() => setIsOpen(!isOpen)}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                </div>
+              </div>
             </nav>
           </div>
         </div>
 
         <div
           className={cn(
-            "opacity-0 backdrop-blur-sm w-1/4 duration-700 transition-all ease-out bg-white/40",
+            "opacity-0 backdrop-blur-sm w-1/4 duration-700 transition-all ease-out bg-white/40 dark:bg-secondary/10",
             isOpen && "opacity-100"
           )}
-        ></div>
+        />
       </div>
     </>
   );

@@ -3,13 +3,13 @@ import Image from "next/image";
 import Logo from "@/public/assets/images/logo.png";
 import SearchProducts from "./SearchProducts";
 import { buttonVariants } from "./ui/Button";
-import Navbar from "./MainNav";
+import MainNav from "./MainNav";
 import MobileNav from "./MobileNav";
 import CartBar from "./CartBar";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input">
+    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input dark:bg-secondary dark:border-secondary">
       <MobileNav />
 
       <Link href="/">
@@ -23,7 +23,7 @@ function Header() {
         />
       </Link>
 
-      <Navbar />
+      <MainNav />
 
       <div className="flex items-center gap-2">
         <SearchProducts />

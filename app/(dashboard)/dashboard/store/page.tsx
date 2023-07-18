@@ -23,7 +23,7 @@ async function DashboardStore() {
         </Link>
       </div>
 
-      {/* Table */}
+      {/* Products Table */}
       <Table />
     </>
   );

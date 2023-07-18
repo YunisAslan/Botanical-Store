@@ -12,7 +12,7 @@ export default async function ShopLayout({ children }: ShopLayoutProps) {
   return (
     <>
       {/* Location PATH */}
-      <p className="flex items-center gap-1 pt-6 px-4 sm:px-8 lg:px-20">
+      <p className="flex items-center gap-1 pt-6 px-4 sm:px-8 lg:px-20 h-full">
         <span className="text-gray-500">Home</span>
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
         <span className="text-font">Products</span>

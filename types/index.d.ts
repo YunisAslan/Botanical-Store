@@ -28,7 +28,7 @@ type Product = {
   stock_quantity?: number;
   description: string;
   img_url: string;
-  created_at: any;
+  created_at: string;
 };
 
 // Validations ----

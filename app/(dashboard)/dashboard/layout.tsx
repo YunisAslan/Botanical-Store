@@ -12,7 +12,7 @@ export default function DashboardLayout({
     <div className="flex border-b border-input px-4 sm:px-6">
       <SideNav />
 
-      <div className="py-6 px-10 w-full">
+      <div className="py-6 w-full px-2 lg:px-10">
         <Suspense>{children}</Suspense>
       </div>
     </div>

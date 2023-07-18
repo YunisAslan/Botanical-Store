@@ -1,5 +1,5 @@
+import { MoonIcon } from "lucide-react";
 import {
-  ArrowDown,
   ArrowRight,
   Carrot,
   ChevronDown,
@@ -15,7 +15,6 @@ import {
   LeafIcon,
   LucideIcon,
   MenuIcon,
-  MoreHorizontal,
   MoreVertical,
   PlusCircle,
   Search,
@@ -45,6 +44,7 @@ export const Icons: { [key: string]: LucideIcon } = {
   fingerPrint: Fingerprint,
   send: Send,
   sun: Sun,
+  moon: MoonIcon,
   chevronRight: ChevronRight,
   chevronDown: ChevronDown,
   shovel: ShovelIcon,
@@ -54,7 +54,7 @@ export const Icons: { [key: string]: LucideIcon } = {
   bag: ShoppingBag,
   dollar: DollarSign,
   image: Image,
-  moreVertival: MoreVertical,
+  moreVertical: MoreVertical,
   edit: Edit2,
   view: Eye,
   delete: Trash,

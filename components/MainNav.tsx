@@ -4,13 +4,13 @@ import Link from "next/link";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 
-function Navbar() {
+function MainNav() {
   return (
-    <nav className="hidden flex-1 items-center gap-5 pl-7 lg:flex">
+    <nav className="hidden flex-1 items-center gap-2 pl-7 lg:flex">
       {docsConfig.mainNav.map((item, index) => (
         <Link
           className={cn(
-            "font-semibold text-base text-font hover:text-primary duration-500 transition-colors",
+            "font-semibold text-base text-font dark:text-white hover:text-primary duration-500 transition-colors dark:hover:bg-slight/70 px-2 py-1 rounded",
             item.disabled && "cursor-not-allowed opacity-80"
           )}
           key={index}
@@ -23,4 +23,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default MainNav;
