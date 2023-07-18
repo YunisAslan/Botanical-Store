@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Icons } from "./Icons";
-import { Button, buttonVariants } from "./ui/Button";
-import { cn } from "@/lib/utils";
+import { buttonVariants } from "./ui/Button";
 import { Product } from "@/types";
 import Link from "next/link";
 import { deleteDoc, doc } from "firebase/firestore";
@@ -11,9 +9,7 @@ import { db } from "@/firebase/config";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
-function MoreMenu({ item }: { item: Product }) {
-  // const menuRef = useRef<HTMLDivElement>(null);
-  // const btnRef = useRef<HTMLButtonElement>(null);
+function ActionsMenu({ item }: { item: Product }) {
   const router = useRouter();
 
   const deleteProduct = async (id: string) => {
@@ -54,4 +50,4 @@ function MoreMenu({ item }: { item: Product }) {
   );
 }
 
-export default MoreMenu;
+export default ActionsMenu;

@@ -1,5 +1,5 @@
 import { getProducts } from "@/lib/products";
-import MoreMenu from "./MoreMenu";
+import ActionsMenu from "./ActionsMenu";
 import moment from "moment";
 
 const head = ["Name", "Category", "Price", "Created At", ""];
@@ -44,7 +44,7 @@ async function Table() {
                   )}
                 </td>
                 <td className="p-3 text-sm group-hover:bg-inputBg/50 border-b">
-                  <MoreMenu item={item} />
+                  <ActionsMenu item={item} />
                 </td>
               </tr>
             ))}
