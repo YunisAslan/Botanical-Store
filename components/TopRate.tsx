@@ -12,35 +12,53 @@ async function TopRate() {
       <h6 className="text-xl font-semibold pb-5">Top rate</h6>
 
       <div className="flex flex-col gap-y-5">
-        {filteredProducts?.map((item, index) => (
-          <div className="flex" key={index}>
-            {item.img_url ? (
-              <div>
-                <Image
-                  src={item.img_url}
-                  alt={item.plant_name}
-                  width={80}
-                  height={80}
-                />
+        {products ? (
+          filteredProducts?.map((item, index) => (
+            <div className="flex" key={index}>
+              {item.img_url ? (
+                <div>
+                  <Image
+                    src={item.img_url}
+                    alt={item.plant_name}
+                    width={80}
+                    height={80}
+                  />
+                </div>
+              ) : (
+                <div className="w-20 h-20 bg-gray-100 flex justify-center items-center">
+                  <Icons.image
+                    width={20}
+                    height={20}
+                    className="text-gray-500"
+                  />
+                </div>
+              )}
+              <div className="pl-3">
+                <Link
+                  href={`/product/${item.id}`}
+                  className="font-semibold text-base pb-1 capitalize"
+                >
+                  {item.plant_name}
+                </Link>
+                <p className="text-gray-600 text-sm pt-1">
+                  &#36;{item.plant_price}
+                </p>
               </div>
-            ) : (
-              <div className="w-20 h-20 bg-gray-100 flex justify-center items-center">
-                <Icons.image width={20} height={20} className="text-gray-500" />
-              </div>
-            )}
-            <div className="pl-3">
-              <Link
-                href={`/product/${item.id}`}
-                className="font-semibold text-base pb-1 capitalize"
-              >
-                {item.plant_name}
-              </Link>
-              <p className="text-gray-600 text-sm pt-1">
-                &#36;{item.plant_price}
-              </p>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <>
+            <div className="w-20 h-20 bg-gray-100 flex justify-center items-center">
+              <Icons.image width={20} height={20} className="text-gray-500" />
+            </div>
+            <div className="pl-3">
+              <h2 className="font-semibold text-base pb-1 capitalize">
+                Anonym
+              </h2>
+              <p className="text-gray-600 text-sm pt-1">&#36;00</p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

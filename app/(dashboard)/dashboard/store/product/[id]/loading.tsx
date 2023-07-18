@@ -6,19 +6,34 @@ export default function UpdateProductLoading() {
         <p className="bg-gray-300 w-32 h-6 animate-pulse rounded" />
       </div>
 
-      <div className="w-full flex justify-end pb-4">
-        <div className="rounded py-1 bg-gray-300 w-20 h-6 animate-pulse" />
-      </div>
+      <div className="pt-10 flex flex-col w-full max-w-2xl gap-5">
+        <div className="flex flex-col gap-3">
+          <div className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
+          <div className="h-8 bg-gray-300 animate-pulse rounded" />
+        </div>
 
-      <div className="w-full flex flex-col gap-4 items-center lg:items-start">
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
-        <div className="rounded py-1 bg-gray-300 w-4/5 h-7 animate-pulse" />
+        <div className="flex flex-col gap-3">
+          <div className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
+          <div className="h-24 bg-gray-300 animate-pulse rounded" />
+        </div>
+
+        <div className="flex w-full gap-5">
+          <div className="w-1/2 flex flex-col gap-3">
+            <div className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
+            <div className="p-2 bg-gray-300 w-80 h-8 animate-pulse rounded" />
+          </div>
+
+          <div className="w-1/2 flex flex-col gap-3">
+            <div className="bg-gray-300 w-16 h-6 animate-pulse rounded" />
+            <div className="p-2 bg-gray-300 w-80 h-8 animate-pulse rounded" />
+          </div>
+        </div>
+
+        <div className="rounded-lg p-4 h-72 bg-gray-300 animate-pulse" />
+
+        <div className="flex justify-start">
+          <div className="bg-gray-300 w-32 h-6 animate-pulse rounded" />
+        </div>
       </div>
     </>
   );

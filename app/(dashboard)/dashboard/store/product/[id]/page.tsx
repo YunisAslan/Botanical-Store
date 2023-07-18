@@ -12,7 +12,6 @@ async function EditProduct({ params: { id } }: PageProps) {
   const product = await getProduct(id);
 
   if (!product) notFound();
-  console.log(id);
 
   return (
     <>

@@ -32,7 +32,7 @@ export default async function Home() {
           />
         </div>
 
-        <div className="flex justify-end pt-2 pr-3">
+        <div className="flex justify-center lg:justify-end pt-4 pr-0 lg:pr-3">
           <Link
             href="/products"
             className={buttonVariants({

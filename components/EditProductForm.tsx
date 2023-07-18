@@ -122,7 +122,7 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
           </label>
           <input
             {...register("plant_name")}
-            className="border p-2 rounded-md outline-none border-input"
+            className="border p-2 rounded-md outline-none border-input placeholder:text-sm"
             type="text"
             id="name"
             name="plant_name"
@@ -141,7 +141,7 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
           </label>
           <textarea
             {...register("description")}
-            className="border p-2 rounded-md outline-none border-input resize-none"
+            className="border p-2 rounded-md outline-none border-input resize-none placeholder:text-sm"
             name="description"
             id="description"
             placeholder="Type product description here."
@@ -162,7 +162,7 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
             </label>
             <input
               {...register("plant_price", { valueAsNumber: true })}
-              className="border p-2 rounded-md outline-none border-input"
+              className="border p-2 rounded-md outline-none border-input placeholder:text-sm"
               type="number"
               id="price"
               name="plant_price"

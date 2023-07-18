@@ -9,10 +9,10 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex border-b border-input px-4 sm:px-6">
+    <div className="flex border-b border-input px-2 sm:px-6">
       <SideNav />
 
-      <div className="py-6 w-full px-2 lg:px-10">
+      <div className="py-6 w-full px-2 pb-24 lg:px-10">
         <Suspense>{children}</Suspense>
       </div>
     </div>

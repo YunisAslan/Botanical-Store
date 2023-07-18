@@ -10,7 +10,7 @@ function SideNav() {
   const pathname = usePathname();
 
   return (
-    <div className="w-72 hidden h-screen border-r border-input py-8 pr-6 lg:inline-block">
+    <div className="w-72 hidden h-screen border-r border-input py-8 pr-6 xl:inline-block">
       {docsConfig.dashboardNav.map((item, index) => {
         const Icon = Icons[item.icon ?? "X"];
 

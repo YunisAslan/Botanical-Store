@@ -1,4 +1,4 @@
-import { MoonIcon } from "lucide-react";
+import { AlertTriangle, MoonIcon } from "lucide-react";
 import {
   ArrowRight,
   Carrot,
@@ -59,4 +59,5 @@ export const Icons: { [key: string]: LucideIcon } = {
   view: Eye,
   delete: Trash,
   new: PlusCircle,
+  warning: AlertTriangle,
 };
