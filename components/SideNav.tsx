@@ -10,7 +10,7 @@ function SideNav() {
   const pathname = usePathname();
 
   return (
-    <div className="w-72 hidden h-screen border-r border-input py-8 pr-6 xl:inline-block">
+    <div className="w-72 hidden h-screen py-8 pr-6 xl:inline-block">
       {docsConfig.dashboardNav.map((item, index) => {
         const Icon = Icons[item.icon ?? "X"];
 
@@ -21,9 +21,10 @@ function SideNav() {
               aria-disabled={item.disabled}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "font-semibold text-base text-gray-400 hover:bg-inputBg hover:text-font duration-500 transition-colors px-3 rounded py-1.5 my-1 flex gap-2 items-center",
+                "font-semibold text-base text-gray-400 hover:bg-inputBg dark:hover:bg-slight/70 hover:text-font dark:hover:text-white duration-500 transition-colors px-3 rounded py-1.5 my-1 flex gap-2 items-center",
                 item.disabled && "cursor-not-allowed",
-                pathname === item.href && "bg-inputBg text-font font-medium"
+                pathname === item.href &&
+                  "bg-inputBg dark:bg-slight/70 text-font dark:text-white font-medium"
               )}
             >
               <Icon />

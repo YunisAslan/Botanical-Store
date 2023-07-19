@@ -11,10 +11,10 @@ function Hero() {
   return (
     <section className="grid grid-cols-12 pt-20 items-center lg:pt-6 px-4 sm:px-8 lg:px-20 dark:bg-secondary">
       <div className="hero-left-side col-span-12 xl:col-span-5 text-center pb-14 xl:text-left lg:pb-0">
-        <h2 className="text-4xl font-bold py-2 text-primary capitalize lg:text-6xl">
+        <h2 className="text-4xl font-bold py-2 text-primary dark:text-white capitalize lg:text-6xl">
           Plants make people happy.
         </h2>
-        <p className="text-base text-gray-600 pt-2 pb-7 lg:text-lg">
+        <p className="text-base text-gray-600 dark:text-gray-400 pt-2 pb-7 lg:text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
           tempora.
         </p>

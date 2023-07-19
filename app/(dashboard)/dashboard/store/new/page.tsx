@@ -116,8 +116,12 @@ function NewProduct() {
   return (
     <>
       <div className="pb-2">
-        <h1 className="text-primary text-3xl font-bold pb-1">Add product</h1>
-        <p className="text-base text-gray-600">Add a new product to store</p>
+        <h1 className="text-primary dark:text-white text-3xl font-bold pb-1">
+          Add product
+        </h1>
+        <p className="text-base text-gray-600 dark:text-gray-400">
+          Add a new product to store
+        </p>
       </div>
 
       <form

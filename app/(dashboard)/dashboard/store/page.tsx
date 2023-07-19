@@ -57,15 +57,19 @@ async function DashboardStore({ searchParams: { page = "1" } }: PageProps) {
   return (
     <>
       <div className="pb-2">
-        <h1 className="text-primary text-3xl font-bold pb-1">Products</h1>
-        <p className="text-base text-gray-600">Manage your products</p>
+        <h1 className="text-primary dark:text-white text-3xl font-bold pb-1">
+          Products
+        </h1>
+        <p className="text-base text-gray-600 dark:text-gray-400">
+          Manage your products
+        </p>
       </div>
 
       <div className="w-full flex justify-end pb-4">
         <Link
           href="/dashboard/store/new"
           className={cn(
-            "text-sm flex items-center justify-end gap-2 px-3 border border-input rounded py-1 hover:bg-inputBg transition-colors duration-300"
+            "text-sm flex items-center text-font dark:text-white justify-end gap-2 px-3 border border-input dark:border-secondary rounded py-1 hover:bg-inputBg dark:hover:bg-slight/70 transition-colors duration-300"
           )}
         >
           <Icons.new className="w-4" />

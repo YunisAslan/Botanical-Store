@@ -29,21 +29,21 @@ function ActionsMenu({ itemId }: { itemId: string }) {
           className={buttonVariants({ variant: "outline", size: "icon" })}
           href={`/dashboard/store/product/${itemId}`}
         >
-          <Icons.edit className="w-4 text-gray-500" />
+          <Icons.edit className="w-4 text-gray-500 dark:text-white" />
         </Link>
 
         <Link
           className={buttonVariants({ variant: "outline", size: "icon" })}
           href={`/product/${itemId}`}
         >
-          <Icons.view className="w-4 text-gray-500" />
+          <Icons.view className="w-4 text-gray-500 dark:text-white" />
         </Link>
 
         <button
           className={buttonVariants({ variant: "outline", size: "icon" })}
           onClick={() => deleteProduct(itemId as string)}
         >
-          <Icons.delete className="w-4 text-gray-500" />
+          <Icons.delete className="w-4 text-gray-500 dark:text-white" />
         </button>
       </div>
     </>
