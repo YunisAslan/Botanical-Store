@@ -1,4 +1,9 @@
-import { AlertTriangle, MoonIcon } from "lucide-react";
+import {
+  AlertTriangle,
+  ChevronsLeft,
+  ChevronsRight,
+  MoonIcon,
+} from "lucide-react";
 import {
   ArrowRight,
   Carrot,
@@ -47,6 +52,8 @@ export const Icons: { [key: string]: LucideIcon } = {
   moon: MoonIcon,
   chevronRight: ChevronRight,
   chevronDown: ChevronDown,
+  chevronsLeft: ChevronsLeft,
+  chevronsRight: ChevronsRight,
   shovel: ShovelIcon,
   flower: Flower,
   person: User,

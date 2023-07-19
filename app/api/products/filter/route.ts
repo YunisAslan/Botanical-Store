@@ -2,13 +2,14 @@ import { db } from "@/firebase/config";
 import { Product } from "@/types";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { NextResponse } from "next/server";
+
 export const revalidate = 0;
+
 export async function GET(request: Request) {
   const productsRef = collection(db, "products");
   const { searchParams } = new URL(request.url);
 
   const category = searchParams.get("category");
-  console.log(category);
 
   if (!category) {
     new Response("Missing category", { status: 400 });

@@ -1,5 +1,11 @@
 import Image from "next/image";
 import Signature from "@/public/assets/images/signature.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Me",
+  description: "This is the contact page",
+};
 
 function Contact() {
   return (

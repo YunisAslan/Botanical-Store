@@ -9,7 +9,7 @@ import { db } from "@/firebase/config";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
-function ActionsMenu({ item }: { item: Product }) {
+function ActionsMenu({ itemId }: { itemId: string }) {
   const router = useRouter();
 
   const deleteProduct = async (id: string) => {
@@ -27,21 +27,21 @@ function ActionsMenu({ item }: { item: Product }) {
       <div className="flex items-center justify-center gap-3">
         <Link
           className={buttonVariants({ variant: "outline", size: "icon" })}
-          href={`/dashboard/store/product/${item.id}`}
+          href={`/dashboard/store/product/${itemId}`}
         >
           <Icons.edit className="w-4 text-gray-500" />
         </Link>
 
         <Link
           className={buttonVariants({ variant: "outline", size: "icon" })}
-          href={`/product/${item.id}`}
+          href={`/product/${itemId}`}
         >
           <Icons.view className="w-4 text-gray-500" />
         </Link>
 
         <button
           className={buttonVariants({ variant: "outline", size: "icon" })}
-          onClick={() => deleteProduct(item.id as string)}
+          onClick={() => deleteProduct(itemId as string)}
         >
           <Icons.delete className="w-4 text-gray-500" />
         </button>

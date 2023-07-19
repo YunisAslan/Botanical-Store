@@ -1,12 +1,10 @@
-import { getProducts } from "@/lib/products";
 import ActionsMenu from "./ActionsMenu";
 import moment from "moment";
+import { Product } from "@/types";
 
 const head = ["Name", "Category", "Price", "Created At", ""];
 
-async function Table() {
-  const products = await getProducts();
-
+async function Table({ products }: { products: Product[] }) {
   return (
     <>
       <div className="w-full border rounded max-w-fit">
@@ -25,7 +23,7 @@ async function Table() {
           </thead>
 
           <tbody>
-            {products?.map((item) => (
+            {products.map((item) => (
               <tr key={item.id} className="group">
                 <td className="p-3 text-sm group-hover:bg-inputBg/50 border-b capitalize">
                   {item.plant_name}
@@ -44,7 +42,7 @@ async function Table() {
                   )}
                 </td>
                 <td className="p-3 text-sm group-hover:bg-inputBg/50 border-b">
-                  <ActionsMenu item={item} />
+                  <ActionsMenu itemId={item.id as string} />
                 </td>
               </tr>
             ))}

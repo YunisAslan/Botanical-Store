@@ -2,11 +2,17 @@ import Categories from "@/components/Categories";
 import { Icons } from "@/components/Icons";
 import SearchBar from "@/components/SearchBar";
 import TopRate from "@/components/TopRate";
+import { Metadata } from "next";
 import { ReactNode } from "react";
 
 interface ShopLayoutProps {
   children?: ReactNode;
 }
+
+export const metadata: Metadata = {
+  title: "Botanical Products",
+  description: "This is the botanical products layout",
+};
 
 export default async function ShopLayout({ children }: ShopLayoutProps) {
   return (

@@ -94,11 +94,11 @@ function NewProduct() {
         {
           loading: "Added...",
           success: <b>Product added!</b>,
-          error: <b>Could not be added.</b>,
+          error: <b>Could not be added, try again</b>,
         }
       );
     } catch (error) {
-      toast.error("Could not be added.");
+      toast.error("Could not be added, try again");
     } finally {
       setIsSaving(false); // Re-enable the button
     }

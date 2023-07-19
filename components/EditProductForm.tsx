@@ -99,10 +99,10 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
       await toast.promise(updateDoc(productRef, productWithImage), {
         loading: "Updated...",
         success: <b>Product updated!</b>,
-        error: <b>Could not be updated.</b>,
+        error: <b>Could not be updated. Try again.</b>,
       });
     } catch (error) {
-      toast.error("Could not be updated.");
+      toast.error("Could not be updated. Try again.");
     } finally {
       setIsSaving(false); // Re-enable the button
     }

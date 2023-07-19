@@ -10,6 +10,7 @@ type PageProps = {
 
 async function EditProduct({ params: { id } }: PageProps) {
   const product = await getProduct(id);
+  // console.log(id);
 
   if (!product) notFound();
 

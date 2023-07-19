@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Button, buttonVariants } from "./ui/Button";
 import { Product } from "@/types";
@@ -35,7 +37,7 @@ function ProductCard({ item }: { item: Product }) {
 
       <div className="p-4 flex justify-center gap-4">
         <Link
-          // prefetch={false}
+          prefetch
           href={`product/${item.id}`}
           className={cn(
             buttonVariants({ variant: "outline" }) + "px-5 h-8 py-0 text-sm"

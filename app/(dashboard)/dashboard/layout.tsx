@@ -1,7 +1,13 @@
 import SideNav from "@/components/SideNav";
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: "Botanical Dashboard",
+  description: "This is the dashboard layout for products",
+};
 
 export default function DashboardLayout({
   children,

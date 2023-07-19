@@ -1,13 +1,12 @@
 import { Icons } from "@/components/Icons";
-import { getProduct } from "@/lib/products";
+import { getProduct, getProducts } from "@/lib/products";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/utils";
+import { capitalize, cn } from "@/lib/utils";
 import ProductDescription from "@/components/ProductDescription";
 import { Metadata } from "next";
-import { revalidatePath } from "next/cache";
 
 type Props = {
   params: {
@@ -19,19 +18,18 @@ export async function generateMetadata({
   params: { id },
 }: Props): Promise<Metadata> {
   // deduped
-  const product = await getProduct(id);
+  // const product = await getProduct(id);
+  const products = await getProducts();
+  const product = products?.find((item) => item.id === id);
 
   if (!product) {
     return {
-      title: "Plant not found",
+      title: "Product Not Found",
     };
   }
 
-  // revalidatePath(`/product/${product?.id}`);
-
   return {
-    title:
-      product.plant_name.charAt(0).toUpperCase() + product.plant_name.slice(1),
+    title: capitalize(product.plant_name),
     description: product.description,
   };
 }
