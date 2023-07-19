@@ -110,7 +110,6 @@ function MobileNav() {
                   key={index}
                   href={item.disabled ? "#" : item.href}
                   onClick={() => setIsOpen(!isOpen)}
-                  prefetch={false}
                 >
                   {item.title}
                 </Link>

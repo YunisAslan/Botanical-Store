@@ -6,12 +6,35 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import ProductDescription from "@/components/ProductDescription";
+import { Metadata } from "next";
+import { revalidatePath } from "next/cache";
 
 type Props = {
   params: {
     id: string;
   };
 };
+
+export async function generateMetadata({
+  params: { id },
+}: Props): Promise<Metadata> {
+  // deduped
+  const product = await getProduct(id);
+
+  if (!product) {
+    return {
+      title: "Plant not found",
+    };
+  }
+
+  // revalidatePath(`/product/${product?.id}`);
+
+  return {
+    title:
+      product.plant_name.charAt(0).toUpperCase() + product.plant_name.slice(1),
+    description: product.description,
+  };
+}
 
 export default async function ProductDetail({ params: { id } }: Props) {
   const product = await getProduct(id);

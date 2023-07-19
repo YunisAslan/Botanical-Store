@@ -9,7 +9,7 @@ async function Table() {
 
   return (
     <>
-      <div className="w-full border rounded">
+      <div className="w-full border rounded max-w-fit">
         <table className="w-full block max-w-fit overflow-x-auto table-fixed whitespace-nowrap">
           <thead>
             <tr>
