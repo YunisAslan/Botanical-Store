@@ -129,12 +129,15 @@ function NewProduct() {
         onSubmit={handleSubmit(addProductData)}
       >
         <div className="flex flex-col">
-          <label htmlFor="name" className="pb-2 font-semibold">
+          <label
+            htmlFor="name"
+            className="pb-2 font-semibold text-font dark:text-white"
+          >
             Name
           </label>
           <input
             {...register("plant_name")}
-            className="border p-2 rounded-md outline-none border-input placeholder:text-sm"
+            className="border dark:text-white p-2 rounded-md outline-none border-input dark:border-secondary dark:bg-secondary placeholder:text-sm md:placeholder:text-base"
             type="text"
             id="name"
             name="plant_name"
@@ -148,12 +151,15 @@ function NewProduct() {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="description" className="pb-2 font-semibold">
+          <label
+            htmlFor="description"
+            className="pb-2 font-semibold text-font dark:text-white"
+          >
             Description
           </label>
           <textarea
             {...register("description")}
-            className="border p-2 rounded-md outline-none border-input resize-none placeholder:text-sm"
+            className="border dark:text-white p-2 rounded-md outline-none border-input dark:border-secondary dark:bg-secondary resize-none placeholder:text-sm md:placeholder:text-base"
             name="description"
             id="description"
             placeholder="Type product description here."
@@ -169,12 +175,15 @@ function NewProduct() {
 
         <div className="flex w-full gap-5">
           <div className="flex flex-col w-1/2">
-            <label htmlFor="price" className="pb-2 font-semibold">
+            <label
+              htmlFor="price"
+              className="pb-2 font-semibold text-font dark:text-white"
+            >
               Price
             </label>
             <input
               {...register("plant_price", { valueAsNumber: true })}
-              className="border p-2 rounded-md outline-none border-input placeholder:text-sm"
+              className="border dark:text-white p-2 rounded-md outline-none border-input dark:border-secondary dark:bg-secondary placeholder:text-sm md:placeholder:text-base"
               type="number"
               id="price"
               name="plant_price"
@@ -188,12 +197,15 @@ function NewProduct() {
           </div>
 
           <div className="flex flex-col w-1/2">
-            <label htmlFor="category" className="pb-2 font-semibold">
+            <label
+              htmlFor="category"
+              className="pb-2 font-semibold text-font dark:text-white"
+            >
               Category
             </label>
             <select
               {...register("plant_category")}
-              className="border p-2 rounded-md outline-none border-input capitalize"
+              className="border dark:text-white p-2 rounded-md outline-none border-input dark:border-secondary dark:bg-secondary capitalize"
               id="category"
               name="plant_category"
             >
@@ -208,7 +220,7 @@ function NewProduct() {
 
         <div
           {...getRootProps()}
-          className="border-2 border-dashed border-gray-300 rounded-lg p-4 h-72 flex flex-col justify-center items-center cursor-pointer"
+          className="border-2 border-dashed border-gray-300 dark:border-secondary rounded-lg p-4 h-72 flex flex-col justify-center items-center cursor-pointer"
         >
           <input {...getInputProps()} />
           {isDragActive ? (
@@ -231,10 +243,12 @@ function NewProduct() {
                   </>
                 ) : (
                   <>
-                    <Icons.image className="text-gray-400 w-8 h-8" />
+                    <Icons.image className="text-gray-400 dark:text-gray-500 w-8 h-8" />
                     <p className="text-center text-gray-500 pt-2">
                       Drag 'n' drop an image here{" "}
-                      <span className="text-center text-gray-800">or</span>{" "}
+                      <span className="text-center text-gray-800 dark:text-gray-400">
+                        or
+                      </span>{" "}
                       click in this area
                     </p>
                   </>

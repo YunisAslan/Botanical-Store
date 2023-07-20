@@ -11,7 +11,7 @@ function MainNav() {
   return (
     <nav className="hidden flex-1 items-center gap-2 pl-7 lg:flex">
       {docsConfig.mainNav.map((item, index) => {
-        const isActive = pathname.startsWith(item.href);
+        const isActive = pathname.includes(item.href);
         return (
           <Link
             className={cn(

@@ -44,15 +44,17 @@ export default async function ProductDetail({ params: { id } }: Props) {
   return (
     <>
       {/* Location PATH */}
-      <p className="flex items-center gap-1 pt-6 px-4 sm:px-8 lg:px-20">
+      <p className="dark:bg-secondary flex items-center gap-1 pt-6 px-4 sm:px-8 lg:px-20">
         <span className="text-gray-500">Home</span>
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
         <span className="text-gray-500">Products</span>
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
-        <span className="text-font capitalize">{product.plant_name}</span>
+        <span className="text-font capitalize dark:text-white">
+          {product.plant_name}
+        </span>
       </p>
 
-      <div className="pt-10 pb-20 grid grid-cols-4 gap-5 px-4 sm:px-8 lg:px-20">
+      <div className="dark:bg-secondary pt-10 pb-20 grid grid-cols-4 gap-5 px-4 sm:px-8 lg:px-20">
         {product.img_url ? (
           <div className="col-span-4 lg:col-span-2 flex justify-center lg:justify-start max-h-[500px]">
             <Image
@@ -73,21 +75,23 @@ export default async function ProductDetail({ params: { id } }: Props) {
         )}
 
         <div className="col-span-4 lg:col-span-2 pt-2">
-          <h2 className="text-2xl font-bold capitalize">
+          <h2 className="text-font dark:text-white text-2xl font-bold capitalize">
             {product.plant_name}
           </h2>
-          <p className="text-gray-600 py-2">&#36;{fixedPrice}</p>
+          <p className="text-gray-600 dark:text-gray-400 py-2">
+            &#36;{fixedPrice}
+          </p>
           <Link
             href={`/products?categories=${product.plant_category}`}
-            className="text-gray-600 hover:underline hover:underline-offset-2 capitalize text-lg"
+            className="text-gray-600 dark:text-gray-400 hover:underline hover:underline-offset-2 capitalize text-lg"
           >
             {product.plant_category}
           </Link>
 
-          <div className="border-b border-input my-6" />
+          <div className="border-b border-input dark:border-secondary my-6" />
 
           <div className="pick-color pb-4">
-            <p className="text-font font-semibold text-lg pb-2">
+            <p className="text-font dark:text-white font-semibold text-lg pb-2">
               Plant Pot Color
             </p>
 
@@ -129,7 +133,9 @@ export default async function ProductDetail({ params: { id } }: Props) {
           </div>
 
           <div className="flex flex-col gap-3">
-            <p className="text-font font-semibold text-lg">Quantity</p>
+            <p className="text-font dark:text-white font-semibold text-lg">
+              Quantity
+            </p>
             <input
               type="number"
               className="border border-input rounded w-32 outline-none px-2 py-1"
@@ -146,7 +152,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
             </Button>
           </div>
 
-          <div className="border-b border-input my-6" />
+          <div className="border-b border-input dark:border-secondary my-6" />
 
           {/* Description */}
           <div>
