@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 import { useEffect, useState } from "react";
 
 function Footer() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
 
   const handleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -17,9 +17,11 @@ function Footer() {
     if (theme === "light") {
       document.documentElement.classList.add("light");
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     } else {
       document.documentElement.classList.add("dark");
       document.documentElement.classList.remove("light");
+      localStorage.setItem("theme", "dark");
     }
   }, [theme]);
 

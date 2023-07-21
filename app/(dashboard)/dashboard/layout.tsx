@@ -18,7 +18,7 @@ export default function DashboardLayout({
     <div className="flex border-b border-input dark:border-secondary px-2 lg:px-6 dark:bg-secondary">
       <SideNav />
 
-      <div className="py-6 w-full px-2 lg:px-10 pb-24">
+      <div className="py-6 w-full px-2 lg:px-10 pb-24 min-h-screen">
         <Suspense>{children}</Suspense>
       </div>
     </div>
