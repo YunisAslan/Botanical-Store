@@ -4,26 +4,16 @@ import Link from "next/link";
 import { Icons } from "./Icons";
 import { Button, buttonVariants } from "./ui/Button";
 import { siteConfig } from "@/config/site";
-import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { useMounted } from "@/hooks/use-mounted";
 
 function Footer() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme"));
+  const mounted = useMounted();
+  const { theme, setTheme } = useTheme();
 
   const handleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
-
-  useEffect(() => {
-    if (theme === "light") {
-      document.documentElement.classList.add("light");
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-      localStorage.setItem("theme", "dark");
-    }
-  }, [theme]);
 
   return (
     <footer className="flex flex-col justify-between items-center py-4 sm:flex-row px-4 sm:px-8 lg:px-20 dark:bg-secondary">
@@ -51,9 +41,11 @@ function Footer() {
           <Icons.github />
         </Link>
 
-        <Button variant="ghost" size="mm" onClick={handleTheme}>
-          {theme === "light" ? <Icons.sun /> : <Icons.moon />}
-        </Button>
+        {mounted && (
+          <Button variant="ghost" size="mm" onClick={handleTheme}>
+            {theme === "light" ? <Icons.sun /> : <Icons.moon />}
+          </Button>
+        )}
       </div>
     </footer>
   );
