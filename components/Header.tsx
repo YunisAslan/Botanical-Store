@@ -1,26 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/public/assets/images/logo.png";
 import SearchProducts from "./SearchProducts";
 import { buttonVariants } from "./ui/Button";
 import MainNav from "./MainNav";
 import MobileNav from "./MobileNav";
 import CartBar from "./CartBar";
 
+import oldLogo from "@/public/assets/images/logo.png";
+import NewLogo from "@/public/assets/images/botanical-logo.svg";
+import { Icons } from "./Icons";
+
 function Header() {
   return (
     <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input dark:bg-secondary dark:border-secondary">
       <MobileNav />
 
-      <Link href="/">
-        <Image
-          className="pb-4 pt-1 hidden lg:flex"
-          src={Logo}
-          alt="Botanical Plant Store"
-          priority
-          width={120}
-          height={30}
-        />
+      <Link href="/" className="hidden lg:flex">
+        <Icons.logo className="w-16" />
       </Link>
 
       <MainNav />

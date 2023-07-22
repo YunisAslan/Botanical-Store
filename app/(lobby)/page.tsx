@@ -1,7 +1,4 @@
-import ChooseUs from "@/components/ChooseUs";
 import Hero from "@/components/Hero";
-import Image from "next/image";
-import SeperatorImg from "@/public/assets/images/seperator-img.png";
 import { getProducts } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import Subscribe from "@/components/Subscribe";
@@ -15,24 +12,13 @@ export default async function Home() {
   return (
     <div>
       <Hero />
-      <ChooseUs />
       {/* Featured Products */}
-      <section className="pb-28 px-4 sm:px-8 lg:px-20">
-        <h2 className="capitalize text-primary text-3xl font-semibold text-center pb-4">
+      <section className="py-28 px-4 sm:px-8 lg:px-20 dark:bg-secondary">
+        <h2 className="capitalize text-primary dark:text-white text-3xl font-semibold text-center pb-4">
           Featured products
         </h2>
 
-        <div className="flex justify-center">
-          <Image
-            className="w-3/4 sm:w-auto"
-            src={SeperatorImg}
-            alt="Botanical Store Seperator"
-            width={370}
-            height={30}
-          />
-        </div>
-
-        <div className="flex justify-center lg:justify-end pt-4 pr-0 lg:pr-3">
+        <div className="flex justify-center lg:justify-end pr-0 lg:pr-3">
           <Link
             href="/products"
             className={buttonVariants({
@@ -50,8 +36,7 @@ export default async function Home() {
           })}
         </div>
       </section>
-      {/* Featured Products */}
-      {/* Subscribe Our Nesletter */}
+      {/* Subscribe Our Newsletter */}
       <Subscribe />
     </div>
   );

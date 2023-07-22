@@ -8,12 +8,15 @@ export default function ProductsLoading() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-7 place-items-center xl:place-items-start gap-5 xl:gap-x-0 xl:gap-y-4">
         {[...Array.from(Array(6).keys())].map((_, i) => (
-          <div key={i} className="bg-white rounded w-64 border-input shadow-xl">
-            <div className="h-64 border-b border-input overflow-hidden rounded relative bg-gray-300 dark:bg-slight/70 animate-pulse" />
+          <div
+            key={i}
+            className="bg-white dark:bg-slight/70 rounded w-64 shadow-xl"
+          >
+            <div className="h-64 border-b border-input dark:border-secondary overflow-hidden rounded relative bg-gray-300 dark:bg-slight/70 animate-pulse" />
 
             <div className="p-4 space-y-3">
-              <h2 className="h-6 w-40 bg-gray-300 dark:bg-slight/70 rounded animate-pulse pb-1" />
-              <span className="h-5 bg-gray-300 dark:bg-slight/70 rounded animate-pulse" />
+              <h2 className="h-6 w-28 bg-gray-300 dark:bg-slight/100 rounded animate-pulse pb-1" />
+              <h6 className="h-5 w-10 bg-gray-300 dark:bg-slight/100 rounded animate-pulse" />
             </div>
 
             <div
@@ -23,8 +26,8 @@ export default function ProductsLoading() {
                 animationDuration: ".6s",
               }}
             >
-              <div className="w-20 h-8 bg-gray-300 dark:bg-slight/70 rounded animate-pulse" />
-              <div className="w-28 h-8 bg-gray-300 dark:bg-slight/70 rounded animate-pulse" />
+              <div className="w-20 h-7 bg-gray-300 dark:bg-slight/100 rounded animate-pulse" />
+              <div className="w-28 h-7 bg-gray-300 dark:bg-slight/100 rounded animate-pulse" />
             </div>
           </div>
         ))}

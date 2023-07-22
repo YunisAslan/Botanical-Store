@@ -1,6 +1,5 @@
 import SideNav from "@/components/SideNav";
 import { Metadata } from "next";
-import { Suspense } from "react";
 
 export const revalidate = 0;
 
@@ -19,7 +18,7 @@ export default function DashboardLayout({
       <SideNav />
 
       <div className="py-6 w-full px-2 lg:px-10 pb-24 min-h-screen">
-        <Suspense>{children}</Suspense>
+        {children}
       </div>
     </div>
   );

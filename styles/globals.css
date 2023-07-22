@@ -8,7 +8,11 @@
   --foreground: black; */
 }
 
-[data-theme="dark"] {
-  /* --background: black;
-  --foreground: white; */
+/* [data-theme="dark"] body {
+  background-color: #030711;
+  --foreground: white;
 }
+
+body {
+  background-color: white;
+} */

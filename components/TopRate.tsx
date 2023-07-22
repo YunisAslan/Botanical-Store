@@ -40,7 +40,7 @@ async function TopRate() {
                 >
                   {item.plant_name}
                 </Link>
-                <p className="text-gray-600 text-sm pt-1">
+                <p className="text-gray-600 dark:text-gray-400 text-sm pt-1">
                   &#36;{item.plant_price}
                 </p>
               </div>
@@ -55,7 +55,9 @@ async function TopRate() {
               <h2 className="font-semibold text-base pb-1 capitalize">
                 Anonym
               </h2>
-              <p className="text-gray-600 text-sm pt-1">&#36;00</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm pt-1">
+                &#36;00
+              </p>
             </div>
           </>
         )}

@@ -16,7 +16,7 @@ function Footer() {
   };
 
   return (
-    <footer className="flex flex-col justify-between items-center py-4 sm:flex-row px-4 sm:px-8 lg:px-20 dark:bg-secondary">
+    <footer className="flex flex-col border-t border-input dark:border-secondary justify-between items-center py-4 sm:flex-row px-4 sm:px-8 lg:px-20 dark:bg-secondary">
       <p className="flex gap-2 dark:text-white">
         <Icons.fingerPrint />
         Built by

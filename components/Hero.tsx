@@ -4,17 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "./ui/Button";
 import { Icons } from "./Icons";
-// import HeroImg from "@/public/assets/images/hero-img.png";
 import HeroImg from "@/public/assets/images/hero-img2.png";
 
 function Hero() {
   return (
-    <section className="grid grid-cols-12 pt-20 items-center lg:pt-6 px-4 sm:px-8 lg:px-20 dark:bg-secondary">
-      <div className="hero-left-side col-span-12 xl:col-span-5 text-center pb-14 xl:text-left lg:pb-0">
-        <h2 className="text-4xl font-bold py-2 text-primary dark:text-white capitalize lg:text-6xl">
+    <section className="grid grid-cols-12 pt-20 items-center lg:pt-6 px-4 sm:px-8 lg:px-16 dark:bg-secondary">
+      <div className="hero-left-side col-span-12 xl:col-span-6 text-center pb-14 xl:text-left lg:pb-0">
+        <h2 className="text-4xl font-bold py-2 xl:max-w-md text-primary dark:text-white capitalize lg:text-6xl">
           Plants make people happy.
         </h2>
-        <p className="text-base text-gray-600 dark:text-gray-400 pt-2 pb-7 lg:text-lg">
+        <p className="text-base text-gray-600 xl:max-w-md dark:text-gray-400 pt-2 pb-7 lg:text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
           tempora.
         </p>
@@ -23,7 +22,7 @@ function Hero() {
           className={buttonVariants({
             variant: "primary",
             size: "default",
-            className: "group mx-auto xl:mx-0 w-28",
+            className: "group mx-auto xl:mx-0 w-24 xl:w-28",
           })}
         >
           Shop
@@ -31,16 +30,8 @@ function Hero() {
         </Link>
       </div>
 
-      <div className="hero-right-side hidden sm:flex  col-span-12 justify-center xl:col-span-7 xl:inline-block pl-0 xl:pl-10">
-        <Image
-          className="object-contain"
-          src={HeroImg}
-          alt="Plants make people happy"
-          quality={100}
-          priority
-          width={700}
-          height={700}
-        />
+      <div className="hero-right-side hidden sm:flex col-span-12 justify-center xl:col-span-6 xl:inline-block pl-0 xl:pl-10">
+        <Icons.logo className="" />
       </div>
     </section>
   );

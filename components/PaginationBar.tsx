@@ -21,7 +21,8 @@ function PaginationBar({ currentPage, totalPages }: PaginationProps) {
         key={page}
         className={cn(
           buttonVariants({ variant: "ghost", size: "icon" }),
-          page === currentPage && "bg-primary text-white hover:text-font"
+          page === currentPage &&
+            "bg-primary dark:bg-white dark:hover:bg-white  dark:text-font text-white hover:text-font"
         )}
       >
         {page}
@@ -36,7 +37,7 @@ function PaginationBar({ currentPage, totalPages }: PaginationProps) {
     <>
       <div className="flex space-x-2">
         <Link
-          href={`?page=${!disabledPrevBtn ? currentPage - 1 : null}`}
+          href={disabledPrevBtn ? "#" : `?page=${currentPage - 1}`}
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon" }),
             disabledPrevBtn && "!text-gray-500 !cursor-not-allowed"
@@ -46,7 +47,7 @@ function PaginationBar({ currentPage, totalPages }: PaginationProps) {
         </Link>
         {numberedPageItems}
         <Link
-          href={`?page=${!disabledNextBtn ? currentPage + 1 : null}`}
+          href={disabledNextBtn ? "#" : `?page=${currentPage + 1}`}
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon" }),
             disabledNextBtn && "!text-gray-500 !cursor-not-allowed"

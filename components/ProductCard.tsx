@@ -11,9 +11,9 @@ function ProductCard({ item }: { item: Product }) {
   const fixedPrice = Number(item.plant_price).toFixed(2);
 
   return (
-    <div className="border border-input rounded cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 ease-in">
+    <div className="border border-input dark:border-secondary rounded cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 ease-in">
       {item.img_url ? (
-        <div className="border-b border-input overflow-hidden rounded h-64 relative">
+        <div className="border-b border-input dark:border-secondary overflow-hidden rounded h-64 relative">
           <Image
             src={item.img_url}
             alt={item.plant_name}
@@ -32,7 +32,9 @@ function ProductCard({ item }: { item: Product }) {
         <h2 className="font-semibold text-lg pb-1 capitalize">
           {item.plant_name}
         </h2>
-        <span className="text-gray-600">&#36;{fixedPrice}</span>
+        <span className="text-gray-600 dark:text-gray-400">
+          &#36;{fixedPrice}
+        </span>
       </div>
 
       <div className="p-4 flex justify-center gap-4">

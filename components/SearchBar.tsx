@@ -28,7 +28,7 @@ function SearchBar() {
         }}
       >
         <input
-          className="border w-full xl:w-72 border-input outline-none pr-12 px-2 py-2 text-sm rounded hover:border-green-500 focus:border-green-500 duration-200 transition-all"
+          className="border w-full xl:w-72 dark:bg-secondary  text-font dark:text-white border-input dark:border-secondary outline-none pr-12 px-2 py-2 text-sm rounded hover:border-font focus:border-font duration-200 transition-all placeholder:text-sm md:placeholder:text-base"
           type="text"
           placeholder="Search Products.."
           name="searchTerm"
