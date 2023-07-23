@@ -6,8 +6,7 @@ import MainNav from "./MainNav";
 import MobileNav from "./MobileNav";
 import CartBar from "./CartBar";
 
-import oldLogo from "@/public/assets/images/logo.png";
-import NewLogo from "@/public/assets/images/botanical-logo.svg";
+
 import { Icons } from "./Icons";
 
 function Header() {

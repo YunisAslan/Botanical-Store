@@ -7,6 +7,8 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    transparent: "transparent",
+    current: "currentColor",
     extend: {
       screens: {
         mm: "350px",

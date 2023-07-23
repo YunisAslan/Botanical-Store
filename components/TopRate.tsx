@@ -51,13 +51,8 @@ async function TopRate() {
             <div className="w-20 h-20 bg-gray-100 flex justify-center items-center">
               <Icons.image width={20} height={20} className="text-gray-500" />
             </div>
-            <div className="pl-3">
-              <h2 className="font-semibold text-base pb-1 capitalize">
-                Anonym
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400 text-sm pt-1">
-                &#36;00
-              </p>
+            <div className="w-20 h-20 bg-gray-100 flex justify-center items-center">
+              <Icons.image width={20} height={20} className="text-gray-500" />
             </div>
           </>
         )}

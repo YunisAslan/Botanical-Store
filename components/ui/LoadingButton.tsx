@@ -5,19 +5,20 @@ import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { Icons } from "../Icons";
 
 const buttonVariants = cva(
-  "flex items-center justify-center rounded active:scale-95 font-medium transition-colors duration-500 disabled:cursor-not-allowed disable:opacity-70",
+  "flex items-center justify-center rounded active:scale-95 font-semibold transition-colors duration-500 disabled:opacity/50",
   {
     variants: {
       variant: {
         default: "",
-        primary: "bg-primary text-white hover:brightness-110 shadow-sm",
+        primary:
+          "bg-primary dark:bg-white dark:text-font text-white hover:brightness-90 shadow-sm",
         outline:
-          "border hover:bg-inputBg border-input bg-transparent shadow-sm",
-        ghost: "bg-transparent hover:bg-inputBg",
+          "border hover:bg-inputBg dark:hover:bg-slight/70 border-input dark:border-secondary bg-transparent shadow-sm",
+        ghost: "bg-transparent hover:bg-inputBg dark:hover:bg-slight/70",
         link: "hover:underline underline-offset-4",
       },
       size: {
-        default: "py-2 px-4 text-lg",
+        default: "py-2 px-4 text-sm",
         sm: "h-9 px-3 text-sm",
         mm: "px-2 py-2 text-sm",
         icon: "h-9 w-9",
@@ -31,7 +32,6 @@ const buttonVariants = cva(
     },
   }
 );
-
 // interface ButtonProps
 //   extends ButtonHTMLAttributes<HTMLButtonElement>,
 //     VariantProps<typeof buttonVariants> {}

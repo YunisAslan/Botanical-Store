@@ -6,15 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
+    "@react-email/components": "^0.0.7",
     "@tanstack/react-query": "^4.29.19",
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "eslint": "8.43.0",
@@ -31,6 +34,7 @@
     "react-hook-form": "^7.45.1",
     "react-hot-toast": "^2.4.1",
     "react-query": "^3.39.3",
+    "resend": "^0.17.1",
     "swiper": "^9.4.1",
     "swr": "^2.2.0",
     "tailwind-merge": "^1.13.2",
