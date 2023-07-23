@@ -3,10 +3,10 @@ import { getProduct, getProducts } from "@/lib/products";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { capitalize, cn } from "@/lib/utils";
+import { capitalize } from "@/lib/utils";
 import ProductDescription from "@/components/ProductDescription";
 import { Metadata } from "next";
+import AddToCart from "@/components/AddToCart";
 
 type Props = {
   params: {
@@ -138,18 +138,12 @@ export default async function ProductDetail({ params: { id } }: Props) {
             </p>
             <input
               type="number"
-              className="border border-input rounded w-32 outline-none px-2 py-1"
-              value={13}
+              className="bg-white dark:bg-secondary border border-input dark:border-secondary rounded outline-none px-1.5 py-1 h-8 w-14 text-sm"
+              value={1}
               readOnly
             />
 
-            <Button
-              variant="primary"
-              size="sm"
-              className={cn("active:scale-100")}
-            >
-              Add to cart
-            </Button>
+            <AddToCart product={product} />
           </div>
 
           <div className="border-b border-input dark:border-secondary my-6" />

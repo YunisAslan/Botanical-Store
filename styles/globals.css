@@ -17,6 +17,7 @@ body {
   background-color: white;
 }
 
+/* cursor selector */
 ::-moz-selection {
   /* Code for Firefox */
   background: #030711;

@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { Button, buttonVariants } from "./ui/Button";
+import { buttonVariants } from "./ui/Button";
 import { Product } from "@/types";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icons } from "./Icons";
+import AddToCart from "./AddToCart";
 
 function ProductCard({ item }: { item: Product }) {
-  const fixedPrice = Number(item.plant_price).toFixed(2);
+  const fixedPrice = item.plant_price.toFixed(2);
 
   return (
     <div className="border border-input dark:border-secondary rounded cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 ease-in">
@@ -39,7 +40,6 @@ function ProductCard({ item }: { item: Product }) {
 
       <div className="p-4 flex justify-center gap-4">
         <Link
-          prefetch
           href={`product/${item.id}`}
           className={cn(
             buttonVariants({ variant: "outline" }) + "px-5 h-8 py-0 text-sm"
@@ -48,9 +48,7 @@ function ProductCard({ item }: { item: Product }) {
           Preview
         </Link>
 
-        <Button variant="primary" className={cn("px-5 h-8 py-0 text-sm")}>
-          Add to cart
-        </Button>
+        <AddToCart product={item} />
       </div>
     </div>
   );

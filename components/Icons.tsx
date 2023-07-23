@@ -3,7 +3,9 @@ import {
   ChevronsLeft,
   ChevronsRight,
   LucideProps,
+  MinusIcon,
   MoonIcon,
+  PlusIcon,
 } from "lucide-react";
 import {
   ArrowRight,
@@ -427,4 +429,6 @@ export const Icons: { [key: string]: LucideIcon } = {
   delete: Trash,
   new: PlusCircle,
   warning: AlertTriangle,
+  plus: PlusIcon,
+  minus: MinusIcon,
 };

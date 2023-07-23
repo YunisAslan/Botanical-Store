@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/Button";
 import { Icons } from "./Icons";
 import { useEffect, useRef, useState } from "react";
+import { useProductStore } from "@/store/useProductStore";
+import CartItem from "./CartItem";
 
 function CartBar() {
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -11,7 +13,7 @@ function CartBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: any) => {
       if (
         btnRef.current &&
         !btnRef.current.contains(e.target as Node) &&
@@ -22,10 +24,10 @@ function CartBar() {
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -37,6 +39,14 @@ function CartBar() {
     }
   }, [isOpen]);
 
+  const { products, totalQuantity, totalPrice, calculateTotalItems } =
+    useProductStore();
+
+  useEffect(() => {
+    calculateTotalItems();
+  }, [products]);
+  // console.log(totalQuantity);
+
   return (
     <>
       <Button
@@ -44,8 +54,15 @@ function CartBar() {
         variant="outline"
         size="icon"
         onClick={() => setIsOpen(!isOpen)}
+        className="relative"
       >
         <Icons.cart className="w-5 h-5" />
+
+        {totalQuantity !== 0 && (
+          <span className="text-sm text-font bg-inputBg flex justify-center items-center rounded-full w-5 h-5 absolute -top-2 -right-1">
+            {totalQuantity}
+          </span>
+        )}
       </Button>
 
       {/* this time i use translate instead w-0/full */}
@@ -57,18 +74,18 @@ function CartBar() {
       >
         <div
           className={cn(
-            "w-0 backdrop-blur-sm md:w-2/3 opacity-0 duration-700 transition-all ease-out bg-white/40 dark:bg-secondary/10",
+            "w-0 backdrop-blur-sm md:w-3/4 opacity-0 duration-700 transition-all ease-out bg-white/40 dark:bg-secondary/10",
             isOpen && "opacity-100"
           )}
         />
 
         <div
           ref={cartBar}
-          className="bg-white dark:bg-secondary relative w-full border-l border-input dark:border-secondary/0 overflow-auto md:dark:border-secondary"
+          className="bg-white dark:bg-secondary relative w-full border-l border-input dark:border-secondary/0 overflow-hidden md:dark:border-secondary"
         >
           <div
             className={cn(
-              "pt-3 px-8 pb-4 relative duration-500 opacity-0 ease-in-out transition-opacity",
+              "pt-3 px-8 relative duration-500 opacity-0 ease-in-out transition-opacity",
               isOpen && "opacity-100"
             )}
           >
@@ -82,19 +99,54 @@ function CartBar() {
             </Button>
 
             <h6 className="text-xl text-center font-semibold text-font dark:text-white pt-5 pb-4 md:text-left">
-              Cart
+              Cart {totalQuantity !== 0 && <span>({totalQuantity})</span>}
             </h6>
 
             <div className="border-b border-input dark:border-secondary absolute left-7 right-0" />
           </div>
 
-          <div className="product-container flex items-center justify-center flex-col h-3/4">
-            {/* some styles temporary */}
-            <Icons.cart className="w-14 h-14 text-gray-500" />
-            <span className="text-gray-500 pt-2 font-semibold text-lg whitespace-nowrap">
-              Your cart is empty
-            </span>
+          {products.length === 0 && (
+            <div className="flex items-center justify-center flex-col h-3/4">
+              <Icons.cart className="w-14 h-14 text-gray-500" />
+              <span className="text-gray-500 pt-2 font-semibold text-lg whitespace-nowrap">
+                Your cart is empty
+              </span>
+            </div>
+          )}
+
+          <div className="px-7 overflow-auto h-[60%]">
+            {products.map((item) => {
+              return <CartItem key={item.id} item={item} />;
+            })}
           </div>
+
+          <div className="owerflow-hidden pt-3 px-7 font-medium">
+            <div className="w-full py-4 border-t border-input dark:border-secondary">
+              <div className="flex flex-col justify-between space-y-2">
+                <div className="flex justify-between items-center">
+                  <h6 className="line-clamp-1 text-sm">Shipping</h6>
+                  <p className="line-clamp-1 text-sm">Free</p>
+                </div>
+
+                <div className="flex justify-between items-center pb-3">
+                  <h6 className="line-clamp-1 text-sm">Taxes</h6>
+                  <p className="line-clamp-1 text-sm">Calculated at checkout</p>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center border-t border-input dark:border-secondary py-3">
+                <h6 className="line-clamp-1 text-sm">Total</h6>
+                <p className="line-clamp-1 text-sm">
+                  &#36;{totalPrice.toFixed(2)}
+                </p>
+              </div>
+
+              <Button variant="primary" size="sm" className="w-full">
+                Proceed to Checkout
+              </Button>
+            </div>
+          </div>
+          {/*  */}
         </div>
       </div>
     </>

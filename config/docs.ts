@@ -29,6 +29,7 @@ export const docsConfig: DocsConfig = {
       title: "Account",
       href: "/dashboard/account",
       icon: "person",
+      disabled: true,
     },
     {
       title: "Products",
