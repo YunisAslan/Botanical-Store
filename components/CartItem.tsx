@@ -5,11 +5,13 @@ import Image from "next/image";
 import { Button } from "./ui/Button";
 import { Icons } from "./Icons";
 import { useProductStore } from "@/store/useProductStore";
+import { useMounted } from "@/hooks/use-mounted";
 
 function CartItem({ item }: { item: Product }) {
   const { products, removeItem, increaseItems, decreaseItems } =
     useProductStore();
 
+  const mounted = useMounted();
   const cartProduct = products.find((product) => product.id === item.id);
   const quantity = cartProduct ? cartProduct.quantity : 0;
   const fixedPrice = item.plant_price.toFixed(2);
@@ -29,7 +31,6 @@ function CartItem({ item }: { item: Product }) {
 
   return (
     <div className="flex justify-between pr-7 py-4 border-b border-input dark:border-secondary">
-      {/*  */}
       <div className="flex items-center space-x-4">
         <div>
           <Image
@@ -53,43 +54,44 @@ function CartItem({ item }: { item: Product }) {
           </span>
         </div>
       </div>
-      {/*  */}
 
-      <div className="flex items-center space-x-2">
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8"
-          onClick={handleDecrease}
-          disabled={quantity === 1}
-        >
-          <Icons.minus className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-        </Button>
+      {mounted && (
+        <div className="flex items-center space-x-2">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8"
+            onClick={handleDecrease}
+            disabled={quantity === 1}
+          >
+            <Icons.minus className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          </Button>
 
-        <input
-          type="number"
-          className="bg-white dark:bg-secondary border border-input dark:border-secondary rounded outline-none px-1.5 py-1 h-8 w-14 text-sm"
-          value={quantity}
-          readOnly
-        />
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8"
-          onClick={handleIncrease}
-        >
-          <Icons.plus className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-        </Button>
+          <input
+            type="number"
+            className="bg-white dark:bg-secondary border border-input dark:border-secondary rounded outline-none px-1.5 py-1 h-8 w-14 text-sm"
+            value={quantity}
+            readOnly
+          />
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8"
+            onClick={handleIncrease}
+          >
+            <Icons.plus className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          </Button>
 
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8"
-          onClick={handleDelete}
-        >
-          <Icons.delete className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-        </Button>
-      </div>
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8"
+            onClick={handleDelete}
+          >
+            <Icons.delete className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

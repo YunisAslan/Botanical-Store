@@ -6,8 +6,10 @@ import { Icons } from "./Icons";
 import { useEffect, useRef, useState } from "react";
 import { useProductStore } from "@/store/useProductStore";
 import CartItem from "./CartItem";
+import { useMounted } from "@/hooks/use-mounted";
 
 function CartBar() {
+  const mounted = useMounted();
   const btnRef = useRef<HTMLButtonElement>(null);
   const cartBar = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -47,6 +49,12 @@ function CartBar() {
   }, [products]);
   // console.log(totalQuantity);
 
+  const quantityBadge = totalQuantity !== 0 && (
+    <span className="text-sm text-font bg-inputBg flex justify-center items-center rounded-full w-5 h-5 absolute -top-2 -right-1">
+      {totalQuantity}
+    </span>
+  );
+
   return (
     <>
       <Button
@@ -56,13 +64,8 @@ function CartBar() {
         onClick={() => setIsOpen(!isOpen)}
         className="relative"
       >
+        {mounted && quantityBadge}
         <Icons.cart className="w-5 h-5" />
-
-        {totalQuantity !== 0 && (
-          <span className="text-sm text-font bg-inputBg flex justify-center items-center rounded-full w-5 h-5 absolute -top-2 -right-1">
-            {totalQuantity}
-          </span>
-        )}
       </Button>
 
       {/* this time i use translate instead w-0/full */}
@@ -93,32 +96,38 @@ function CartBar() {
               className="absolute right-3"
               variant="ghost"
               size="mm"
-              onClick={() => setIsOpen(!open)}
+              onClick={() => setIsOpen(!isOpen)}
             >
               <Icons.X className="w-5 h-5 text-gray-600 dark:text-white" />
             </Button>
 
-            <h6 className="text-xl text-center font-semibold text-font dark:text-white pt-5 pb-4 md:text-left">
-              Cart {totalQuantity !== 0 && <span>({totalQuantity})</span>}
-            </h6>
+            {mounted && (
+              <h6 className="text-xl text-center font-semibold text-font dark:text-white pt-5 pb-4 md:text-left">
+                Cart {totalQuantity !== 0 && <span>({totalQuantity})</span>}
+              </h6>
+            )}
 
             <div className="border-b border-input dark:border-secondary absolute left-7 right-0" />
           </div>
 
-          {products.length === 0 && (
-            <div className="flex items-center justify-center flex-col h-3/4">
-              <Icons.cart className="w-14 h-14 text-gray-500" />
-              <span className="text-gray-500 pt-2 font-semibold text-lg whitespace-nowrap">
-                Your cart is empty
-              </span>
-            </div>
-          )}
+          {mounted && (
+            <>
+              {products.length === 0 && (
+                <div className="flex items-center justify-center flex-col h-3/4">
+                  <Icons.cart className="w-14 h-14 text-gray-500" />
+                  <span className="text-gray-500 pt-2 font-semibold text-lg whitespace-nowrap">
+                    Your cart is empty
+                  </span>
+                </div>
+              )}
 
-          <div className="px-7 overflow-auto h-[60%]">
-            {products.map((item) => {
-              return <CartItem key={item.id} item={item} />;
-            })}
-          </div>
+              <div className="px-7 overflow-auto h-[60%]">
+                {products.map((item) => {
+                  return <CartItem key={item.id} item={item} />;
+                })}
+              </div>
+            </>
+          )}
 
           <div className="owerflow-hidden pt-3 px-7 font-medium">
             <div className="w-full py-4 border-t border-input dark:border-secondary">
@@ -134,12 +143,14 @@ function CartBar() {
                 </div>
               </div>
 
-              <div className="flex justify-between items-center border-t border-input dark:border-secondary py-3">
-                <h6 className="line-clamp-1 text-sm">Total</h6>
-                <p className="line-clamp-1 text-sm">
-                  &#36;{totalPrice.toFixed(2)}
-                </p>
-              </div>
+              {mounted && (
+                <div className="flex justify-between items-center border-t border-input dark:border-secondary py-3">
+                  <h6 className="line-clamp-1 text-sm">Total</h6>
+                  <p className="line-clamp-1 text-sm">
+                    &#36;{totalPrice.toFixed(2)}
+                  </p>
+                </div>
+              )}
 
               <Button variant="primary" size="sm" className="w-full">
                 Proceed to Checkout
