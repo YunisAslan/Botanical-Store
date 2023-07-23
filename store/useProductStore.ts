@@ -1,7 +1,7 @@
 import { Product } from "@/types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { persist, devtools } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 interface ProductStore {
   products: CartProduct[];

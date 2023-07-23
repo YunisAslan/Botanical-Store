@@ -9,7 +9,7 @@ import { Icons } from "./Icons";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input dark:bg-secondary dark:border-secondary">
+    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input dark:bg-secondary dark:border-secondary sticky top-0 z-[40] bg-white">
       <MobileNav />
 
       <Link href="/" className="hidden lg:flex">
