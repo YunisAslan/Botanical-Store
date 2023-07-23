@@ -7,12 +7,34 @@
   /* --background: white;
   --foreground: black; */
 }
-
-/* [data-theme="dark"] body {
+/* 
+[data-theme="dark"] {
   background-color: #030711;
   --foreground: white;
-}
+} */
 
 body {
   background-color: white;
-} */
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: #030711;
+  color: white;
+}
+
+::selection {
+  background: #030711;
+  color: white;
+}
+
+.dark ::-moz-selection {
+  /* Code for Firefox */
+  background: white;
+  color: #030711;
+}
+
+.dark ::selection {
+  background: white;
+  color: #030711;
+}
