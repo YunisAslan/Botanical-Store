@@ -44,6 +44,7 @@ function MobileNav() {
   return (
     <>
       <Button
+        name="Mobile Menu"
         ref={btnRef}
         className="lg:hidden"
         variant="ghost"
@@ -65,6 +66,7 @@ function MobileNav() {
         >
           <div className="pt-5 px-8">
             <Button
+              name="Close Menu"
               className="absolute right-3"
               variant="ghost"
               size="mm"
@@ -73,7 +75,11 @@ function MobileNav() {
               <Icons.X className="w-5 h-5 text-gray-600 dark:text-white" />
             </Button>
 
-            <Link href="/" onClick={() => setIsOpen(!isOpen)}>
+            <Link
+              aria-label="site logo"
+              href="/"
+              onClick={() => setIsOpen(!isOpen)}
+            >
               <Icons.logo className="w-16" />
             </Link>
 

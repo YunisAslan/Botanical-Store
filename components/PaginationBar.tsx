@@ -37,6 +37,7 @@ function PaginationBar({ currentPage, totalPages }: PaginationProps) {
     <>
       <div className="flex space-x-2">
         <Link
+          aria-label="pagination btn"
           href={disabledPrevBtn ? "#" : `?page=${currentPage - 1}`}
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon" }),
@@ -47,6 +48,7 @@ function PaginationBar({ currentPage, totalPages }: PaginationProps) {
         </Link>
         {numberedPageItems}
         <Link
+          aria-label="pagination btn"
           href={disabledNextBtn ? "#" : `?page=${currentPage + 1}`}
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon" }),

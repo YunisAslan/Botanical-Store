@@ -59,6 +59,7 @@ function CartItem({ item }: { item: Product }) {
       {mounted && (
         <div className="flex items-center space-x-2">
           <Button
+            name="Decrease Item"
             variant="outline"
             size="icon"
             className="h-8 w-8"
@@ -75,6 +76,7 @@ function CartItem({ item }: { item: Product }) {
             readOnly
           />
           <Button
+            name="Increase Item"
             variant="outline"
             size="icon"
             className="h-8 w-8"
@@ -84,6 +86,7 @@ function CartItem({ item }: { item: Product }) {
           </Button>
 
           <Button
+            name="Delete Item"
             variant="outline"
             size="icon"
             className="h-8 w-8"

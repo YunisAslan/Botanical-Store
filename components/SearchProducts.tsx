@@ -72,6 +72,7 @@ function SearchProduct() {
             />
 
             <Button
+              name="Close Search bar"
               className="absolute right-4"
               variant="ghost"
               size="mm"

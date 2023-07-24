@@ -31,6 +31,7 @@ function Footer() {
 
       <div className="flex items-center gap-2 pt-3 sm:pt-0">
         <Link
+          aria-label="github profile"
           href={siteConfig.github}
           target="_blank"
           className={buttonVariants({
@@ -42,7 +43,12 @@ function Footer() {
         </Link>
 
         {mounted && (
-          <Button variant="ghost" size="mm" onClick={handleTheme}>
+          <Button
+            name="dark/light mode"
+            variant="ghost"
+            size="mm"
+            onClick={handleTheme}
+          >
             {theme === "light" ? <Icons.sun /> : <Icons.moon />}
           </Button>
         )}

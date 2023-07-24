@@ -83,6 +83,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
             &#36;{fixedPrice}
           </p>
           <Link
+            aria-label="product category"
             href={`/products?categories=${product.plant_category}`}
             className="text-gray-600 dark:text-gray-400 hover:underline hover:underline-offset-2 capitalize text-lg"
           >

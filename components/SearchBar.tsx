@@ -36,7 +36,7 @@ function SearchBar() {
           onChange={(e) => setSearchValue(e.target.value)}
         />
 
-        <LoadingButton type="submit" className="absolute right-0">
+        <LoadingButton name="Search" type="submit" className="absolute right-0">
           <Icons.search className="w-5 h-5" />
         </LoadingButton>
       </form>

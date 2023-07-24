@@ -12,7 +12,7 @@ function Header() {
     <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input dark:bg-secondary dark:border-secondary sticky top-0 z-[40] bg-white">
       <MobileNav />
 
-      <Link href="/" className="hidden lg:flex">
+      <Link aria-label="site logo" href="/" className="hidden lg:flex">
         <Icons.logo className="w-16" />
       </Link>
 
@@ -24,7 +24,8 @@ function Header() {
         <CartBar />
 
         <Link
-          href="/signin"
+          style={{ cursor: "not-allowed" }}
+          href="#"
           className={buttonVariants({
             variant: "primary",
             size: "sm",

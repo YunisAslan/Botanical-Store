@@ -58,6 +58,7 @@ function CartBar() {
   return (
     <>
       <Button
+        name="Shopping Cart"
         ref={btnRef}
         variant="outline"
         size="icon"
@@ -93,6 +94,7 @@ function CartBar() {
             )}
           >
             <Button
+              name="Close Cart"
               className="absolute right-3"
               variant="ghost"
               size="mm"

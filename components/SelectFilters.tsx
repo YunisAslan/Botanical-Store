@@ -34,7 +34,7 @@ function SelectFilters() {
         }
       }}
     >
-      <LoadingButton type="submit" size="mm" variant="primary">
+      <LoadingButton name="Filter" type="submit" size="mm" variant="primary">
         <Icons.flower />
       </LoadingButton>
       <select

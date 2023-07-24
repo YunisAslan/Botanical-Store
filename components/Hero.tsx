@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "./ui/Button";
 import { Icons } from "./Icons";
-import HeroImg from "@/public/assets/images/hero-img2.png";
 
 function Hero() {
   return (

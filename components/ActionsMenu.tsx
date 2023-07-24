@@ -2,7 +2,6 @@
 
 import { Icons } from "./Icons";
 import { buttonVariants } from "./ui/Button";
-import { Product } from "@/types";
 import Link from "next/link";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase/config";
@@ -26,6 +25,7 @@ function ActionsMenu({ itemId }: { itemId: string }) {
     <>
       <div className="flex items-center justify-center gap-3">
         <Link
+          aria-label="edit product"
           className={buttonVariants({ variant: "outline", size: "icon" })}
           href={`/dashboard/store/product/${itemId}`}
         >
@@ -33,6 +33,7 @@ function ActionsMenu({ itemId }: { itemId: string }) {
         </Link>
 
         <Link
+          aria-label="view product"
           className={buttonVariants({ variant: "outline", size: "icon" })}
           href={`/product/${itemId}`}
         >
@@ -40,6 +41,7 @@ function ActionsMenu({ itemId }: { itemId: string }) {
         </Link>
 
         <button
+          name="Delete"
           className={buttonVariants({ variant: "outline", size: "icon" })}
           onClick={() => deleteProduct(itemId as string)}
         >

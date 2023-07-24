@@ -30,7 +30,12 @@ function Subscribe() {
             placeholder="botanical.store@gmail.com"
           />
 
-          <Button variant="primary" size="mm" className="absolute right-2">
+          <Button
+            name="Send Email"
+            variant="primary"
+            size="mm"
+            className="absolute right-2"
+          >
             <Icons.send className="w-4 h-4" />
           </Button>
         </form>
