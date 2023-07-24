@@ -61,6 +61,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
               className="object-cover aspect-square"
               src={product.img_url}
               alt={product.plant_name}
+              priority
               width={570}
               height={400}
               quality={100}

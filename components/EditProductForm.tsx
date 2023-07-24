@@ -65,8 +65,9 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
     useDropzone({
       onDrop: handleFileChange,
       multiple: false,
-      // @ts-ignore
-      accept: "image/*",
+      accept: {
+        "image/*": [".jpeg", ".jpg", ".png"],
+      },
     });
 
   const uploadImage = async () => {
@@ -218,13 +219,16 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
               <div className="flex flex-col items-center">
                 {acceptedFiles.length > 0 && !isDragActive ? (
                   <>
-                    <Image
-                      src={URL.createObjectURL(acceptedFiles[0])}
-                      alt="Preview"
-                      className="mb-2 rounded-md"
-                      width={200}
-                      height={200}
-                    />
+                    <div className="w-36">
+                      <Image
+                        src={URL.createObjectURL(acceptedFiles[0])}
+                        alt={item.plant_name}
+                        className="mb-2 rounded-md w-auto"
+                        priority
+                        width={200}
+                        height={200}
+                      />
+                    </div>
                     <p className="text-center text-gray-500 mb-1">
                       {acceptedFiles[0].name}
                     </p>
@@ -232,15 +236,16 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
                 ) : (
                   <>
                     {item.img_url ? (
-                      <>
+                      <div className="w-36">
                         <Image
                           src={item.img_url}
-                          alt="Preview"
-                          className="mb-2 rounded-md"
+                          alt={item.plant_name}
+                          className="w-auto mb-2 rounded-md"
+                          priority
                           width={200}
                           height={200}
                         />
-                      </>
+                      </div>
                     ) : (
                       <>
                         <Icons.image className="text-gray-400 w-8 h-8" />

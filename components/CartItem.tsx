@@ -38,6 +38,7 @@ function CartItem({ item }: { item: Product }) {
             alt={item.plant_name}
             width={64}
             height={64}
+            priority
           />
         </div>
 

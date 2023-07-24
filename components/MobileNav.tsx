@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Icons } from "./Icons";
 import { Button } from "./ui/Button";
-import Logo from "@/public/assets/images/logo.png";
 import { cn } from "@/lib/utils";
 import { docsConfig } from "@/config/docs";
 
@@ -75,25 +73,9 @@ function MobileNav() {
               <Icons.X className="w-5 h-5 text-gray-600 dark:text-white" />
             </Button>
 
-            <div className="flex">
-              <Link
-                href="/"
-                className="flex-shrink-0"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <Image
-                  className={cn(
-                    "opacity-0 duration-500 transition-all ease-in-out",
-                    isOpen && "opacity-100"
-                  )}
-                  src={Logo}
-                  alt="Botanical Plant Store"
-                  priority
-                  width={110}
-                  height={20}
-                />
-              </Link>
-            </div>
+            <Link href="/" onClick={() => setIsOpen(!isOpen)}>
+              <Icons.logo className="w-16" />
+            </Link>
 
             <nav
               className={cn(

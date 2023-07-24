@@ -18,9 +18,11 @@ function ProductCard({ item }: { item: Product }) {
           <Image
             src={item.img_url}
             alt={item.plant_name}
+            priority
             fill
             quality={100}
-            className="object-cover rounded-t"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover rounded-t w-auto"
           />
         </div>
       ) : (

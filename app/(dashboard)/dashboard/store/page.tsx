@@ -67,6 +67,7 @@ async function DashboardStore({ searchParams: { page = "1" } }: PageProps) {
 
       <div className="w-full flex justify-end pb-4">
         <Link
+          aria-label="new product"
           href="/dashboard/store/new"
           className={cn(
             "text-sm flex items-center text-font dark:text-white justify-end gap-2 px-3 border border-input dark:border-secondary rounded py-1 hover:bg-inputBg dark:hover:bg-slight/70 transition-colors duration-300"

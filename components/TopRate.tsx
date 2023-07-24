@@ -13,8 +13,8 @@ async function TopRate() {
 
       <div className="flex flex-col gap-y-5">
         {products ? (
-          filteredProducts?.map((item, index) => (
-            <div className="flex" key={index}>
+          filteredProducts?.map((item) => (
+            <div className="flex" key={item.id}>
               {item.img_url ? (
                 <div>
                   <Image
@@ -22,6 +22,7 @@ async function TopRate() {
                     alt={item.plant_name}
                     width={80}
                     height={80}
+                    className="object-contain w-auto"
                   />
                 </div>
               ) : (
