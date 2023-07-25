@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/Button";
 import { Product } from "@/types";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductStore } from "@/store/use-product-store";
 import { toast } from "react-hot-toast";
 
 function AddToCart({ product }: { product: Product }) {

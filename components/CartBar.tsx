@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/Button";
 import { Icons } from "./Icons";
 import { useEffect, useRef, useState } from "react";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductStore } from "@/store/use-product-store";
 import CartItem from "./CartItem";
 import { useMounted } from "@/hooks/use-mounted";
 

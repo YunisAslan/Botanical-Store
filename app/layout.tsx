@@ -10,8 +10,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata = {
-  title: "Botanical Plant Store",
+  title: "Botanical Store",
   description: "Created by Yunis Aslan",
+  manifest: "./manifest.json",
 };
 
 export default function RootLayout({

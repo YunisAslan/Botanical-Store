@@ -33,8 +33,8 @@ function TechStack() {
       </svg>
       <div className="space-y-2">
         <h3 className="font-bold dark:text-white">Components</h3>
-        <p className="text-sm text-muted-foreground dark:text-white">
-          UI components built using Radix UI and styled with Tailwind CSS.
+        <p className="text-sm dark:text-white">
+          Components styled with Tailwind CSS.
         </p>
       </div>
     </div>

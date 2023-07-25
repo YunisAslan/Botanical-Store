@@ -4,7 +4,7 @@ import { Product } from "@/types";
 import Image from "next/image";
 import { Button } from "./ui/Button";
 import { Icons } from "./Icons";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductStore } from "@/store/use-product-store";
 import { useMounted } from "@/hooks/use-mounted";
 
 function CartItem({ item }: { item: Product }) {
