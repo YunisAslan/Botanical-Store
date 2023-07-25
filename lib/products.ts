@@ -2,7 +2,7 @@ import { Product } from "@/types";
 
 export async function getProducts() {
   try {
-    const res = await fetch(`${process.env.LOCAL_URL}/api/products`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/products`, {
       next: { revalidate: 0 },
     });
 
@@ -16,7 +16,7 @@ export async function getProducts() {
 
 export async function getProduct(id: string) {
   try {
-    const res = await fetch(`${process.env.LOCAL_URL}/api/products/${id}`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/products/${id}`, {
       next: { revalidate: 0 },
     });
 
@@ -32,7 +32,7 @@ export async function getProduct(id: string) {
 
 export async function getSearchProducts(query: string) {
   const searchResponse = await fetch(
-    `${process.env.LOCAL_URL}/api/products/search?q=${query}`,
+    `${process.env.BASE_URL}/api/products/search?q=${query}`,
     {
       next: { revalidate: 0 },
     }
@@ -47,7 +47,7 @@ export async function getSearchProducts(query: string) {
 
 export async function getFilteredProducts(query: string) {
   const filterResponse = await fetch(
-    `${process.env.LOCAL_URL}/api/products/search?sort_by=${query}`,
+    `${process.env.BASE_URL}/api/products/search?sort_by=${query}`,
     {
       next: { revalidate: 0 },
     }
@@ -62,7 +62,7 @@ export async function getFilteredProducts(query: string) {
 
 export async function getCategoryProducts(query: string) {
   const categoryResponse = await fetch(
-    `${process.env.LOCAL_URL}/api/products/filter?category=${query}`,
+    `${process.env.BASE_URL}/api/products/filter?category=${query}`,
     {
       next: { revalidate: 0 },
     }
