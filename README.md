@@ -1,1 +1,1 @@
-# [Botanical Plant Store]("https://yunisaslan.vercel.app")
+# [Botanical Store]("https://yunisaslan.vercel.app")
