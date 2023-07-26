@@ -1,6 +1,7 @@
 # [Botanical Store]("https://botanical-store.vercel.app/")
 
 Open source e-commerce project built with the new Next.js App Router, React 18, TypeScript, Tailwind and Firebase.
+
 [![Botanical Store](./public/images/botanical-screen.png)](https://botanical-store.vercel.app/)
 
 ## Features
