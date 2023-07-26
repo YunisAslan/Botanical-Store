@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "@/components/Providers";
 import { siteConfig } from "@/config/site";
+import { Analytics } from "@vercel/analytics/react";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -22,13 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" >
+    <html lang="en">
       <body className={openSans.className}>
         <Providers>
           <main>
             <Header />
             {children}
             <Footer />
+            <Analytics />
           </main>
           <Toaster />
         </Providers>
