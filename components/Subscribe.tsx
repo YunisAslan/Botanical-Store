@@ -24,7 +24,7 @@ function Subscribe() {
           className="flex items-center gap-5 relative"
         >
           <input
-            className="outline-none text-font dark:text-white rounded w-60 sm:w-80 px-2 pr-16 py-2 shadow-sm border border-input dark:border-secondary dark:bg-secondary placeholder:text-sm md:placeholder:text-base"
+            className="outline-none text-primary dark:text-white rounded w-60 sm:w-80 px-2 pr-16 py-2 shadow-sm border border-input dark:border-secondary dark:bg-secondary placeholder:text-sm md:placeholder:text-base"
             name="email"
             type="email"
             placeholder="botanical.store@gmail.com"

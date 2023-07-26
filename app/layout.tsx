@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "@/components/Providers";
+import { siteConfig } from "@/config/site";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const openSans = Open_Sans({
 export const metadata = {
   title: "Botanical Store",
   description: "Created by Yunis Aslan",
-  manifest: "./manifest.json",
+  manifest: `${siteConfig.url}/manifest.json`,
 };
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" >
       <body className={openSans.className}>
         <Providers>
           <main>

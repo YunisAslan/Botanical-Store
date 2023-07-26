@@ -11,7 +11,7 @@ function MainNav() {
         return (
           <Link
             className={cn(
-              "font-semibold text-base text-font dark:text-white duration-500 transition-colors hover:bg-inputBg dark:hover:bg-slight/70 px-2 py-1 rounded",
+              "font-semibold text-base text-primary dark:text-white duration-500 transition-colors hover:bg-inputBg dark:hover:bg-slight/70 px-2 py-1 rounded",
               item.disabled && "cursor-not-allowed opacity-80"
             )}
             key={index}

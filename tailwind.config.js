@@ -16,7 +16,6 @@ module.exports = {
         xl: "1280px",
       },
       colors: {
-        font: "#09090B",
         inputBg: "#F4F4F5",
         primary: "#09090B",
         secondary: "#030711",

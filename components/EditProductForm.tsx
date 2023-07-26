@@ -83,6 +83,9 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
 
   const updateProductData: SubmitHandler<FormData> = async (data, e) => {
     e?.preventDefault();
+
+    data.plant_name = data.plant_name.toLowerCase();
+
     const imgUrl = await uploadImage();
 
     if (!imgUrl) return toast.error("Update image or select same image");
@@ -120,13 +123,13 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
         <div className="flex flex-col">
           <label
             htmlFor="name"
-            className="pb-2 font-semibold text-font dark:text-white"
+            className="pb-2 font-semibold text-primary dark:text-white"
           >
             Name
           </label>
           <input
             {...register("plant_name")}
-            className="border p-2 text-font dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary placeholder:text-sm md:placeholder:text-base"
+            className="border p-2 text-primary dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary placeholder:text-sm md:placeholder:text-base"
             type="text"
             id="name"
             name="plant_name"
@@ -142,13 +145,13 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
         <div className="flex flex-col">
           <label
             htmlFor="description"
-            className="pb-2 font-semibold text-font dark:text-white"
+            className="pb-2 font-semibold text-primary dark:text-white"
           >
             Description
           </label>
           <textarea
             {...register("description")}
-            className="border p-2 text-font dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary resize-none placeholder:text-sm md:placeholder:text-base"
+            className="border p-2 text-primary dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary resize-none placeholder:text-sm md:placeholder:text-base"
             name="description"
             id="description"
             placeholder="Type product description here."
@@ -166,13 +169,13 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
           <div className="flex flex-col w-1/2">
             <label
               htmlFor="price"
-              className="pb-2 font-semibold text-font dark:text-white"
+              className="pb-2 font-semibold text-primary dark:text-white"
             >
               Price
             </label>
             <input
               {...register("plant_price", { valueAsNumber: true })}
-              className="border p-2 text-font dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary placeholder:text-sm md:placeholder:text-base"
+              className="border p-2 text-primary dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary placeholder:text-sm md:placeholder:text-base"
               type="number"
               id="price"
               name="plant_price"
@@ -188,13 +191,13 @@ function EditProductForm({ item, id }: { item: Product; id: string }) {
           <div className="flex flex-col w-1/2">
             <label
               htmlFor="category"
-              className="pb-2 font-semibold text-font dark:text-white"
+              className="pb-2 font-semibold text-primary dark:text-white"
             >
               Category
             </label>
             <select
               {...register("plant_category")}
-              className="border p-2 text-font dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary capitalize"
+              className="border p-2 text-primary dark:text-white  dark:bg-secondary rounded-md outline-none border-input dark:border-secondary capitalize"
               id="category"
               name="plant_category"
             >

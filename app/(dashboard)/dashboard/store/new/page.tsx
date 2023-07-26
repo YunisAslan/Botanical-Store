@@ -75,7 +75,7 @@ function NewProduct() {
   const addProductData: SubmitHandler<FormData> = async (data, e) => {
     e?.preventDefault();
 
-    setValue("plant_name", data.plant_name.toLowerCase());
+    data.plant_name = data.plant_name.toLowerCase();
 
     const imgUrl = await uploadImage();
 
@@ -132,7 +132,7 @@ function NewProduct() {
         <div className="flex flex-col">
           <label
             htmlFor="name"
-            className="pb-2 font-semibold text-font dark:text-white"
+            className="pb-2 font-semibold text-primary dark:text-white"
           >
             Name
           </label>
@@ -154,7 +154,7 @@ function NewProduct() {
         <div className="flex flex-col">
           <label
             htmlFor="description"
-            className="pb-2 font-semibold text-font dark:text-white"
+            className="pb-2 font-semibold text-primary dark:text-white"
           >
             Description
           </label>
@@ -178,7 +178,7 @@ function NewProduct() {
           <div className="flex flex-col w-1/2">
             <label
               htmlFor="price"
-              className="pb-2 font-semibold text-font dark:text-white"
+              className="pb-2 font-semibold text-primary dark:text-white"
             >
               Price
             </label>
@@ -200,7 +200,7 @@ function NewProduct() {
           <div className="flex flex-col w-1/2">
             <label
               htmlFor="category"
-              className="pb-2 font-semibold text-font dark:text-white"
+              className="pb-2 font-semibold text-primary dark:text-white"
             >
               Category
             </label>

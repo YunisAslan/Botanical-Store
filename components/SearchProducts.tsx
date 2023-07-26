@@ -45,7 +45,7 @@ function SearchProduct() {
         onClick={() => setIsOpen(!isOpen)}
       >
         <Icons.search className="w-5 h-5 xl:mr-3 dark:text-white" />
-        <span className="hidden xl:flex font-semibold text-sm text-font dark:text-white">
+        <span className="hidden xl:flex font-semibold text-sm text-primary dark:text-white">
           Search products..
         </span>
       </button>

@@ -13,32 +13,36 @@ function ProductCard({ item }: { item: Product }) {
 
   return (
     <div className="border border-input dark:border-secondary rounded cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 ease-in">
-      {item.img_url ? (
-        <div className="border-b border-input dark:border-secondary overflow-hidden rounded h-64 relative">
-          <Image
-            src={item.img_url}
-            alt={item.plant_name}
-            priority
-            fill
-            quality={100}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover rounded-t w-auto"
-          />
-        </div>
-      ) : (
-        <div className="border-b border-input overflow-hidden rounded h-[255px] bg-gray-100 flex justify-center items-center">
-          <Icons.image width={40} height={40} className="text-gray-500" />
-        </div>
-      )}
+      <Link href={`product/${item.id}`}>
+        {item.img_url ? (
+          <div className="border-b border-input dark:border-secondary overflow-hidden rounded h-64 relative">
+            <Image
+              src={item.img_url}
+              alt={item.plant_name}
+              priority
+              fill
+              quality={100}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover rounded-t w-auto"
+            />
+          </div>
+        ) : (
+          <div className="border-b border-input overflow-hidden rounded h-[255px] bg-gray-100 flex justify-center items-center">
+            <Icons.image width={40} height={40} className="text-gray-500" />
+          </div>
+        )}
+      </Link>
 
-      <div className="p-4">
-        <h2 className="font-semibold text-lg pb-1 capitalize">
-          {item.plant_name}
-        </h2>
-        <span className="text-gray-600 dark:text-gray-400">
-          &#36;{fixedPrice}
-        </span>
-      </div>
+      <Link href={`product/${item.id}`}>
+        <div className="p-4">
+          <h2 className="font-semibold text-lg pb-1 capitalize">
+            {item.plant_name}
+          </h2>
+          <span className="text-gray-600 dark:text-gray-400">
+            &#36;{fixedPrice}
+          </span>
+        </div>
+      </Link>
 
       <div className="p-4 flex justify-center gap-4">
         <Link

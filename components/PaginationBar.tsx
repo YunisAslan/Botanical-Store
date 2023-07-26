@@ -22,7 +22,7 @@ function PaginationBar({ currentPage, totalPages }: PaginationProps) {
         className={cn(
           buttonVariants({ variant: "ghost", size: "icon" }),
           page === currentPage &&
-            "bg-primary dark:bg-white dark:hover:bg-white  dark:text-font text-white hover:text-font"
+            "bg-primary dark:bg-white dark:hover:bg-white  dark:text-primary text-white hover:text-primary"
         )}
       >
         {page}

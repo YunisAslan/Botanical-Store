@@ -38,7 +38,7 @@ function SelectFilters() {
         <Icons.flower />
       </LoadingButton>
       <select
-        className="text-font dark:text-white bg-gray-50 dark:bg-secondary border border-input dark:border-secondary rounded-lg focus:border-font block p-2.5 outline-none text-base font-medium"
+        className="text-primary dark:text-white bg-gray-50 dark:bg-secondary border border-input dark:border-secondary rounded-lg focus:border-font block p-2.5 outline-none text-base font-medium"
         placeholder="value"
         value={selectedValue}
         onChange={(e) => setSelectedValue(e.target.value)}

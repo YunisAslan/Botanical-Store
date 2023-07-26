@@ -3,8 +3,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-export const revalidate = 0;
-
 export async function GET(request: NextRequest) {
   const plantCollectionRef = collection(db, "products");
 

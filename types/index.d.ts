@@ -25,7 +25,6 @@ type Product = {
   plant_category: "cactus" | "aloe" | "rose" | "orchids" | "xerophytes";
   plant_name: string;
   plant_price: number;
-  stock_quantity?: number;
   description: string;
   img_url: string;
   created_at: string;

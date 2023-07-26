@@ -70,7 +70,7 @@ async function DashboardStore({ searchParams: { page = "1" } }: PageProps) {
           aria-label="new product"
           href="/dashboard/store/new"
           className={cn(
-            "text-sm flex items-center text-font dark:text-white justify-end gap-2 px-3 border border-input dark:border-secondary rounded py-1 hover:bg-inputBg dark:hover:bg-slight/70 transition-colors duration-300"
+            "text-sm flex items-center text-primary dark:text-white justify-end gap-2 px-3 border border-input dark:border-secondary rounded py-1 hover:bg-inputBg dark:hover:bg-slight/70 transition-colors duration-300"
           )}
         >
           <Icons.new className="w-4" />

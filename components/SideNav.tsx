@@ -21,10 +21,10 @@ function SideNav() {
               aria-disabled={item.disabled}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "font-semibold text-base text-gray-400 hover:bg-inputBg dark:hover:bg-slight/70 hover:text-font dark:hover:text-white duration-500 transition-colors px-3 rounded py-1.5 my-1 flex gap-2 items-center",
+                "font-semibold text-base text-gray-400 hover:bg-inputBg dark:hover:bg-slight/70 hover:text-primary dark:hover:text-white duration-500 transition-colors px-3 rounded py-1.5 my-1 flex gap-2 items-center",
                 item.disabled && "cursor-not-allowed",
                 pathname === item.href &&
-                  "bg-inputBg dark:bg-slight/70 text-font dark:text-white font-medium"
+                  "bg-inputBg dark:bg-slight/70 text-primary dark:text-white font-medium"
               )}
             >
               <Icon />

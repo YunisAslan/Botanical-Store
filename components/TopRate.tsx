@@ -22,7 +22,7 @@ async function TopRate() {
                     alt={item.plant_name}
                     width={80}
                     height={80}
-                    className="object-contain w-auto"
+                    className="object-cover w-20 h-20"
                   />
                 </div>
               ) : (

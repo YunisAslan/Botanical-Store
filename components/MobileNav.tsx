@@ -64,7 +64,7 @@ function MobileNav() {
           ref={menuRef}
           className="w-3/4 bg-white dark:bg-secondary relative border-r border-input dark:border-secondary overflow-auto"
         >
-          <div className="pt-5 px-8">
+          <div className="py-5 px-8">
             <Button
               name="Close Menu"
               className="absolute right-3"
@@ -92,7 +92,7 @@ function MobileNav() {
               {docsConfig.mainNav.map((item, index) => (
                 <Link
                   className={cn(
-                    "font-semibold text-base text-font dark:text-white hover:text-primary duration-500 transition-colors pb-4 border-b border-input dark:border-secondary hover:dark:border-input",
+                    "font-semibold text-base text-primary dark:text-white hover:text-primary duration-500 transition-colors pb-4 border-b border-input dark:border-secondary hover:dark:border-input",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                   key={index}
@@ -106,7 +106,7 @@ function MobileNav() {
               {/* Sidebar menu */}
               <div className="w-full border-b border-input dark:border-secondary hover:dark:border-input">
                 <button
-                  className="flex justify-between items-center font-semibold text-base text-font dark:text-white hover:text-primary duration-500 transition-colors pb-4 hover:dark:border-input w-full"
+                  className="flex justify-between items-center font-semibold text-base text-primary dark:text-white hover:text-primary duration-500 transition-colors pb-4 hover:dark:border-input w-full"
                   onClick={() => setSideBar(!sideBar)}
                 >
                   <span>Sidebar Menu</span>

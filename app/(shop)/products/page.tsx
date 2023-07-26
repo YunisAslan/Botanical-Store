@@ -58,7 +58,7 @@ async function ProductsPage({
       </div>
 
       {productIsNotFound ? (
-        <div className="flex flex-col items-center text-center justify-center gap-2 h-1/2 py-10">
+        <div className="flex flex-col items-center text-center justify-center gap-2 h-3/4 py-10">
           <h6 className="text-xl md:text-2xl font-semibold">
             No products found
           </h6>

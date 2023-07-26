@@ -10,7 +10,7 @@ function SingleProductNotFound() {
         </div>
 
         <div className="text-center px-6 pb-6 pt-3">
-          <h2 className="font-semibold text-2xl text-font dark:text-white pb-3">
+          <h2 className="font-semibold text-2xl text-primary dark:text-white pb-3">
             Product not found
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
@@ -21,7 +21,7 @@ function SingleProductNotFound() {
 
         <Link
           href="/"
-          className="font-semibold text-base text-font dark:text-white hover:text-primary duration-500 transition-colors dark:hover:bg-slight/70 px-2 py-1 rounded mb-6"
+          className="font-semibold text-base text-primary dark:text-white hover:text-primary duration-500 transition-colors dark:hover:bg-slight/70 px-2 py-1 rounded mb-6"
         >
           Go to Home
         </Link>

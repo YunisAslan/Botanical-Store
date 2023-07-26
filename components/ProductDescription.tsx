@@ -11,7 +11,7 @@ function ProductDescription(product: Product) {
   return (
     <div>
       <button
-        className="w-full text-font dark:text-white font-semibold text-lg flex justify-between items-center"
+        className="w-full text-primary dark:text-white font-semibold text-lg flex justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>Description</span>
@@ -26,7 +26,7 @@ function ProductDescription(product: Product) {
       <div>
         <p
           className={cn(
-            "text-font dark:text-white transition-all duration-300 ease-in-out h-0 invisible opacity-0 pt-2",
+            "text-primary dark:text-white transition-all duration-300 ease-in-out h-0 invisible opacity-0 pt-2",
             isOpen && "visible opacity-100 h-auto"
           )}
         >

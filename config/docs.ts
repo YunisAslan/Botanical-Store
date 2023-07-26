@@ -18,11 +18,6 @@ export const docsConfig: DocsConfig = {
       title: "Tech Stack",
       href: "/tech-stack",
     },
-    {
-      title: "Contact",
-      href: "/contact",
-      disabled: true,
-    },
   ],
   dashboardNav: [
     {

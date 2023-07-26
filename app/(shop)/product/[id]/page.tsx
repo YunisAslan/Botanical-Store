@@ -49,7 +49,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
         <span className="text-gray-500">Products</span>
         <Icons.chevronRight className="text-gray-500 w-4 h-4" />
-        <span className="text-font capitalize dark:text-white">
+        <span className="text-primary capitalize dark:text-white">
           {product.plant_name}
         </span>
       </p>
@@ -76,7 +76,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
         )}
 
         <div className="col-span-4 lg:col-span-2 pt-2">
-          <h2 className="text-font dark:text-white text-2xl font-bold capitalize">
+          <h2 className="text-primary dark:text-white text-2xl font-bold capitalize">
             {product.plant_name}
           </h2>
           <p className="text-gray-600 dark:text-gray-400 py-2">
@@ -92,50 +92,8 @@ export default async function ProductDetail({ params: { id } }: Props) {
 
           <div className="border-b border-input dark:border-secondary my-6" />
 
-          <div className="pick-color pb-4">
-            <p className="text-font dark:text-white font-semibold text-lg pb-2">
-              Plant Pot Color
-            </p>
-
-            <label className="lime">
-              <input
-                type="radio"
-                name="color"
-                className="hidden" // HIDDEN
-                readOnly
-              />
-              <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
-                <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-green-500 "></span>
-              </div>
-            </label>
-
-            <label className="indigo">
-              <input
-                type="radio"
-                name="color"
-                className="hidden" // HIDDEN
-                readOnly
-              />
-              <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
-                <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-[#3f51b5] "></span>
-              </div>
-            </label>
-
-            <label className="blue">
-              <input
-                type="radio"
-                name="color"
-                className="hidden" // HIDDEN
-                readOnly
-              />
-              <div className="inline-block relative w-7 h-7 m-2 cursor-pointer">
-                <span className="absolute w-7 h-7 p-0 rounded-full hover:p-2 bg-[#2196f3] "></span>
-              </div>
-            </label>
-          </div>
-
           <div className="flex flex-col gap-3">
-            <p className="text-font dark:text-white font-semibold text-lg">
+            <p className="text-primary dark:text-white font-semibold text-lg">
               Quantity
             </p>
             <input

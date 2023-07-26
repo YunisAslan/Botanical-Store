@@ -1,3 +1,5 @@
+// *** Then I chose not to keep separate file for Server actions in my app.
+
 // "use server";
 
 // import { db } from "@/firebase/config";

@@ -15,7 +15,7 @@ function CartBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleClickOutside = (e: any) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         btnRef.current &&
         !btnRef.current.contains(e.target as Node) &&
@@ -50,7 +50,7 @@ function CartBar() {
   // console.log(totalQuantity);
 
   const quantityBadge = totalQuantity !== 0 && (
-    <span className="text-sm text-font bg-inputBg flex justify-center items-center rounded-full w-5 h-5 absolute -top-2 -right-1">
+    <span className="text-sm text-primary bg-inputBg flex justify-center items-center rounded-full w-5 h-5 absolute -top-2 -right-1">
       {totalQuantity}
     </span>
   );
@@ -104,7 +104,7 @@ function CartBar() {
             </Button>
 
             {mounted && (
-              <h6 className="text-xl text-center font-semibold text-font dark:text-white pt-5 pb-4 md:text-left">
+              <h6 className="text-xl text-center font-semibold text-primary dark:text-white pt-5 pb-4 md:text-left">
                 Cart {totalQuantity !== 0 && <span>({totalQuantity})</span>}
               </h6>
             )}

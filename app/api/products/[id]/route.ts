@@ -2,8 +2,6 @@ import { db } from "@/firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
-export const revalidate = 0;
-
 type Props = {
   params: {
     id: string;
