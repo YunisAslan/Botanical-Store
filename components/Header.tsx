@@ -6,6 +6,7 @@ import MobileNav from "./MobileNav";
 import CartBar from "./CartBar";
 
 import { Icons } from "./Icons";
+import GlobalSearch from "./GlobalSearch";
 
 function Header() {
   return (
@@ -19,7 +20,7 @@ function Header() {
       <MainNav />
 
       <div className="flex items-center gap-2">
-        <SearchProducts />
+        <GlobalSearch />
 
         <CartBar />
 
