@@ -3,7 +3,7 @@
   "background_color": "#030711",
   "display": "standalone",
   "scope": "/",
-  "start_url": "https://botanical-store.vercel.app/",
+  "start_url": "/",
   "name": "Botanical Store",
   "short_name": "Botanical Store",
   "description": "Full-stack Botanical Store app w/ dashboard",

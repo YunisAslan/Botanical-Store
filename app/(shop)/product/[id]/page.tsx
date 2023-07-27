@@ -22,15 +22,15 @@ export async function generateMetadata({
   const products = await getProducts();
   const product = products?.find((item) => item.id === id);
 
-  if (!product) {
-    return {
-      title: "Product Not Found",
-    };
-  }
+  // if (!product) {
+  //   return {
+  //     title: "Product Not Found",
+  //   };
+  // }
 
   return {
-    title: capitalize(product.plant_name),
-    description: product.description,
+    title: capitalize(product?.plant_name as string),
+    description: product?.description,
   };
 }
 
@@ -103,7 +103,7 @@ export default async function ProductDetail({ params: { id } }: Props) {
               readOnly
             />
 
-            <AddToCart product={product} />
+            <AddToCart product={product} id={id} />
           </div>
 
           <div className="border-b border-input dark:border-secondary my-6" />

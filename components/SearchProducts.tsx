@@ -18,7 +18,7 @@ function SearchProduct({ products }: { products: Product[] }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    startTransition(() => {
+    startTransition(async () => {
       if (searchQuery.trim() === "") {
         setFilteredProducts([]);
       } else {
@@ -147,7 +147,7 @@ function SearchProduct({ products }: { products: Product[] }) {
                 <div
                   key={product.id}
                   onClick={() => handleProductClick(product.id as string)}
-                  className="cursor-pointer p-2 hover:bg-inputBg rounded capitalize"
+                  className="cursor-pointer p-2 hover:bg-inputBg dark:hover:bg-slight/70 rounded capitalize"
                 >
                   {product.plant_name}
                 </div>

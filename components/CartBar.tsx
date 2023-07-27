@@ -124,7 +124,7 @@ function CartBar() {
               )}
 
               <div className="px-7 overflow-auto h-[60%]">
-                {products.map((item) => {
+                {products.map((item, index) => {
                   return <CartItem key={item.id} item={item} />;
                 })}
               </div>

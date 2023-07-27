@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SearchProducts from "./SearchProducts";
 import { buttonVariants } from "./ui/Button";
 import MainNav from "./MainNav";
 import MobileNav from "./MobileNav";

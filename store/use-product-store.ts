@@ -7,7 +7,7 @@ interface ProductStore {
   products: CartProduct[];
   totalPrice: number;
   totalQuantity: number;
-  addToBasket: (payload: Product) => void;
+  addToBasket: (payload: Product, id: string) => void;
   removeItem: (payload: Product) => void;
   calculateTotalItems: () => void;
   increaseItems: (payload: Product) => void;
@@ -24,16 +24,18 @@ export const useProductStore = create(
       products: [],
       totalQuantity: 0,
       totalPrice: 0,
-      addToBasket: (payload) =>
+      addToBasket: (payload, id) =>
         set((state) => {
-          const find = state.products.findIndex(
-            (product) => product.id === payload.id
-          );
+          const find = state.products.findIndex((product) => product.id === id);
 
           if (find !== -1) {
             state.products[find].quantity += 1;
           } else {
-            const newItem = { ...payload, quantity: 1 };
+            const newItem: CartProduct = {
+              ...payload,
+              quantity: 1,
+              id,
+            };
             state.products.push(newItem);
           }
         }),

@@ -54,7 +54,7 @@ function ProductCard({ item }: { item: Product }) {
           Preview
         </Link>
 
-        <AddToCart product={item} />
+        <AddToCart product={item} id={item.id as string} />
       </div>
     </div>
   );

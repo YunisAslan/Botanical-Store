@@ -6,11 +6,11 @@ import { Product } from "@/types";
 import { useProductStore } from "@/store/use-product-store";
 import { toast } from "react-hot-toast";
 
-function AddToCart({ product }: { product: Product }) {
-  const { addToBasket } = useProductStore();
+function AddToCart({ product, id }: { product: Product; id: string }) {
+  const addToBasket = useProductStore((state) => state.addToBasket);
 
   const handleAddToCart = () => {
-    addToBasket(product);
+    addToBasket(product, id);
 
     toast.success("Added to cart.");
   };
