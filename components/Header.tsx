@@ -9,7 +9,7 @@ import GlobalSearch from "./GlobalSearch";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input dark:bg-secondary dark:border-secondary sticky top-0 z-[40] bg-white">
+    <header className="flex items-center justify-between px-5 py-0 h-20 md:px-10 border-b border-input dark:bg-secondary dark:border-secondary sticky top-0 z-[40] bg-white container mx-auto max-w-[84rem]">
       <MobileNav />
 
       <Link aria-label="site logo" href="/" className="hidden lg:flex">

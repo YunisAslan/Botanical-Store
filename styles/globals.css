@@ -10,14 +10,18 @@
   --input: "#E4E4E7";
   --secondary: "#1D283A";
 }
-/* 
+
+
 [data-theme="dark"] {
   background-color: #030711;
-  --foreground: white;
-} */
+}
 
 body {
   background-color: white;
+}
+
+.dark body {
+  background: #030711;
 }
 
 /* cursor selector */

@@ -26,12 +26,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={openSans.className}>
         <Providers>
-          <main>
-            <Header />
+          <Header />
+          <main className="min-h-screen bg-white dark:bg-secondary mx-auto max-w-7xl">
             {children}
-            <Footer />
             <Analytics />
           </main>
+          <Footer />
           <Toaster />
         </Providers>
       </body>
